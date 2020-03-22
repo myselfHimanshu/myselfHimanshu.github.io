@@ -78,15 +78,15 @@
 <p><strong>Basic Model</strong></p>
 
 <p>Let&rsquo;s start with a machine translation model of converting french to english:
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_1.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_1.png?raw=true" alt="" /></p>
 
 <p>Given a sequence <code>X</code> we need the output <code>y</code>. Here we have a network called as <code>encoder</code> with <em>gru</em> or <em>lstm</em> blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as <code>decoder</code> and can be trained to output the translated sentence one word at a time.</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_2.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_2.png?raw=true" alt="" /></p>
 
 <p>This kind of network can also be used for <em>Image Captioning</em> task. Given an image of cat <code>X</code> as input, predict the caption <code>y</code> &ldquo;A cat sitting on a chair&rdquo;.</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_3.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_3.png?raw=true" alt="" /></p>
 
 <p>We can first train our CNN and then feed the last layer as input to our decoder network to predict the caption.</p>
 
@@ -94,7 +94,7 @@
 
 <p>How is our <em>language model</em> different from this <em>machine translation</em> model.</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_4.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_4.png?raw=true" alt="" /></p>
 
 <p>The <code>decoder</code> network is pretty much same as our language model except the <code>$a^{&lt;0&gt;}$</code> part where we are using the <code>encoder</code> network which figures out the way of representing our input sentence. This can also be called as <code>conditional language model</code>.</p>
 
@@ -284,13 +284,13 @@ If <code>$P(y|x)$</code> &gt; <code>$P(\hat{y}|x)$</code>:</p>
 
 <p>BP: penalty which stands for brevity penalty. Penalizes the sentences shorter than the target.</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_5.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_5.png?raw=true" alt="" /></p>
 
 <p><strong>Attention Model</strong></p>
 
 <p>The problem of long sequence:</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_6.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_6.png?raw=true" alt="" /></p>
 
 <ul>
 <li>In encoder and decoder network, first we are trying to get the representation of the long french statement and then ask decoder to process and generate the translated sentence.</li>
@@ -299,7 +299,7 @@ If <code>$P(y|x)$</code> &gt; <code>$P(\hat{y}|x)$</code>:</p>
 <li>Attention model works like a human that looks at parts at a time. This significantly increases the accuracy with bigger sequences.</li>
 </ul>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_7.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_7.png?raw=true" alt="" /></p>
 
 <ul>
 <li>Our network is a bidirectional RNN for our input <code>X</code>. Let the activations be</li>
@@ -334,7 +334,7 @@ If <code>$P(y|x)$</code> &gt; <code>$P(\hat{y}|x)$</code>:</p>
 <p><code>$$\alpha^{&lt;t,t^{'}&gt;} = \frac{exp(e^{&lt;t,t^{'}&gt;})}{\sum_{t^{'}=1}^{T_x}exp(e^{&lt;t,t^{'}&gt;})}$$</code></p>
 
 <p>We calculate <code>$e^{&lt;t,t^{'}&gt;}$</code> using a small neural network:
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_8.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_8.png?raw=true" alt="" /></p>
 
 <ul>
 <li><code>$s^{&lt;t-1&gt;}$</code> is the hidden state of the generator RNN from previous time step, and $$a^{<t'>}$$ is the activation of the our input bidirectional RNN.</li>
