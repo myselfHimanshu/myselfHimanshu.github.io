@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DeepLearning on Data Summit</title>
+    <link>https://myselfHimanshu.github.io/tags/deeplearning/</link>
+    <description>Recent content in DeepLearning on Data Summit</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Feb 2020 22:22:22 +0530</lastBuildDate>
+    
+	<atom:link href="https://myselfHimanshu.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Paperspace for Deep Learning</title>
+      <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
+      <pubDate>Sun, 02 Feb 2020 22:22:22 +0530</pubDate>
+      
+      <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
+      <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>
+    </item>
+    
+  </channel>
+</rss>

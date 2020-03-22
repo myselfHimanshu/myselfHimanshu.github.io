@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism &middot; Data Summit</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    </script>
+    
+    <script type="text/javascript"
+      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+
+  <body class="theme-base-08 ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://myselfHimanshu.github.io/"><h1>Data Summit</h1></a>
+      <p class="lead">
+       Everything started as nothing. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://myselfHimanshu.github.io/">Home</a> </li>
+        <li><a href="https://github.com/myselfhimanshu/"> Github </a></li><li><a href="https://www.linkedin.com/in/047himanshu/"> LinkedIn </a></li><li><a href="https://twitter.com/047himanshu"> Twitter </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</h1>
+  <time datetime=2020-02-23T22:22:22&#43;0530 class="post-date">Sun, Feb 23, 2020</time>
+  
+
+<h3 id="various-sequence-to-sequence-architecture">Various Sequence to Sequence Architecture</h3>
+
+<p><strong>Basic Model</strong></p>
+
+<p>Let&rsquo;s start with a machine translation model of converting french to english:
+<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_1.png?raw=true" alt="" /></p>
+
+<p>Given a sequence <code>X</code> we need the output <code>y</code>. Here we have a network called as <code>encoder</code> with <em>gru</em> or <em>lstm</em> blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as <code>decoder</code> and can be trained to output the translated sentence one word at a time.</p>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_2.png?raw=true" alt="" /></p>
+
+<p>This kind of network can also be used for <em>Image Captioning</em> task. Given an image of cat <code>X</code> as input, predict the caption <code>y</code> &ldquo;A cat sitting on a chair&rdquo;.</p>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_3.png?raw=true" alt="" /></p>
+
+<p>We can first train our CNN and then feed the last layer as input to our decoder network to predict the caption.</p>
+
+<p><strong>Picking the most likely sentence</strong></p>
+
+<p>How is our <em>language model</em> different from this <em>machine translation</em> model.</p>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_4.png?raw=true" alt="" /></p>
+
+<p>The <code>decoder</code> network is pretty much same as our language model except the <code>$a^{&lt;0&gt;}$</code> part where we are using the <code>encoder</code> network which figures out the way of representing our input sentence. This can also be called as <code>conditional language model</code>.</p>
+
+<ul>
+<li>In language model :</li>
+</ul>
+
+<p><code>$$P(y^{&lt;1&gt;},y^{&lt;2&gt;},...,y^{&lt;T_y&gt;})$$</code></p>
+
+<ul>
+<li>In machine translation :</li>
+</ul>
+
+<p><code>$$P(y^{&lt;1&gt;},y^{&lt;2&gt;},...,y^{&lt;T_y&gt;} | x^{&lt;1&gt;},x^{&lt;2&gt;},...,x^{&lt;T_x&gt;})$$</code></p>
+
+<p>We don&rsquo;t want a randomly generated sentence. Sometimes we would get good sentences and sometimes bad. That&rsquo;s why we need to find <code>y</code> that maximizes the above probability.</p>
+
+<p><em>Idea: Use greedy search</em></p>
+
+<p>We are talking about decoder part.</p>
+
+<ul>
+<li>Pick the word with the best probability and repeat until we get <code>&lt;EOS&gt;</code>.
+With this we can get &ldquo;Jane is going to be visiting Africa this September&rdquo;. Note this method picks up word by word.</li>
+</ul>
+
+<p><strong>Beam Search</strong></p>
+
+<p>Beam search is the most widely used algorithm to get the best output sequence.</p>
+
+<ol>
+<li>Pick the first word. Pick first <code>B</code>(say 3) best alternatives. Suppose, <code>P(y^{&lt;1&gt;}|x}</code>  gives us {in, jane, september} as possibilities.</li>
+<li>Now considering these 3 words, the model will pick up the second word based on liklihood. Here we are calculating,</li>
+</ol>
+
+<p><code>$$\prod_{t=1}^{T} P(y^{&lt;t&gt;}|x, y^{&lt;1&gt;},...,y^{&lt;t-1&gt;})$$</code></p>
+
+<p>And repeat the second step and evaluate the probabilities word by word. Here we need to keep track of the <code>P</code> for each sentences of each length and after <code>i</code> interations pick the best (remember we need the output <code>y</code> which maximizes the probability of the whole sentence)and continue.</p>
+
+<p>If <code>B</code>=1, this will become a greedy search.</p>
+
+<p><strong>Refinements to Beam Search</strong></p>
+
+<p>First thing is Length optimization. We were trying to maximize the probablity by muliplying. But multiplying these small fractions will cause a <code>numerical overflow!</code>. So instead of multiplying we use <code>summing logs</code> and normalize it.</p>
+
+<p><code>$$\frac{1}{T_{y}}\sum_{t=1}^{T_y} \log P(y^{&lt;t&gt;}|x, y^{&lt;1&gt;},...,y^{&lt;t-1&gt;})$$</code></p>
+
+<p><em>The second thing is choosing best B?</em></p>
+
+<ul>
+<li>The larger B -&gt; larger possibilities -&gt; better are the results -&gt; but more computationally expensive.</li>
+<li>In practice, production systems B=10, B=100, B=1000 might not be uncommon but it is domain dependent.</li>
+<li>Beam Search runs faster than BFS and DFS but is not guaranteed to find exact solution.</li>
+</ul>
+
+<p><strong>Error Analysis in beam search</strong></p>
+
+<p>Let&rsquo;s start with an example:</p>
+
+<ul>
+<li>X : &ldquo;Jane visite l’Afrique en septembre.&rdquo;</li>
+<li>y : &ldquo;Jane vists Africa in September.&rdquo;</li>
+<li><code>$\hat{y}$</code> : &ldquo;Jane visited Africa last September.&rdquo;</li>
+</ul>
+
+<p>Our model has two main components:
+1. RNN network
+2. Beam Search Algorithm</p>
+
+<p>As our algorithm doesn&rsquo;t predict right. How do we know if it&rsquo;s RNN or Beam Search we should work on?</p>
+
+<p>Solution: Here we will calculate <code>$P(y|x)$</code> and <code>$P(\hat{y}|x)$</code>. Cases : <br />
+If <code>$P(y|x)$</code> &gt; <code>$P(\hat{y}|x)$</code>:</p>
+
+<ul>
+<li>This means beam search chose <code>$\hat{y}$</code> but <code>$y$</code> attains the higher probability.</li>
+<li>Beam Search is at fault.</li>
+</ul>
+
+<p>If <code>$P(y|x)$</code> &lt;= <code>$P(\hat{y}|x)$</code>:</p>
+
+<ul>
+<li><code>$y$</code> is better translation than <code>$\hat{y}$</code> but RNN predicted probability of <code>$\hat{y}$</code> greater than <code>$y$</code>.</li>
+<li>RNN model is at fault.</li>
+</ul>
+
+<p>Then we can calculate this for every example in our dev set and get the value counts of <code>Beam search fault</code> and <code>RNN model fault</code> and work on model accordingly.</p>
+
+<p><strong>Bleu Score</strong></p>
+
+<p>One challenge is that there can be multiple possible good translation for a given sentence. So how do we evaluate the result?</p>
+
+<p>Solution: &ldquo;BLEU score&rdquo;. BLEU stands for bilingual evaluation understudy.</p>
+
+<p>Let&rsquo;s understand with an example:</p>
+
+<ul>
+<li>X : &ldquo;Le chat est sur le tapis.&rdquo;</li>
+<li>Y1 : &ldquo;The cat is on the mat.&rdquo;</li>
+<li>Y2 : &ldquo;There is a cat on the mat.&rdquo;</li>
+</ul>
+
+<p>The intuition is that we are going to look at the predicted statement and see if the types of words appear in any of the human generated statement. Suppose our predicted statement is :</p>
+
+<ul>
+<li><code>$\hat{y}$</code> : &ldquo;the the the the the the the.&rdquo;</li>
+</ul>
+
+<p>One way to measure is to calculate the precision. In the above predicted statement there are 7 words and each of then either comes in Y1 or Y2. So, <code>$precision = \frac{7}{7}$</code> . This basic measure is not useful.</p>
+
+<p>Another way is to use modified precision in which we are looking for the reference with the maximum number of a particular word and set the maximum appearing of this word to this number. So, <code>$modifiedPrecision = \frac{2}{7}$</code> because the max is 2 in Y1. We clipped the 7 times by the max which is 2.</p>
+
+<p>Here we are looking at one word at a time, we may need to look at pairs.</p>
+
+<p><em>Bleu Score on bigrams:</em></p>
+
+<p>Suppose our predicted statement is :</p>
+
+<ul>
+<li><code>$\hat{y}$</code> : &ldquo;the cat the cat on the mat.&rdquo;</li>
+</ul>
+
+<p>The output in here:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Pairs</th>
+<th align="center">Count</th>
+<th align="center">Count clip</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">the cat</td>
+<td align="center">2</td>
+<td align="center">1 (Y1)</td>
+</tr>
+
+<tr>
+<td align="center">cat the</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+
+<tr>
+<td align="center">cat on</td>
+<td align="center">1</td>
+<td align="center">1 (Y2)</td>
+</tr>
+
+<tr>
+<td align="center">on the</td>
+<td align="center">1</td>
+<td align="center">1 (Y1)</td>
+</tr>
+
+<tr>
+<td align="center">the mat</td>
+<td align="center">1</td>
+<td align="center">1 (Y1)</td>
+</tr>
+
+<tr>
+<td align="center">Totals</td>
+<td align="center">6</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+
+<p>Score : Count clip / count : 4 / 6</p>
+
+<p>For n-grams, Score will be:</p>
+
+<p><code>$$ P_n = \frac{\sum_{n-gram\in\hat{y}}(CountClip_{n-gram})}{\sum_{n-gram\in\hat{y}}(Count_{n-gram})} $$</code></p>
+
+<p><em>Bleu Score Combined:</em></p>
+
+<ul>
+<li><code>$p_n$</code> : Bleu score on n-grams.</li>
+<li>Suppose we calculate for n=1,2,3,4. Then:</li>
+</ul>
+
+<p><code>$$ score = BP*exp(\frac{1}{4}\sum_{n=1}^4p_n) $$</code></p>
+
+<p>BP: penalty which stands for brevity penalty. Penalizes the sentences shorter than the target.</p>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_5.png?raw=true" alt="" /></p>
+
+<p><strong>Attention Model</strong></p>
+
+<p>The problem of long sequence:</p>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_6.png?raw=true" alt="" /></p>
+
+<ul>
+<li>In encoder and decoder network, first we are trying to get the representation of the long french statement and then ask decoder to process and generate the translated sentence.</li>
+<li>But in real world, a human wouldn&rsquo;t wait for the end of the sentence and then memorize it then try to translate it. He will translate a little at a time, part by part.</li>
+<li>Encoder and decoder network score comes down for longer sentences.</li>
+<li>Attention model works like a human that looks at parts at a time. This significantly increases the accuracy with bigger sequences.</li>
+</ul>
+
+<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_7.png?raw=true" alt="" /></p>
+
+<ul>
+<li>Our network is a bidirectional RNN for our input <code>X</code>. Let the activations be</li>
+</ul>
+
+<p><code>$$ a^{&lt;t^{'}&gt;} = f(\overrightarrow{a}^{&lt;t&gt;}, \overleftarrow{a}^{&lt;t&gt;} ) $$</code></p>
+
+<ul>
+<li>Then we gonna use another RNN network for our translated output.</li>
+<li>Suppose the first word that we want to generate is <code>Jane</code>. To generate <code>Jane</code>, we don&rsquo;t have to look for the whole sentence, we just need to look at a part of a sentence (maybe some few first words).</li>
+<li>The attention model computes something called as <code>attention-weights</code> (<code>$\alpha^{&lt;1,2&gt;}$$, $$\alpha^{&lt;1,2&gt;}$</code>&hellip;).</li>
+<li><code>attention-weights</code> : if we are generating the first output word, how much attention should we pay to the first input word and second input word and so on.</li>
+</ul>
+
+<p><code>$$\sum_{t^{'}}\alpha^{&lt;t,t^{'}&gt;} = 1$$</code></p>
+
+<ul>
+<li>Together <code>attention-weights</code> will tell us which all contexts in <code>C</code> we should pay attention to.</li>
+</ul>
+
+<p><code>$$c^{&lt;t&gt;} = \sum_{t^{'}}\alpha^{&lt;t,t^{'}&gt;}a^{&lt;t^{'}&gt;} $$</code></p>
+
+<ul>
+<li>For each state <code>$S^{&lt;i&gt;}$</code> we will have a new set of <code>attention-weights</code>.</li>
+<li>In other words, to generate any word there will be a set of attention weights that controls which words we are looking at right now.</li>
+</ul>
+
+<p><em>How to compute these attention-weights?</em></p>
+
+<p>We softmax the attention weights so that their sum is 1</p>
+
+<p><code>$$\alpha^{&lt;t,t^{'}&gt;} = \frac{exp(e^{&lt;t,t^{'}&gt;})}{\sum_{t^{'}=1}^{T_x}exp(e^{&lt;t,t^{'}&gt;})}$$</code></p>
+
+<p>We calculate <code>$e^{&lt;t,t^{'}&gt;}$</code> using a small neural network:
+<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_8.png?raw=true" alt="" /></p>
+
+<ul>
+<li><code>$s^{&lt;t-1&gt;}$</code> is the hidden state of the generator RNN from previous time step, and $$a^{<t'>}$$ is the activation of the our input bidirectional RNN.</li>
+<li>The disadvantages of this algorithm is that it takes quadratic time or quadratic cost to run.</li>
+</ul>
+
+<h2 id="problem-statements">Problem Statements</h2>
+
+<p><em>Coursera Assignment</em></p>
+
+<ul>
+<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Neural%2Bmachine%2Btranslation%2Bwith%2Battention%2B-%2Bv4.ipynb" target="_blank">Neural Machine Translation with Attention.</a></li>
+<li><a href="" target="_blank">Trigger word detection.</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

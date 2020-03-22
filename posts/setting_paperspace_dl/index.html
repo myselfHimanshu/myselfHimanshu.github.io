@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Setting Up Paperspace for Deep Learning &middot; Data Summit</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    </script>
+    
+    <script type="text/javascript"
+      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+
+  <body class="theme-base-08 ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://myselfHimanshu.github.io/"><h1>Data Summit</h1></a>
+      <p class="lead">
+       Everything started as nothing. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://myselfHimanshu.github.io/">Home</a> </li>
+        <li><a href="https://github.com/myselfhimanshu/"> Github </a></li><li><a href="https://www.linkedin.com/in/047himanshu/"> LinkedIn </a></li><li><a href="https://twitter.com/047himanshu"> Twitter </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Setting Up Paperspace for Deep Learning</h1>
+  <time datetime=2020-02-02T22:22:22&#43;0530 class="post-date">Sun, Feb 2, 2020</time>
+  
+
+<h2 id="step-by-step-guide-to-setup-paperspace-machine-for-deep-learning">Step by Step Guide to Setup Paperspace Machine for Deep Learning</h2>
+
+<ul>
+<li>Create an Account : <a href="https://www.paperspace.com/">paperspace.com</a></li>
+<li>Sign up with my <a href="https://www.paperspace.com/&amp;R=DKCCRUZ">promo code</a> for Paperspace to get a $10 credit!</li>
+<li>Add in credit card information (required, even if you have a promo code)</li>
+<li>Go to <a href="https://www.paperspace.com/console/machines">https://www.paperspace.com/console/machines</a> and click <code>New Machine</code>.</li>
+<li>Choose a region near to you.</li>
+<li>Choose <code>Ubuntu 16.04</code> in Linux Templates.</li>
+
+<li><p>Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving). And create the machine.</p>
+
+<pre><code>NVIDIA P4000
+- Architecture: Pascal
+- CUDA Cores: 1792
+- GPU Memory: 8 GB GDDR5
+- TeraFLOPS: 5.3
+</code></pre></li>
+
+<li><p>You will get an email regarding your password and ssh command.</p></li>
+
+<li><p>Enter the console on your browser, insert your password and if you want to change the current password :
+<kbd>$ passwd</kbd></p></li>
+</ul>
+
+<h2 id="ssh-to-paperspace-machine-from-your-local-machine">SSH to paperspace machine from your local machine</h2>
+
+<ul>
+<li>Install <code>ssh-copy-id</code>. Here&rsquo;s how to install it (Mac):</li>
+</ul>
+
+<pre><code class="language-bash">$ brew install ssh-copy-id
+</code></pre>
+
+<ul>
+<li><code>cd</code> into <code>~/.ssh</code> directory</li>
+<li>if you don&rsquo;t have an <code>.ssh</code> directory in your home folder, create it (<code>mkdir ~/.ssh</code>)</li>
+<li>if you don&rsquo;t have an <code>id_rsa.pub</code> file in your <code>~/.ssh</code> folder, create it (<code>ssh-keygen</code>)</li>
+<li>replace IP address in syntax below with your own, and run command</li>
+</ul>
+
+<pre><code class="language-bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###
+</code></pre>
+
+<ul>
+<li>Use the password from the paperspace email.</li>
+<li>Add Paperspace info to <code>config</code> file</li>
+<li>make sure you are in the right directory (<code>cd ~/.ssh</code>)</li>
+<li>if you don&rsquo;t have a <code>config</code> file, create one.  This example creates file using nano editor (<code>nano config</code>)</li>
+<li>add these contents to your config file (replace IP address here with your Paperspace IP address)</li>
+</ul>
+
+<pre><code class="language-text">Host paperspace
+     HostName 72.###.###.###
+     IdentityFile ~/.ssh/id_rsa
+     # StrictHostKeyChecking no  
+     User paperspace
+     LocalForward 8888 localhost:8888
+</code></pre>
+
+<ul>
+<li>here&rsquo;s the nano command for saving file :  <kbd> ctrl o </kbd>  -&gt;   <kbd> Enter </kbd><br /></li>
+<li>here&rsquo;s the nano command for exiting a file :  <kbd> ctrl x </kbd></li>
+</ul>
+
+<h2 id="ssh-from-local-machine-and-setting-up-anaconda">SSH from local machine and setting up Anaconda</h2>
+
+<ul>
+<li>Fire up the terminal and type in : <kbd>ssh paperspace</kbd></li>
+<li>If you want to change your password, here are the commands:
+<kbd>passwd</kbd></li>
+</ul>
+
+<p>This will ask for the current password and then enter your password.</p>
+
+<p>Next step after logging in the paperspace machine.</p>
+
+<ul>
+<li><p>Create a directory saying <code>Downloads</code>.</p>
+
+<pre><code>$ cd Downloads
+$ wget -c https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
+$ chmod +x Anaconda3-2018.12-Linux-x86_64.sh
+$ ./Anaconda3-2018.12-Linux-x86_64.sh
+$ export PATH=~/anaconda3/bin:$PATH
+</code></pre></li>
+
+<li><p>Check conda version : <kbd>conda &ndash;version</kbd></p></li>
+</ul>
+
+<h2 id="install-pytorch">Install pytorch</h2>
+
+<p>Install pytorch</p>
+
+<pre><code>$ pip install numpy torchvision_nightly
+$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html
+</code></pre>
+
+<p>Checking if cuda is working:</p>
+
+<pre><code>$ python
+&gt;&gt;&gt; import torch
+&gt;&gt;&gt; torch.cuda.is_available()
+</code></pre>
+
+<p>If the above command returns False. Then we need to update/add the nvidia driver.</p>
+
+<pre><code>$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt-get update
+$ sudo apt-get install nvidia-396 nvidia-modprobe
+</code></pre>
+
+<p>Then restart the instance and check <kbd>$ nvdia-smi </kbd> and run pytorch command again and check.</p>
+
+<p>This should solve the problem. If you still face some problems, ping in comments.</p>
+
+<p>And the setup is complete. In the next post, we will build a model in pytorch.</p>
+
+<p><strong>Remember to shut the notebook down and STOP Instance!</strong></p>
+
+<ul>
+<li>Paperspace has an option where you can choose to automatically shut down your machine at: 1 hr, 8 hrs, 1 day, 1 week. I chose the 8 hrs option.</li>
+<li>Note that the auto shut down works only for the browser console. Paperspace will not auto shut down your server if you SSH to it.</li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
