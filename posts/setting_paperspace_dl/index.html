@@ -44,6 +44,8 @@
     <script type="text/javascript"
       src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+
+  <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/override.css">
 </head>
 
   <body class="theme-base-08 ">
@@ -84,11 +86,13 @@
 <li>Choose <code>Ubuntu 16.04</code> in Linux Templates.</li>
 
 <li><p>Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving). And create the machine.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NVIDIA P4000
+
+<pre><code>NVIDIA P4000
 - Architecture: Pascal
 - CUDA Cores: 1792
 - GPU Memory: 8 GB GDDR5
-- TeraFLOPS: 5.3</pre></div></li>
+- TeraFLOPS: 5.3
+</code></pre></li>
 
 <li><p>You will get an email regarding your password and ssh command.</p></li>
 
@@ -101,14 +105,14 @@
 <ul>
 <li>Install <code>ssh-copy-id</code>. Here&rsquo;s how to install it (Mac):</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id</code></pre></div>
 <ul>
 <li><code>cd</code> into <code>~/.ssh</code> directory</li>
 <li>if you don&rsquo;t have an <code>.ssh</code> directory in your home folder, create it (<code>mkdir ~/.ssh</code>)</li>
 <li>if you don&rsquo;t have an <code>id_rsa.pub</code> file in your <code>~/.ssh</code> folder, create it (<code>ssh-keygen</code>)</li>
 <li>replace IP address in syntax below with your own, and run command</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###</code></pre></div>
 <ul>
 <li>Use the password from the paperspace email.</li>
 <li>Add Paperspace info to <code>config</code> file</li>
@@ -116,7 +120,7 @@
 <li>if you don&rsquo;t have a <code>config</code> file, create one.  This example creates file using nano editor (<code>nano config</code>)</li>
 <li>add these contents to your config file (replace IP address here with your Paperspace IP address)</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Host paperspace
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Host paperspace
      HostName 72.###.###.###
      IdentityFile ~/.ssh/id_rsa
      # StrictHostKeyChecking no  
@@ -141,11 +145,13 @@
 
 <ul>
 <li><p>Create a directory saying <code>Downloads</code>.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ cd Downloads
+
+<pre><code>$ cd Downloads
 $ wget -c https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 $ chmod +x Anaconda3-2018.12-Linux-x86_64.sh
 $ ./Anaconda3-2018.12-Linux-x86_64.sh
-$ export PATH=~/anaconda3/bin:$PATH</pre></div></li>
+$ export PATH=~/anaconda3/bin:$PATH
+</code></pre></li>
 
 <li><p>Check conda version : <kbd>conda &ndash;version</kbd></p></li>
 </ul>
@@ -153,16 +159,25 @@ $ export PATH=~/anaconda3/bin:$PATH</pre></div></li>
 <h2 id="install-pytorch">Install pytorch</h2>
 
 <p>Install pytorch</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ pip install numpy torchvision_nightly
-$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html</pre></div>
+
+<pre><code>$ pip install numpy torchvision_nightly
+$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html
+</code></pre>
+
 <p>Checking if cuda is working:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ python
+
+<pre><code>$ python
 &gt;&gt;&gt; import torch
-&gt;&gt;&gt; torch.cuda.is_available()</pre></div>
+&gt;&gt;&gt; torch.cuda.is_available()
+</code></pre>
+
 <p>If the above command returns False. Then we need to update/add the nvidia driver.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo add-apt-repository ppa:graphics-drivers/ppa
+
+<pre><code>$ sudo add-apt-repository ppa:graphics-drivers/ppa
 $ sudo apt-get update
-$ sudo apt-get install nvidia-396 nvidia-modprobe</pre></div>
+$ sudo apt-get install nvidia-396 nvidia-modprobe
+</code></pre>
+
 <p>Then restart the instance and check <kbd>$ nvdia-smi </kbd> and run pytorch command again and check.</p>
 
 <p>This should solve the problem. If you still face some problems, ping in comments.</p>
