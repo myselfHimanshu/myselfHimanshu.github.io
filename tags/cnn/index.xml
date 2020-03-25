@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CNN on Data Summit</title>
+    <link>https://myselfHimanshu.github.io/tags/cnn/</link>
+    <description>Recent content in CNN on Data Summit</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Mar 2020 22:22:22 +0530</lastBuildDate>
+    
+	<atom:link href="https://myselfHimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Convolutional Neural Network Part 1 : Basis Concepts</title>
+      <link>https://myselfHimanshu.github.io/posts/cnn_01/</link>
+      <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
+      
+      <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
+      <description>Convolutional neural network  As I am starting this CNN series of posts. I would like you to know about how neural networks work and then continue reading.
+Convolutional Neural Networks are very similar to ordinary Neural Networks. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other.</description>
+    </item>
+    
+  </channel>
+</rss>

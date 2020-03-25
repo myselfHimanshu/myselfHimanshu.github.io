@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Convolutional Neural Network Part 1 : Basis Concepts &middot; Data Summit</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    </script>
+    
+    <script type="text/javascript"
+      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+  <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/override.css">
+</head>
+
+  <body class="theme-base-08 ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://myselfHimanshu.github.io/"><h1>Data Summit</h1></a>
+      <p class="lead">
+       Everything started as nothing. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://myselfHimanshu.github.io/">Home</a> </li>
+        <li><a href="https://github.com/myselfhimanshu/"> Github </a></li><li><a href="https://www.linkedin.com/in/047himanshu/"> LinkedIn </a></li><li><a href="https://twitter.com/047himanshu"> Twitter </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Convolutional Neural Network Part 1 : Basis Concepts</h1>
+  <time datetime=2020-03-22T22:22:22&#43;0530 class="post-date">Sun, Mar 22, 2020</time>
+  
+
+<h2 id="convolutional-neural-network">Convolutional neural network</h2>
+
+<hr>
+
+<p>As I am starting this CNN series of posts. I would like you to know about how neural networks work and then continue reading.</p>
+
+<p>Convolutional Neural Networks are very similar to ordinary Neural Networks. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.</p>
+
+<p>So what changes? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
+
+<p>The above paragraph is taken directly from, source : <a href="https://bit.ly/3bBizE7">https://bit.ly/3bBizE7</a>. Go through entire CS231n later.</p>
+
+<hr>
+
+<p>I&rsquo;ll try to explain all the concepts in a very layman&rsquo;s term. If you feel like you didn&rsquo;t understand any term or concept in this following series, kindly comment at the end of post in the section. I&rsquo;ll try to refactor the concept to make it more understandable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Things to keep in mind :
+
+1. Share things
+2. Ask questions
+3. Research 
+4. Build and deploy model end to end.
+5. Magic of deep learning is in it&#39;s loss function.
+6. Mathematics is important. 
+   Try to answer why are you using this function?
+7. Machine Learning and Deep Learning are IT field.</code></pre></div>
+<h3 id="your-brain-might-be-fooling-you">Your brain might be fooling you</h3>
+
+<p>To start with I would like to show you an image. An image that will confuse you. Your brain is fooling you for now maybe because you might have never seen an image like this.</p>
+
+<p><img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/08/eb7ff9947f527a2e84d7f06e79138b82.png" alt="" /></p>
+
+<p>The above image is a black and white image, with color grids on it. Zoom out and in to see the magic.</p>
+
+<p>From this we learn that <code>Color is not a dependable feature in CNN.</code></p>
+
+<h3 id="what-are-channels">What are Channels ?</h3>
+
+<p>In practicality, most input images have 3 channels (RGB), 1 channel for grayscale images.</p>
+
+<table>
+<thead>
+<tr>
+<th><img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Channel_digital_image_RGB_color.jpg" alt="" /></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/en/4/45/Channel_digital_image_red.jpg" alt="" /></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/en/a/a8/Channel_digital_image_green.jpg" /></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/en/b/b0/Channel_digital_image_blue.jpg" alt="" /></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>RGB image</td>
+<td>Red channel <br />(converted into grayscale)</td>
+<td>Green channel<br />(converted into grayscale)</td>
+<td>Blue channel<br />(converted into grayscale)</td>
+</tr>
+</tbody>
+</table>
+
+<p>In above images, the red dress is much brighter in the red channel than in the other two, and the green part of the picture is shown much brighter in the green channel.</p>
+
+<p>There can be RGB, CMYK(printing an image on newspaper) types of channels. These RGB, CMYK you can think it is of some metrics i.e cm, km, mm. and as said earlier color is not a dependable feature in CNN.</p>
+
+<p>You can divide an image in any number of channels eg. slide projector, where different slides can form an image over a screen, channels in this example can be the slides.</p>
+
+<p>Colors may be useful when you are asking a question like <code>find me all yellow color flowers</code> .</p>
+
+<p>The key components to learn here are <code>gradients</code> and <code>edges</code>.</p>
+
+<p><b>
+A <code>channel</code> is set of relatable features. <br>
+A <code>channel</code> can also be termed as <code>feature map</code>.
+</b></p>
+
+<p>I&rsquo;ll explain, what a feature is in below sections.</p>
+
+<p>For an example,</p>
+
+<p><img src="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png" alt="" /></p>
+
+<p>Let&rsquo;s divide this image into channels. Let&rsquo;s say our channels are A-Z.</p>
+
+<p>Channel A : where in all the <code>a</code> s from image are filtered out (wherever they are and however they are, just <code>a</code>s )</p>
+
+<p>Channel B : where in all the <code>b</code> s from image are filtered out.</p>
+
+<p>and so on, till Channel Z.</p>
+
+<p>Let&rsquo;s talk about Channel A. Now a particular <code>a</code> in that channel is called <code>feature</code> , it can be big, small, tilted, anything but same feature.</p>
+
+<p>Now, when I asked you to filter out just <code>a</code> or extract just a letter from the image, this extractor is termed as <code>filter</code> . If you need to extract say <code>c</code>, you need this <code>c filter</code> extractor.</p>
+
+<p><b>
+These filters can also be termed as: <br>
+    - feature extractor<br>
+    - n x n matrix<br>
+    - kernel<br>
+    - weights
+</b></p>
+
+<p>Each <code>filter</code> will give a <code>channel</code>.</p>
+
+<h3 id="building-blocks-of-cnn">Building blocks of CNN</h3>
+
+<p>Follow this in vision:</p>
+
+<p>Like in English</p>
+
+<p><code>alphabets =make&gt; words =make&gt; sentences =make&gt; paragraphs =make&gt; stories</code></p>
+
+<p>similarly in vision</p>
+
+<p><code>gradient and edges combined =make&gt; textures and patterns combined =make&gt; part of objects combined =make&gt; complete objects =make&gt; scenes</code></p>
+
+<p>Get a general overall view of the steps and the below image depicts how machine learn to identify images&hellip;</p>
+
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_01_01.png" alt="" /></p>
+
+<p>source : <a href="https://distill.pub/2017/feature-visualization/">https://distill.pub/2017/feature-visualization/</a></p>
+
+<h3 id="what-are-gradients-and-edges">What are gradients and edges ?</h3>
+
+<p>We refer &ldquo;gradient&rdquo; as change in brightness over a series of pixels.</p>
+
+<p><img src="https://lh3.googleusercontent.com/proxy/2PBEIWIjfceFVKJiOI883rs8b6G6UQ5wqh8VGtg2epSWrL_wXeZ6bO5ReKBfF1XhRzf7o-K2aOerVQVR12DfDWdQ1MfMzuoAnAtdJSSnS-yLDA" style="zoom:50%;" /></p>
+
+<p>The above image is linear gradient from black to white. This gradient is smooth and we wouldn&rsquo;t say there is &ldquo;edge&rdquo; in this image. Edges are a bit fuzzy in above image. In real objects those edges can be found by looking at sharp transitions. You can find edges in the image below</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%C3%84%C3%A4retuvastuse_n%C3%A4ide.png/500px-%C3%84%C3%A4retuvastuse_n%C3%A4ide.png" alt="" /></p>
+
+<h3 id="what-is-convolution">What is Convolution ?</h3>
+
+<p>First let&rsquo;s see, what human eyes sees and what machine sees when looking at an image.</p>
+
+<p><img src="https://ai.stanford.edu/~syyeung/cvweb/Pictures1/imagematrix.png" alt="" /></p>
+
+<p>First image is what human eye sees, second one is how an image is interpreted (set of numbers also pixels) and third image is what machine sees( n x n matrix of numbers).</p>
+
+<p>The above is an image represented as a matrix of pixel values. Each pixel value ranges between [0,255], with 0 being black and 255 being white.</p>
+
+<p>From now onwards, we will talk about these matrixes.</p>
+
+<p>We were talking about kernels and features, look at the image below</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif" alt="" /></p>
+
+<p>The blue object is your image of size (5x5) ( 5 is your width and height) , the dark patch that you see is a <code>kernel</code> or <code>filter</code> or <code>3x3 matrix</code> , which is initialized with random values.</p>
+
+<p>There is dot product between <code>3x3 filter</code> and <code>3x3 patch</code> of image that it is moving on step by step. This <code>step</code> is termed as <code>stride</code> (here <code>stride=1</code>).  The results of dot product is creating that <code>white</code> object or <code>white channel</code>.</p>
+
+<p><b>This process of <code>n x n filter</code> rolling over on top of the image and computing dot product step by step is termed as <code>convolution</code>.</b></p>
+
+<p>These <code>kernels</code> are initialised with random values in the beginning. These values will change over in model training. By model I mean is, when you train your deep learning model.</p>
+
+<p>Here is the visualization of convolution,</p>
+
+<p><img src="https://icecreamlabs.com/wp-content/uploads/2018/08/33-con.gif" alt="" /></p>
+
+<p>or check another intuative example:</p>
+
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/edge_detection.png" alt="edge_detection" /></p>
+
+<p>so if we are convolving <code>3x3 filter matrix</code> on <code>6x6 object matrix</code> we get <code>4x4 object matrix</code>. Whatever we are getting as a result, we are applying other filter over it to get next set of objects. (I am talking about layers of Neural Networks).</p>
+
+<p>Why we are using these <code>kernels</code>? As explained above, a <code>kernel</code> is a <code>feature extractor</code>.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>These <code>kernels</code> have values which are termed as <code>parameters</code>. So, a <code>3x3 kernel</code> has <code>9 parameters</code>.</p>
+
+<p>If we use <code>5x5 kernel</code> on <code>5x5 image</code> , you would have got <code>1x1 object</code>. So I can say, convolving with <code>5x5 kernel</code> is same as convolving with <code>3x3 kernel (twice)</code>.</p>
+
+<p>Now the question arises is, how many parameters we have to train if we use <code>3x3</code> or <code>5x5</code> kernel.</p>
+
+<p>As, less parameters means, model will take less time to train. We need to build an CNN architecture with less parameters which will give us best result.</p>
+
+<p>Look at the table below which will tell you about total number of parameters to train if we use <code>n x n size</code> kernel.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">N <br /><code>(N x N image)</code></th>
+<th align="center">total number of Parameters <br /><code>( 3x3 kernel )</code></th>
+<th align="center">total number of Parameters <br /><code>( N x N kernel )</code></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">5</td>
+<td align="center">(3x3)(2) = 18</td>
+<td align="center">(5x5) = 25</td>
+</tr>
+
+<tr>
+<td align="center">7</td>
+<td align="center">(3x3)(3) = 27</td>
+<td align="center">(7x7) = 49</td>
+</tr>
+
+<tr>
+<td align="center">9</td>
+<td align="center">(3x3)(4) = 36</td>
+<td align="center">(9x9) = 81</td>
+</tr>
+
+<tr>
+<td align="center">11</td>
+<td align="center">(3x3)(5) = 45</td>
+<td align="center">(11x11) = 121</td>
+</tr>
+</tbody>
+</table>
+
+<p>The above table tells us why using <code>3x3 kernel</code> is better than the other size kernels.</p>
+
+<p>Do we have to use odd number shaped kernel ? it make sense to have our kernel odd shaped because it has axies of symmetry.</p>
+
+<p>Let&rsquo;s draw a black line on a piece of paper. If I want my machine to learn the difference between white line and black line. I need to tell it that left side of line is white and right side is also white and the middle column is black. The machine needs to differentiate the black pixels with what is not line i.e white pixels. We need to provide both the information. The machine needs to know the start and the end of a feature.</p>
+
+<h3 id="receptive-field">Receptive Field</h3>
+
+<p><img src="https://www.researchgate.net/publication/316950618/figure/fig4/AS:495826810007552@1495225731123/The-receptive-field-of-each-convolution-layer-with-a-3-3-kernel-The-green-area-marks.png" alt="" /></p>
+
+<p>Let&rsquo;s say <code>Layer1</code> is your <code>image size 5x5</code> and green color matrix is your <code>kernel 3x3</code> . If you convolve on image, you will get <code>3x3 object</code> which is your <code>Layer2</code> and convolving again on this <code>Layer2</code> you will get <code>1x1 object</code> which is your <code>Layer3</code>.</p>
+
+<p>Let&rsquo;s take green cell from Layer2.</p>
+
+<p>How many cells can it see in Layer1? The answer is 9.</p>
+
+<p>So, the <code>local receptive field</code> of that cell will be 9.</p>
+
+<p>If I ask that cell what is in there in (25,25) cell of Layer1 ? The answer it will give is <code>I have no clue</code>.</p>
+
+<p>Now If I ask the yellow cell from Layer3, how many cells it can see ? The answer will be <code>it has seen the whole image</code>. Wondering how ?</p>
+
+<p>A <code>5x5 kernel</code> might have seen the whole image. And as explained earlier, using <code>3x3 kernel (twice)</code> is similar to using <code>5x5 kernel</code>. So, the <code>local receptive field</code> of a cell will always be the size of <code>kernel</code> and  the <code>global receptive field</code> of that yellow cell from Layer3 will be full <code>5x5 image</code>.</p>
+
+<p>So the last cell should have seen the whole image, otherwise it wouldn&rsquo;t know if cat is in image or not.</p>
+
+<p>Now, if we have to build a network for <code>401x401 image</code> , how many layers would we need using <code>3x3 kernel</code>?</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">image size</th>
+<th align="center">kernel size</th>
+<th align="center">output size</th>
+<th align="center">Global <br />Receptive field size</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">401 x 401</td>
+<td align="center">3 x 3</td>
+<td align="center">399 x 399</td>
+<td align="center">3 x 3</td>
+</tr>
+
+<tr>
+<td align="center">399 x 399</td>
+<td align="center">3 x 3</td>
+<td align="center">397 x 397</td>
+<td align="center">5 x 5</td>
+</tr>
+
+<tr>
+<td align="center">397 x 397</td>
+<td align="center">3 x 3</td>
+<td align="center">395 x 395</td>
+<td align="center">7 x 7</td>
+</tr>
+
+<tr>
+<td align="center">&hellip;</td>
+<td align="center">3 x 3</td>
+<td align="center">&hellip;</td>
+<td align="center">&hellip;</td>
+</tr>
+
+<tr>
+<td align="center">3 x 3</td>
+<td align="center">3 x 3</td>
+<td align="center">1 x 1</td>
+<td align="center">401 x 401</td>
+</tr>
+</tbody>
+</table>
+
+<p>The answer will be, <code>200</code> layers.</p>
+
+<p>This is not a nice way to train a model. Adding 200 layers is a nightmare. So, we have to downsample in between the layers also termed as <code>max-pooling</code> . We will go through every concept.</p>
+
+<h4 id="some-brainstorming-questions">Some brainstorming questions.</h4>
+
+<h4 id="questions">Questions</h4>
+
+<ol>
+<li>What are Channels and Kernels?</li>
+<li>Why should we (nearly) always use 3x3 kernels?</li>
+<li>How many times to we need to perform 3x3 convolutions operations to reach close to 1x1 from 199x199 (type each layer output like 199x199 &gt; 197x197&hellip;)</li>
+<li>How are kernels initialized? Why are these <code>kernels</code> initialised randomly at the beginning and not any other specific intialization?</li>
+<li>What happens during the training of a DNN?</li>
+</ol>
+
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </main>
+
+    
+      
+    
+  </body>
+</html>
