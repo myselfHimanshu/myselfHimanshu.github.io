@@ -17,8 +17,8 @@
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
-      <description>Convolutional neural network  As I am starting this CNN series of posts. I would like you to know about how neural networks work and then continue reading.
-Convolutional Neural Networks are very similar to ordinary Neural Networks. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other.</description>
+      <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
+ If you&amp;rsquo;re offered a seat on a rocket ship, don&amp;rsquo;t ask what seat!</description>
     </item>
     
   </channel>
