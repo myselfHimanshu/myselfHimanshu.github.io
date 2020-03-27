@@ -24,7 +24,7 @@ Convolutional Neural Networks are very similar to ordinary Neural Networks. Each
     <item>
       <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_3/</link>
-      <pubDate>Sun, 23 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Mon, 04 Mar 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_3/</guid>
       <description>Various Sequence to Sequence Architecture Basic Model
@@ -34,7 +34,7 @@ Let&amp;rsquo;s start with a machine translation model of converting french to e
     <item>
       <title>Sequence Model Part 2 : Word Embeddings</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_2/</link>
-      <pubDate>Sun, 16 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Fri, 22 Feb 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_2/</guid>
       <description>Natural Language Processing and Word Embeddings Word Embeddings Word Representations
@@ -45,7 +45,7 @@ In the previous post we represented the words with a one-hot vector. One of the 
     <item>
       <title>Sequence Model Part 1 : RNNS</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_1/</link>
-      <pubDate>Sun, 09 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Tue, 12 Feb 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_1/</guid>
       <description>Recurrent Neural Networks Some Examples
@@ -55,7 +55,7 @@ In the previous post we represented the words with a one-hot vector. One of the 
     <item>
       <title>Setting Up Paperspace for Deep Learning</title>
       <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
-      <pubDate>Sun, 02 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Sat, 02 Feb 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
       <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>

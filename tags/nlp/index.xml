@@ -6,7 +6,7 @@
     <description>Recent content in NLP on Data Summit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Feb 2020 22:22:22 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 04 Mar 2019 22:22:22 +0530</lastBuildDate>
     
 	<atom:link href="https://myselfHimanshu.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_3/</link>
-      <pubDate>Sun, 23 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Mon, 04 Mar 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_3/</guid>
       <description>Various Sequence to Sequence Architecture Basic Model
@@ -24,7 +24,7 @@ Let&amp;rsquo;s start with a machine translation model of converting french to e
     <item>
       <title>Sequence Model Part 2 : Word Embeddings</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_2/</link>
-      <pubDate>Sun, 16 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Fri, 22 Feb 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_2/</guid>
       <description>Natural Language Processing and Word Embeddings Word Embeddings Word Representations
@@ -35,7 +35,7 @@ In the previous post we represented the words with a one-hot vector. One of the 
     <item>
       <title>Sequence Model Part 1 : RNNS</title>
       <link>https://myselfHimanshu.github.io/posts/sequence_learning_1/</link>
-      <pubDate>Sun, 09 Feb 2020 22:22:22 +0530</pubDate>
+      <pubDate>Tue, 12 Feb 2019 22:22:22 +0530</pubDate>
       
       <guid>https://myselfHimanshu.github.io/posts/sequence_learning_1/</guid>
       <description>Recurrent Neural Networks Some Examples
