@@ -6,10 +6,20 @@
     <description>Recent content in CNN on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Mar 2020 22:22:22 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 22:22:22 +0530</lastBuildDate>
     
 	<atom:link href="https://myselfhimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Convolutional Neural Network Part 2 : Neural Architecture</title>
+      <link>https://myselfhimanshu.github.io/posts/cnn_02/</link>
+      <pubDate>Sun, 29 Mar 2020 22:22:22 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/posts/cnn_02/</guid>
+      <description>In this tutorial, we will be training the network on MNIST dataset. We&amp;rsquo;ll try to understand neural network architecture.
+The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model.</description>
+    </item>
     
     <item>
       <title>Convolutional Neural Network Part 1 : Basis Concepts</title>

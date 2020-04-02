@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Himanshu Panwar">
+    <meta name="description" content="Himanshu&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Convolutional Neural Network Part 2 : Neural Architecture"/>
+<meta name="twitter:description" content="In this tutorial, we will be training the network on MNIST dataset. We&rsquo;ll try to understand neural network architecture.
+The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model."/>
+
+    <meta property="og:title" content="Convolutional Neural Network Part 2 : Neural Architecture" />
+<meta property="og:description" content="In this tutorial, we will be training the network on MNIST dataset. We&rsquo;ll try to understand neural network architecture.
+The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://myselfhimanshu.github.io/posts/cnn_02/" />
+<meta property="article:published_time" content="2020-03-29T22:22:22&#43;05:30"/>
+<meta property="article:modified_time" content="2020-03-29T22:22:22&#43;05:30"/>
+
+
+    
+      <base href="https://myselfhimanshu.github.io/posts/cnn_02/">
+    
+    <title>
+  Convolutional Neural Network Part 2 : Neural Architecture · Himanshu Panwar
+</title>
+
+    
+      <link rel="canonical" href="https://myselfhimanshu.github.io/posts/cnn_02/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://myselfhimanshu.github.io/css/coder.min.952a70ac10b17c34090cfa28b9b7bb841c47c42952e3d2ce90d3ddf180f092b1.css" integrity="sha256-lSpwrBCxfDQJDPooube7hBxHxClS49LOkNPd8YDwkrE=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://myselfhimanshu.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.55.6" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://myselfhimanshu.github.io/">
+      Himanshu Panwar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Convolutional Neural Network Part 2 : Neural Architecture</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-29T22:22:22&#43;05:30'>
+                March 29, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              12 minutes read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://myselfhimanshu.github.io/tags/cnn/">CNN</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+
+<p>In this tutorial, we will be training the network on MNIST dataset.  We&rsquo;ll try to understand neural network architecture.</p>
+
+<p>The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model.</p>
+
+<p>The below architecture is not meant to give us very good score. In this series we&rsquo;ll only focus on pytorch-101. To understand the basic terminologies of CNN building blocks. Kindly go through this post.</p>
+
+<p><a href="https://myselfhimanshu.github.io/posts/cnn_01/">CNN Part 1 : Basic Concepts</a></p>
+
+<p>Ready ? Let&rsquo;s jump in.</p>
+
+<p align="center">
+  <img src="https://media.giphy.com/media/11OWKkvYUmZQOs/giphy.gif"/>
+</p>
+
+<h2 id="neural-architecture-part-ii">Neural Architecture : Part II</h2>
+
+<p>In the below section we are introducting two main concept.</p>
+
+<p><strong>Max Pooling</strong> and <strong>Receptive Field</strong></p>
+
+<p>Before jumping further, let me tell you <strong>what padding is?</strong></p>
+
+<p>You can think padding as extra rows and columns of pixels that are applied around a feature map.</p>
+
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/padding.jpg">
+</p>
+
+<p>In the above image, we have a feature map of 5x5, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 7x7 now on which we apply convolution.</p>
+
+<p>It is not necessary to apply padding with value 0, as shown in the image. We will see what padding should we apply such that we can gain more information from around the corners of the feature map.</p>
+
+<p>Now, in the last post we have calculated how many layers we have to use if we use 3x3 kernel on a 401x401 image size with stride=1 and padding=0?</p>
+
+<p>The answer was 200.</p>
+
+<p><strong>Do we really need 200 layers in our network?</strong></p>
+
+<p>The answer is No.</p>
+
+<p>We need our model to learn fast and learn accurate, for which we should built an architect wherein our last layer&rsquo;s receptive field should be the whole object. What I mean is, we want our network&rsquo;s receptive field to slowly increase as we add layers. Before taking any decision, the whole image needs to be processed.</p>
+
+<blockquote>
+<p>Refer to Building blocks of Convolutional Neural Network section of <a href="https://myselfhimanshu.github.io/posts/cnn_01/">previous post</a>.</p>
+</blockquote>
+
+<p>To reduce number of layers, one technique to downsample a feature map is <code>MaxPooling</code>.<br><br><br></p>
+
+<p><img src="https://cdn-images-1.medium.com/freeze/max/1000/1*ghJyfuw-9a5esjJqGuBggA.jpeg?q=20" alt="" /></p>
+
+<p>It is clear what is happening from the above image.</p>
+
+<p>If we look at first row, applying a max-pool layer of size 2x2 on 4x4 feature map with stride equal to the size of the layer gives 2x2 feature map.</p>
+
+<p><strong>MaxPooling</strong> is used for dimension reduction. It is a simple layer where no learning happens.</p>
+
+<p>It helps in reducing the number of learned parameters, which helps in reducing the computation and memory load.</p>
+
+<blockquote>
+<p>We need to take care of where to apply max pooling layer in the network.</p>
+</blockquote>
+
+<p><strong>Why is above line important?</strong></p>
+
+<p>Let&rsquo;s work on an image of 4. Here we apply one max pool layer of size 2x2 over first image, which results second image and applying another max pool layer we get image 3.</p>
+
+<table>
+<thead>
+<tr>
+<th>image</th>
+<th>apply maxpool</th>
+<th>apply maxpool again</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_org.png" alt="" /></td>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_2.png" alt="" /></td>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool3.png" alt="" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>The above process is applying maxpooling again and again on the same image. This doesn&rsquo;t happen in the network. There will convolution in middle. The concept I am explaining you is about where to use maxpool layer and what will happen if we start applying maxpooling without knowing what the network has learned in previous layer.</p>
+
+<p>Now ask what is your network learning if I do this?</p>
+
+<p>It might be learning bananas for minions.</p>
+
+<p align="center">
+  <img src="https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif"/>
+</p>
+
+<p>So we need to really careful, where should I apply the maxpool layer.</p>
+
+<blockquote>
+<p>Never use max pooling close to your output/prediction layer, the network might end up loosing important features.</p>
+</blockquote>
+
+<p><strong>Are there any other effects on feature maps if we apply max pooling layer?</strong></p>
+
+<p>I am glad you asked this. The answer is Yes.</p>
+
+<p>Max pooling adds a bit of shift variance. What is shift invariance?</p>
+
+<p>Suppose you have an image of a dog. And it is wagging it&rsquo;s tail. Now just imagine with me this,</p>
+
+<p>there is a feature map of size 5x5, where in middle column number 3 values are 1 and everything else 0. That middle column is the dog&rsquo;s tail.</p>
+
+<p>Now, it waggle the tail and the feature of tail is shifted to column 4. If we apply max pooling on both of these feature maps, we will get same result. This is shift invariance. The data has changed but it doesn&rsquo;t matter.</p>
+
+<p>If the tail shifts in an image, do I tell that the dog is without tail? No!! right? In both of these cases we still need to identify that it was the tail.</p>
+
+<p>Max pooling takes care of very small data invariance. Not talking about large invariance, those things are learned by other kernels.</p>
+
+<p>This is just a concept, don&rsquo;t worry I&rsquo;ll explain in future posts if it arrives. Don&rsquo;t think about whether it is a good thing or bad thing for now.</p>
+
+<p>There are other invariances like, rotational invariance, scale invariance. Right now, we are not going in depth of these terminologies.</p>
+
+<p>Coming back to the question, <strong>How many layers do I need now when I add maxpooling layer?</strong></p>
+
+<p>Given:</p>
+
+<p>We have image size of 400x400, kernel size of 3x3, stride = 1, padding = 0 and max pool layer (MP) of size 2x2 with stride 2.</p>
+
+<p>Here, we will write down our output object size,</p>
+
+<p>400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <br>
+195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <br>
+92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <br>
+41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <br>
+15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <br></p>
+
+<p>By using maxpooling layer we have reduced the layer count from 200 to 27. That&rsquo;s great right ?</p>
+
+<p align="center">
+<img height="200" width="300" src="https://media.giphy.com/media/xT9IgzUuC5Ss6ZnTEs/giphy.gif">
+</p>
+
+<p>Wait there is more!!!</p>
+
+<p>Now, lets understand the concept of channels once again. In last post we have used single channel in input image for the calculations. Let&rsquo;s get practical and introduce our RGB channels of the image.</p>
+
+<p><strong>How many kernels are we using in the network now?</strong></p>
+
+<p>We have an image of size 400x400x3. Let&rsquo;s us assume we add 32 kernels in the first layer, 64 in second, 128 in thrid and so on.</p>
+
+<p>Look at this animation and then we will look at the proper representation of our network.</p>
+
+<p><img src="https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif" alt="" /></p>
+
+<blockquote>
+<p>Every kernel gives its own channel.
+Our kernels must have an equal number of channels as in the input channel.</p>
+</blockquote>
+
+<p>So, our network will look like,</p>
+
+<table>
+<thead>
+<tr>
+<th>Object Size</th>
+<th>Kernel Size</th>
+<th>Output Size</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>400x400x3</td>
+<td>(3x3x3)x32</td>
+<td>398x398x32</td>
+</tr>
+
+<tr>
+<td>398x398x32</td>
+<td>(3x3x32)x64</td>
+<td>396x396x64</td>
+</tr>
+
+<tr>
+<td>396x396x64</td>
+<td>(3x3x64)x128</td>
+<td>394x394x128</td>
+</tr>
+
+<tr>
+<td>394x394x128</td>
+<td>(3x3x128)x256</td>
+<td>392x392x256</td>
+</tr>
+
+<tr>
+<td>392x392x256</td>
+<td>(3x3x256)x512</td>
+<td>390x390x512</td>
+</tr>
+
+<tr>
+<td>MP</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Let&rsquo;s understand how convolution process is taking place using the above architecture.</p>
+
+<p>If we have an object with 3 channels, there should be 1 kernels of size (3x3x3) where last index value 3 are channels of the kernel.</p>
+
+<p>Look at image below, to understand how multi channels are handled.</p>
+
+<p><img src="https://miro.medium.com/max/1440/1*ciDgQEjViWLnCbmX-EeSrA.gif" alt="" /></p>
+
+<p>Do you see each kernel has it&rsquo;s own channel. Now we have another problem.</p>
+
+<p><strong>How many parameters are we initializing ?</strong></p>
+
+<p>Let&rsquo;s go through the network again,</p>
+
+<table>
+<thead>
+<tr>
+<th>Object Size</th>
+<th>Kernel Size</th>
+<th>Output Size</th>
+<th>Parameters</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>400x400x3</td>
+<td>(3x3x3)x32</td>
+<td>398x398x32</td>
+<td>864</td>
+</tr>
+
+<tr>
+<td>398x398x32</td>
+<td>(3x3x32)x64</td>
+<td>396x396x64</td>
+<td>18432</td>
+</tr>
+
+<tr>
+<td>396x396x64</td>
+<td>(3x3x64)x128</td>
+<td>394x394x128</td>
+<td>73728</td>
+</tr>
+
+<tr>
+<td>394x394x128</td>
+<td>(3x3x128)x256</td>
+<td>392x392x256</td>
+<td>294912</td>
+</tr>
+
+<tr>
+<td>392x392x256</td>
+<td>(3x3x256)x512</td>
+<td>390x390x512</td>
+<td>1179648</td>
+</tr>
+
+<tr>
+<td>MP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>195x195x512</td>
+<td>(3x3x512)x512</td>
+<td>193x193x512</td>
+<td>2359296</td>
+</tr>
+
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>How does increase in channel numbers affect the network and machine?</strong></p>
+
+<p>From the above table, we have kernels as 32,64,128,256,512. So, how do I know whether my 512 channels are enough for my network to learn? Answer is we don&rsquo;t know, we need to experiment with these numbers.</p>
+
+<p>Now, look at kernel size of 5th layer. We have (3x3x256)x512 as our kernel size. In 6th layer we have like 23M parameters. These increasing number of parameters can really slow down the networks learning process.</p>
+
+<blockquote>
+<p>The kernel size = number of learnable parameters</p>
+</blockquote>
+
+<p>We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what&rsquo;s happening. The more we add these parameters and ask our network to learn, the more it will slow down.</p>
+
+<p>If you are very very rich person who can buy expensive GPUs, you can add any number of parameters in the network.</p>
+
+<p align="center">
+<img src="https://media.giphy.com/media/JpG2A9P3dPHXaTYrwu/giphy.gif">
+</p>
+
+<p>Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series.</p>
+
+<p><strong>What&rsquo;s the solution?</strong></p>
+
+<p align="center">
+<img src="https://media.giphy.com/media/3z3bxq78R9fVK/giphy.gif">
+</p>
+
+<p>Stay tuned for the post!!!</p>
+
+<p>For this post, we will continue with code now!!! Some hands on experience is necessary, too much theory !!! bruh&hellip; boring&hellip;</p>
+
+<p align="center">
+<img src="https://media.giphy.com/media/bzE1WAm8BifiE/giphy.gif">
+</p>
+
+<h1 id="into-the-code">Into the Code</h1>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f">#import libraries</span>
+
+<span style="color:#fff;font-weight:bold">from</span> __future__ <span style="color:#fff;font-weight:bold">import</span> print_function
+<span style="color:#fff;font-weight:bold">import</span> torch
+<span style="color:#fff;font-weight:bold">import</span> torch.nn <span style="color:#fff;font-weight:bold">as</span> nn
+<span style="color:#fff;font-weight:bold">import</span> torch.nn.functional <span style="color:#fff;font-weight:bold">as</span> F
+<span style="color:#fff;font-weight:bold">import</span> torch.optim <span style="color:#fff;font-weight:bold">as</span> optim
+<span style="color:#fff;font-weight:bold">from</span> torchvision <span style="color:#fff;font-weight:bold">import</span> datasets, transforms
+
+<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
+<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
+plt.rcParams[<span style="color:#0ff;font-weight:bold">&#39;figure.figsize&#39;</span>] = (<span style="color:#ff0;font-weight:bold">10</span>,<span style="color:#ff0;font-weight:bold">5</span>)</code></pre></div>
+<ul>
+<li><em>datasets</em> will be used to download MNIST dataset which has been cleaned for us and provided by pytorch.</li>
+<li><em>transforms</em> are used to convert arrays to tensors which are used in pytorch framework. These can also be used to do some augumentation on the data. We will go through augumentation techniques in another post.</li>
+</ul>
+
+<p><strong>GPU for training</strong></p>
+
+<p>In order to use GPU, we need to identify and specify GPU as the device. Later, in training loop, we will load the data onto the device.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> tensorflow <span style="color:#fff;font-weight:bold">as</span> tf
+
+device_name = tf.test.gpu_device_name()
+
+<span style="color:#fff;font-weight:bold">try</span>:
+  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;Found GPU at : {device_name}&#34;</span>)
+<span style="color:#fff;font-weight:bold">except</span>:
+  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;GPU device not found.&#34;</span>)</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> torch
+
+<span style="color:#fff;font-weight:bold">if</span> torch.cuda.is_available():
+  device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cuda&#34;</span>)
+  use_cuda = True
+  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;Number of GPU&#39;s available : {torch.cuda.device_count()}&#34;</span>)
+  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;GPU device name : {torch.cuda.get_device_name(0)}&#34;</span>)
+<span style="color:#fff;font-weight:bold">else</span>:
+  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;No GPU available, using CPU instead&#34;</span>)
+  device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cpu&#34;</span>)
+  use_cuda = False</code></pre></div>
+<p>Here just check how many gpu&rsquo;s do you have and what kind of gpu you are using as it affects the learning process of the network.</p>
+
+<p><strong>Loading MNIST dataset</strong></p>
+
+<p>Before creating any CNN network, we will first visualze and do some analysis on our MNIST dataset.</p>
+
+<p>MNIST dataset contains 60,000 training and 10,000 test images. Each image is of size (28x28x1).</p>
+
+<ul>
+<li>We&rsquo;ll use a batch_size = 128 for training.</li>
+<li>The values 0.1307 and 0.3081 used for the Normalize() transformation below are the global mean and standard deviation for MNIST dataset.</li>
+</ul>
+
+<p>Why are we normalizing?
+<b>Geoffrey Hinton&rsquo;s</b> <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">learning</a> about gradient descent:</p>
+
+<blockquote>
+<p>Going downhill    reduces the error,  but the direction   of  steepest    descent does    not point at    the minimum unless  the ellipse is  a   circle.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch.manual_seed(<span style="color:#ff0;font-weight:bold">1</span>)
+batch_size = <span style="color:#ff0;font-weight:bold">128</span>
+
+kwargs = {<span style="color:#0ff;font-weight:bold">&#39;num_workers&#39;</span>: <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#0ff;font-weight:bold">&#39;pin_memory&#39;</span>: True} <span style="color:#fff;font-weight:bold">if</span> use_cuda <span style="color:#fff;font-weight:bold">else</span> {}</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mnist_trainset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#34;./data&#34;</span>, train=True, download=True,
+                                transform=transforms.Compose([
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.1307</span>,), (<span style="color:#ff0;font-weight:bold">0.3081</span>,))
+                    ]))
+
+mnist_testset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#34;./data&#34;</span>, train=False, download=True,
+                               transform=transforms.Compose([
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.1307</span>,), (<span style="color:#ff0;font-weight:bold">0.3081</span>,))
+                    ]))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader = torch.utils.data.DataLoader(mnist_trainset,
+                                          batch_size=batch_size, shuffle=True, **kwargs)
+
+test_loader = torch.utils.data.DataLoader(mnist_testset,
+                                          batch_size=batch_size, shuffle=True, **kwargs)</code></pre></div>
+<p>The above code will download the MNIST dataset, apply transforms and load the tensors into dataloader.</p>
+
+<p><strong>Visualizing the dataset</strong></p>
+
+<p>Let&rsquo;s see what our data looks like.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">examples = <span style="color:#fff;font-weight:bold">enumerate</span>(train_loader)
+batch_idx, (example_data, example_targets) = <span style="color:#fff;font-weight:bold">next</span>(examples)</code></pre></div>
+<p>train data batch shape : [128, 1, 28, 28]</p>
+
+<p>we have 128 images of size (128x128) in gray scale (no rgb channel).</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure()
+<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">6</span>):
+  plt.subplot(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>,i+<span style="color:#ff0;font-weight:bold">1</span>)
+  plt.tight_layout()
+  plt.imshow(example_data[i][<span style="color:#ff0;font-weight:bold">0</span>], cmap=<span style="color:#0ff;font-weight:bold">&#39;gray&#39;</span>, interpolation=<span style="color:#0ff;font-weight:bold">&#39;none&#39;</span>)
+  plt.title(f<span style="color:#0ff;font-weight:bold">&#34;Ground Truth : {example_targets[i]}&#34;</span>)</code></pre></div>
+<p align="center">
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/mnist_images.png">
+</p>
+
+<p><strong>Building up the model</strong></p>
+
+<p>In the below code, we will write what input size we are getting, what will be the output and what is the receptive field.</p>
+
+<p>Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, everytime there is an addition of 2.</p>
+
+<p>But when there is max pooling layer in between, the receptive field doubles. The sentence is not completely true. We will see the effect on receptive field and derive a formula later, as it depends on stride, padding and other factors. So, just go through the post as it is for now. We will learn the concepts slowly.</p>
+
+<p>I want you to understand what is happening in the network.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">class</span> Net(nn.Module):
+    <span style="color:#fff;font-weight:bold">def</span> __init__(self):
+        <span style="color:#fff;font-weight:bold">super</span>(Net, self).__init__()
+        self.conv1 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">32</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,1,30,30], output = [128,32,28,28], rf = 3</span>
+        self.conv2 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">32</span>, <span style="color:#ff0;font-weight:bold">64</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,32,30,30], output = [128,64,28,28], rf = 5</span>
+        self.pool1 = nn.MaxPool2d(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>) <span style="color:#007f7f"># input= [128,64,28,28], output = [128,64,14,14], rf = 10</span>
+        self.conv3 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">64</span>, <span style="color:#ff0;font-weight:bold">128</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,64,16,16], output = [128,128,14,14], rf = 12</span>
+        self.conv4 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">128</span>, <span style="color:#ff0;font-weight:bold">256</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,128,16,16], output = [128,256,14,14], rf = 14</span>
+        self.pool2 = nn.MaxPool2d(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>) <span style="color:#007f7f"># input= [128,256,14,14], output = [128,256,7,7], rf = 28</span>
+        self.conv5 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">256</span>, <span style="color:#ff0;font-weight:bold">512</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,256,7,7], output = [128,512,5,5], rf = 30</span>
+        self.conv6 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">512</span>, <span style="color:#ff0;font-weight:bold">1024</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,512,5,5], output = [128,1024,3,3], rf = 32</span>
+        self.conv7 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">1024</span>, <span style="color:#ff0;font-weight:bold">10</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,1024,3,3], output = [128,10,1,1], rf = 34</span>
+
+    <span style="color:#fff;font-weight:bold">def</span> forward(self, x):
+        x = self.pool1(F.relu(self.conv2(F.relu(self.conv1(x)))))
+        x = self.pool2(F.relu(self.conv4(F.relu(self.conv3(x)))))
+        x = F.relu(self.conv6(F.relu(self.conv5(x))))
+        x = F.relu(self.conv7(x))
+        x = x.view(-<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">10</span>) <span style="color:#007f7f"># [128,10]</span>
+        <span style="color:#fff;font-weight:bold">return</span> F.log_softmax(x)</code></pre></div>
+<p>Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? when you find the solution, I have included below link of code to run.</p>
+
+<p><strong>The architecture</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> torchsummary <span style="color:#fff;font-weight:bold">import</span> summary
+
+model = Net().to(device)
+summary(model, input_size=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 28, 28]             320
+            Conv2d-2           [-1, 64, 28, 28]          18,496
+         MaxPool2d-3           [-1, 64, 14, 14]               0
+            Conv2d-4          [-1, 128, 14, 14]          73,856
+            Conv2d-5          [-1, 256, 14, 14]         295,168
+         MaxPool2d-6            [-1, 256, 7, 7]               0
+            Conv2d-7            [-1, 512, 5, 5]       1,180,160
+            Conv2d-8           [-1, 1024, 3, 3]       4,719,616
+            Conv2d-9             [-1, 10, 1, 1]          92,170
+================================================================
+Total params: 6,379,786
+Trainable params: 6,379,786
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 1.51
+Params size (MB): 24.34
+Estimated Total Size (MB): 25.85
+----------------------------------------------------------------</pre></div>
+<p>torchsummary is very nice package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts.</p>
+
+<p><strong>Training the model</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> tqdm <span style="color:#fff;font-weight:bold">import</span> tqdm <span style="color:#007f7f">#progress bar</span>
+
+<span style="color:#fff;font-weight:bold">def</span> train(model, device, train_loader, optimizer, epoch):
+    model.train()
+    pbar = tqdm(train_loader)
+    <span style="color:#fff;font-weight:bold">for</span> batch_idx, (data, target) in <span style="color:#fff;font-weight:bold">enumerate</span>(pbar):
+        data, target = data.to(device), target.to(device) <span style="color:#007f7f">#training of the device</span>
+        optimizer.zero_grad()
+        output = model(data) <span style="color:#007f7f"># prediction</span>
+        loss = F.nll_loss(output, target) <span style="color:#007f7f"># calculate loss</span>
+        loss.backward() <span style="color:#007f7f"># backpropagtion step</span>
+        optimizer.step() <span style="color:#007f7f"># updating the parameters</span>
+        pbar.set_description(desc= f<span style="color:#0ff;font-weight:bold">&#39;loss={loss.item()} batch_id={batch_idx}&#39;</span>)
+
+
+<span style="color:#fff;font-weight:bold">def</span> test(model, device, test_loader):
+    model.<span style="color:#fff;font-weight:bold">eval</span>()
+    test_loss = <span style="color:#ff0;font-weight:bold">0</span>
+    correct = <span style="color:#ff0;font-weight:bold">0</span>
+    <span style="color:#fff;font-weight:bold">with</span> torch.no_grad():
+        <span style="color:#fff;font-weight:bold">for</span> data, target in test_loader:
+            data, target = data.to(device), target.to(device)
+            output = model(data)
+            test_loss += F.nll_loss(output, target, reduction=<span style="color:#0ff;font-weight:bold">&#39;sum&#39;</span>).item()  <span style="color:#007f7f"># sum up batch loss</span>
+            pred = output.argmax(dim=<span style="color:#ff0;font-weight:bold">1</span>, keepdim=True)  <span style="color:#007f7f"># get the index of the max log-probability</span>
+            correct += pred.eq(target.view_as(pred)).<span style="color:#fff;font-weight:bold">sum</span>().item()
+
+    test_loss /= <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)
+
+    <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>.format(
+        test_loss, correct, <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset),
+        <span style="color:#ff0;font-weight:bold">100.</span> * correct / <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># SGD : stochastic gradient descent, lr:lerning_rate:0.01</span>
+optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight:bold">0.01</span>, momentum=<span style="color:#ff0;font-weight:bold">0.9</span>)
+
+<span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>): <span style="color:#007f7f"># training network on 1 epoch</span>
+    train(model, device, train_loader, optimizer, epoch)
+    test(model, device, test_loader)</code></pre></div>
+<p>You might be getting very low accuracy on test dataset. This shouldn&rsquo;t happen. Find the error above and comment below.</p>
+
+<p>I have included colab notebook <a href="https://gist.github.com/myselfHimanshu/b9f9f024c14eaa87a271172746b79eac">link</a>. Run and play around.</p>
+
+<p>Stay tuned, Happy Learning!!!</p>
+
+<p>If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>We don't want to die without any scars.</p>
+    
+     © 2020
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>
