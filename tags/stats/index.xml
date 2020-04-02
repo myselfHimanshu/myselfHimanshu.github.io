@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STATS on Himanshu Panwar</title>
+    <link>https://myselfhimanshu.github.io/tags/stats/</link>
+    <description>Recent content in STATS on Himanshu Panwar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 Feb 2020 11:15:02 +0530</lastBuildDate>
+    
+	<atom:link href="https://myselfhimanshu.github.io/tags/stats/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Statistics and Probability</title>
+      <link>https://myselfhimanshu.github.io/posts/statistics_probability/</link>
+      <pubDate>Mon, 17 Feb 2020 11:15:02 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/posts/statistics_probability/</guid>
+      <description>Concepts Identifying individuals, variables and categorical variables in data
+   Name Age Gender Survived     Ab 27 Male Yes   Em 24 Female Yes   Pm 48 Female Yes   Ro 99 Male No   Lm 72 Female No    Here if we are asked which ones are individuals and how many variables are there and which variables are categorical.</description>
+    </item>
+    
+  </channel>
+</rss>

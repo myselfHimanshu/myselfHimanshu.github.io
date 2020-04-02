@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DeepLearning on Data Summit</title>
-    <link>https://myselfHimanshu.github.io/tags/deeplearning/</link>
-    <description>Recent content in DeepLearning on Data Summit</description>
+    <title>DeepLearning on Himanshu Panwar</title>
+    <link>https://myselfhimanshu.github.io/tags/deeplearning/</link>
+    <description>Recent content in DeepLearning on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 02 Feb 2019 22:22:22 +0530</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Feb 2020 13:33:03 +0530</lastBuildDate>
     
-	<atom:link href="https://myselfHimanshu.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://myselfhimanshu.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Setting Up Paperspace for Deep Learning</title>
-      <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
-      <pubDate>Sat, 02 Feb 2019 22:22:22 +0530</pubDate>
+      <title>Intro to Neural Networks for NLP</title>
+      <link>https://myselfhimanshu.github.io/posts/neural_networks_4_nlp_1/</link>
+      <pubDate>Thu, 20 Feb 2020 13:33:03 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
+      <guid>https://myselfhimanshu.github.io/posts/neural_networks_4_nlp_1/</guid>
+      <description>Overview Language is HARD and COMPLICATED. There are some techniques which we can use to extract information from the text. There are things that needs to be handled to be able to understand any text sentence like morphology, syntax, word knowledge, discourse, pragmatics, multi linguality etc. For these hard things we use Neural Networks.
+In this blog, we will learn about some concepts to do such things.
+Problem Statement : Sentiment Classification</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Paperspace for Deep Learning</title>
+      <link>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</link>
+      <pubDate>Wed, 01 Jan 2020 14:26:21 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</guid>
       <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>
     </item>
     

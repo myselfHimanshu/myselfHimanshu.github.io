@@ -3,74 +3,106 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://myselfHimanshu.github.io/tags/cnn/</loc>
+    <loc>https://myselfhimanshu.github.io/tags/cnn/</loc>
     <lastmod>2020-03-22T22:22:22+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/posts/cnn_01/</loc>
+    <loc>https://myselfhimanshu.github.io/posts/cnn_01/</loc>
     <lastmod>2020-03-22T22:22:22+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/</loc>
-    <lastmod>2020-03-22T22:22:22+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://myselfHimanshu.github.io/posts/</loc>
+    <loc>https://myselfhimanshu.github.io/</loc>
     <lastmod>2020-03-22T22:22:22+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/tags/</loc>
+    <loc>https://myselfhimanshu.github.io/posts/</loc>
     <lastmod>2020-03-22T22:22:22+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/tags/nlp/</loc>
-    <lastmod>2019-03-04T22:22:22+05:30</lastmod>
+    <loc>https://myselfhimanshu.github.io/tags/</loc>
+    <lastmod>2020-03-22T22:22:22+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/tags/rnn/</loc>
-    <lastmod>2019-03-04T22:22:22+05:30</lastmod>
+    <loc>https://myselfhimanshu.github.io/tags/deeplearning/</loc>
+    <lastmod>2020-02-20T13:33:03+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/posts/sequence_learning_3/</loc>
-    <lastmod>2019-03-04T22:22:22+05:30</lastmod>
+    <loc>https://myselfhimanshu.github.io/posts/neural_networks_4_nlp_1/</loc>
+    <lastmod>2020-02-20T13:33:03+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/posts/sequence_learning_2/</loc>
-    <lastmod>2019-02-22T22:22:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://myselfHimanshu.github.io/posts/sequence_learning_1/</loc>
-    <lastmod>2019-02-12T22:22:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://myselfHimanshu.github.io/tags/deeplearning/</loc>
-    <lastmod>2019-02-02T22:22:22+05:30</lastmod>
+    <loc>https://myselfhimanshu.github.io/tags/nlp/</loc>
+    <lastmod>2020-02-20T13:33:03+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</loc>
-    <lastmod>2019-02-02T22:22:22+05:30</lastmod>
+    <loc>https://myselfhimanshu.github.io/tags/data/</loc>
+    <lastmod>2020-02-17T11:15:02+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://myselfHimanshu.github.io/categories/</loc>
+    <loc>https://myselfhimanshu.github.io/tags/stats/</loc>
+    <lastmod>2020-02-17T11:15:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/posts/statistics_probability/</loc>
+    <lastmod>2020-02-17T11:15:02+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</loc>
+    <lastmod>2020-01-01T14:26:21+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/tags/algorithms/</loc>
+    <lastmod>2019-11-06T12:31:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/posts/fibonacci-numbers-series/</loc>
+    <lastmod>2019-11-06T12:31:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/posts/my-first-post/</loc>
+    <lastmod>2019-11-05T19:20:13+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/projects/</loc>
+    <lastmod>2018-11-06T10:09:46+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/contact/</loc>
+    <lastmod>2018-11-06T09:59:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/about/</loc>
+    <lastmod>2018-11-06T09:48:54+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myselfhimanshu.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   

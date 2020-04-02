@@ -1,49 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Data Summit</title>
-    <link>https://myselfHimanshu.github.io/tags/</link>
-    <description>Recent content in Tags on Data Summit</description>
+    <title>Tags on Himanshu Panwar</title>
+    <link>https://myselfhimanshu.github.io/tags/</link>
+    <description>Recent content in Tags on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sun, 22 Mar 2020 22:22:22 +0530</lastBuildDate>
     
-	<atom:link href="https://myselfHimanshu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://myselfhimanshu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CNN</title>
-      <link>https://myselfHimanshu.github.io/tags/cnn/</link>
+      <link>https://myselfhimanshu.github.io/tags/cnn/</link>
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/tags/cnn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NLP</title>
-      <link>https://myselfHimanshu.github.io/tags/nlp/</link>
-      <pubDate>Mon, 04 Mar 2019 22:22:22 +0530</pubDate>
-      
-      <guid>https://myselfHimanshu.github.io/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RNN</title>
-      <link>https://myselfHimanshu.github.io/tags/rnn/</link>
-      <pubDate>Mon, 04 Mar 2019 22:22:22 +0530</pubDate>
-      
-      <guid>https://myselfHimanshu.github.io/tags/rnn/</guid>
+      <guid>https://myselfhimanshu.github.io/tags/cnn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DeepLearning</title>
-      <link>https://myselfHimanshu.github.io/tags/deeplearning/</link>
-      <pubDate>Sat, 02 Feb 2019 22:22:22 +0530</pubDate>
+      <link>https://myselfhimanshu.github.io/tags/deeplearning/</link>
+      <pubDate>Thu, 20 Feb 2020 13:33:03 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/tags/deeplearning/</guid>
+      <guid>https://myselfhimanshu.github.io/tags/deeplearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://myselfhimanshu.github.io/tags/nlp/</link>
+      <pubDate>Thu, 20 Feb 2020 13:33:03 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DATA</title>
+      <link>https://myselfhimanshu.github.io/tags/data/</link>
+      <pubDate>Mon, 17 Feb 2020 11:15:02 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>STATS</title>
+      <link>https://myselfhimanshu.github.io/tags/stats/</link>
+      <pubDate>Mon, 17 Feb 2020 11:15:02 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/tags/stats/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ALGORITHMS</title>
+      <link>https://myselfhimanshu.github.io/tags/algorithms/</link>
+      <pubDate>Wed, 06 Nov 2019 12:31:51 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/tags/algorithms/</guid>
       <description></description>
     </item>
     

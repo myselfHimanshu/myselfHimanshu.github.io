@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CNN on Data Summit</title>
-    <link>https://myselfHimanshu.github.io/tags/cnn/</link>
-    <description>Recent content in CNN on Data Summit</description>
+    <title>CNN on Himanshu Panwar</title>
+    <link>https://myselfhimanshu.github.io/tags/cnn/</link>
+    <description>Recent content in CNN on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sun, 22 Mar 2020 22:22:22 +0530</lastBuildDate>
     
-	<atom:link href="https://myselfHimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://myselfhimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Convolutional Neural Network Part 1 : Basis Concepts</title>
-      <link>https://myselfHimanshu.github.io/posts/cnn_01/</link>
+      <link>https://myselfhimanshu.github.io/posts/cnn_01/</link>
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
+      <guid>https://myselfhimanshu.github.io/posts/cnn_01/</guid>
       <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
  If you&amp;rsquo;re offered a seat on a rocket ship, don&amp;rsquo;t ask what seat!</description>
     </item>

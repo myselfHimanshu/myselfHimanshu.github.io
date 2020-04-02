@@ -1,64 +1,114 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Summit</title>
-    <link>https://myselfHimanshu.github.io/</link>
-    <description>Recent content on Data Summit</description>
+    <title>Himanshu Panwar</title>
+    <link>https://myselfhimanshu.github.io/</link>
+    <description>Recent content on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sun, 22 Mar 2020 22:22:22 +0530</lastBuildDate>
     
-	<atom:link href="https://myselfHimanshu.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://myselfhimanshu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Convolutional Neural Network Part 1 : Basis Concepts</title>
-      <link>https://myselfHimanshu.github.io/posts/cnn_01/</link>
+      <link>https://myselfhimanshu.github.io/posts/cnn_01/</link>
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
+      <guid>https://myselfhimanshu.github.io/posts/cnn_01/</guid>
       <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
  If you&amp;rsquo;re offered a seat on a rocket ship, don&amp;rsquo;t ask what seat!</description>
     </item>
     
     <item>
-      <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</title>
-      <link>https://myselfHimanshu.github.io/posts/sequence_learning_3/</link>
-      <pubDate>Mon, 04 Mar 2019 22:22:22 +0530</pubDate>
+      <title>Intro to Neural Networks for NLP</title>
+      <link>https://myselfhimanshu.github.io/posts/neural_networks_4_nlp_1/</link>
+      <pubDate>Thu, 20 Feb 2020 13:33:03 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_3/</guid>
-      <description>Various Sequence to Sequence Architecture Basic Model
-Let&amp;rsquo;s start with a machine translation model of converting french to english: Given a sequence X we need the output y. Here we have a network called as encoder with gru or lstm blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as decoder and can be trained to output the translated sentence one word at a time.</description>
+      <guid>https://myselfhimanshu.github.io/posts/neural_networks_4_nlp_1/</guid>
+      <description>Overview Language is HARD and COMPLICATED. There are some techniques which we can use to extract information from the text. There are things that needs to be handled to be able to understand any text sentence like morphology, syntax, word knowledge, discourse, pragmatics, multi linguality etc. For these hard things we use Neural Networks.
+In this blog, we will learn about some concepts to do such things.
+Problem Statement : Sentiment Classification</description>
     </item>
     
     <item>
-      <title>Sequence Model Part 2 : Word Embeddings</title>
-      <link>https://myselfHimanshu.github.io/posts/sequence_learning_2/</link>
-      <pubDate>Fri, 22 Feb 2019 22:22:22 +0530</pubDate>
+      <title>Statistics and Probability</title>
+      <link>https://myselfhimanshu.github.io/posts/statistics_probability/</link>
+      <pubDate>Mon, 17 Feb 2020 11:15:02 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_2/</guid>
-      <description>Natural Language Processing and Word Embeddings Word Embeddings Word Representations
-Word Embeddings is the way of representing the words. It lets us understand the analogies between words like (&amp;ldquo;king&amp;rdquo; and &amp;ldquo;queen&amp;rdquo;) or (&amp;ldquo;man&amp;rdquo; and &amp;ldquo;woman&amp;rdquo;).
-In the previous post we represented the words with a one-hot vector. One of the weakness of one-hot vector representation is that it treats a word as a thing and doesn&amp;rsquo;t allow to generalize across the words.</description>
-    </item>
-    
-    <item>
-      <title>Sequence Model Part 1 : RNNS</title>
-      <link>https://myselfHimanshu.github.io/posts/sequence_learning_1/</link>
-      <pubDate>Tue, 12 Feb 2019 22:22:22 +0530</pubDate>
-      
-      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_1/</guid>
-      <description>Recurrent Neural Networks Some Examples
-   Example X (input) Y(output) Type     Speech Recognition wave sequence text sequence sequence to sequence   Music Generation nothing or integer wave sequence one to sequence   Sentiment Classification text sequence integer(label) sequence to one   Machine Translation text sequence text sequence sequence to sequence   Video Activity Recognition video frames label(activity) sequence to one    All these problems have different types of input and output formats.</description>
+      <guid>https://myselfhimanshu.github.io/posts/statistics_probability/</guid>
+      <description>Concepts Identifying individuals, variables and categorical variables in data
+   Name Age Gender Survived     Ab 27 Male Yes   Em 24 Female Yes   Pm 48 Female Yes   Ro 99 Male No   Lm 72 Female No    Here if we are asked which ones are individuals and how many variables are there and which variables are categorical.</description>
     </item>
     
     <item>
       <title>Setting Up Paperspace for Deep Learning</title>
-      <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
-      <pubDate>Sat, 02 Feb 2019 22:22:22 +0530</pubDate>
+      <link>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</link>
+      <pubDate>Wed, 01 Jan 2020 14:26:21 +0530</pubDate>
       
-      <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
+      <guid>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</guid>
       <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>
+    </item>
+    
+    <item>
+      <title>Fibonacci Numbers Series</title>
+      <link>https://myselfhimanshu.github.io/posts/fibonacci-numbers-series/</link>
+      <pubDate>Wed, 06 Nov 2019 12:31:51 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/posts/fibonacci-numbers-series/</guid>
+      <description>Fibonacci Number Fibonacci sequence: $F_0=0$, $F_1=1$, and $F_i=F_{i-1}+F_{i-2}$. Given an integer n, find the nth Fibonacci number $F_n$
+Input format : The input consists of a single integer n.
+Output format : Output $F_n$.
+Constraints : $0&amp;lt;=n&amp;lt;=45$
+CODE
+a = [0,1] for i in range(2,46): a.append(a[i-1] + a[i-2]) def calc_fib(n): return a[n] n = int(input()) print(calc_fib(n)) Last Digit of Large Fibonacci Number Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)</description>
+    </item>
+    
+    <item>
+      <title>My First Blog Post : Algorithm</title>
+      <link>https://myselfhimanshu.github.io/posts/my-first-post/</link>
+      <pubDate>Tue, 05 Nov 2019 19:20:13 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/posts/my-first-post/</guid>
+      <description>Here&amp;rsquo;s a small python code.
+Sum of two digits Compute the sum of two single digit numbers
+Input format : Integers a and b on the same line (separated by a space).
+Output format : The sum of a and b.
+Constraints : $0&amp;lt;=a,b&amp;lt;=9$
+#Uses python3 import sys input = sys.stdin.read() tokens = input.split() a = int(tokens[0]) b = int(tokens[1]) print(a+b) Maximum Pairwise Product Find the maximum product of two distinct numbers in a sequence of non-negative integers.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://myselfhimanshu.github.io/projects/</link>
+      <pubDate>Tue, 06 Nov 2018 10:09:46 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/projects/</guid>
+      <description> 2019  Food Ordering Chatbot using RASA.
+ PyTorch Scholarship Challenge Udacity Nanodegree : 102Flowers Image Classifier.
+  2018  Digit Recognizer : Computer vision fundamentals with the famous MNIST data.  </description>
+    </item>
+    
+    <item>
+      <title>Contact Me</title>
+      <link>https://myselfhimanshu.github.io/contact/</link>
+      <pubDate>Tue, 06 Nov 2018 09:59:07 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/contact/</guid>
+      <description>Thanks for reading! If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.
+Have questions or suggestions? Feel free to email or ask me on Twitter.
+Tweets by 047himanshu   </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://myselfhimanshu.github.io/about/</link>
+      <pubDate>Tue, 06 Nov 2018 09:48:54 +0530</pubDate>
+      
+      <guid>https://myselfhimanshu.github.io/about/</guid>
+      <description>Who am I? Hi, I&amp;rsquo;m Himanshu. I love programming in Python. Personally, I am passionate about programming and learning new things. My favorite way to work is late at night with headphones. 😉
+What I do? Machine Learning fascinates me a lot; Self driving car, YOLO, AlphaGo, Watson and many more, these things are so cool !! Isn&amp;rsquo;t it? My areas of interest include conversational as well as transactional chat bots, machine intelligence, computer vision.</description>
     </item>
     
   </channel>

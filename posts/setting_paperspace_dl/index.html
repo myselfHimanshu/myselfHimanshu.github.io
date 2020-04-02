@@ -1,79 +1,129 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
-<head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.55.6" />
+<html lang="en">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Setting Up Paperspace for Deep Learning &middot; Data Summit</title>
-  <meta name="description" content="" />
+    <meta name="author" content="Himanshu Panwar">
+    <meta name="description" content="Himanshu&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
 
-  
-  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://myselfHimanshu.github.io/css/hyde.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting Up Paperspace for Deep Learning"/>
+<meta name="twitter:description" content="Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving)."/>
+
+    <meta property="og:title" content="Setting Up Paperspace for Deep Learning" />
+<meta property="og:description" content="Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://myselfhimanshu.github.io/posts/setting_paperspace_dl/" />
+<meta property="article:published_time" content="2020-01-01T14:26:21&#43;05:30"/>
+<meta property="article:modified_time" content="2020-01-01T14:26:21&#43;05:30"/>
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        processEscapes: true,
-        processEnvironments: true,
-        menuSettings: { zoom: "Double-Click" },
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        TeX: { equationNumbers: { autoNumber: "AMS" },
-             extensions: ["AMSmath.js", "AMSsymbols.js"] }
-      }
-    });
-    </script>
     
-    <script type="text/javascript"
-      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+      <base href="https://myselfhimanshu.github.io/posts/setting_paperspace_dl/">
+    
+    <title>
+  Setting Up Paperspace for Deep Learning · Himanshu Panwar
+</title>
 
-  <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/override.css">
-</head>
+    
+      <link rel="canonical" href="https://myselfhimanshu.github.io/posts/setting_paperspace_dl/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://myselfhimanshu.github.io/css/coder.min.6ee7fab752358e918d5ca8ca997024a17d837e0cfd9a40cb8de7cd44c594c849.css" integrity="sha256-buf6t1I1jpGNXKjKmXAkoX2Dfgz9mkDLjefNRMWUyEk=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://myselfhimanshu.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.55.6" />
+  </head>
 
   <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://myselfHimanshu.github.io/"><h1>Data Summit</h1></a>
-      <p class="lead">
-       Everything started as nothing. 
-      </p>
-    </div>
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://myselfhimanshu.github.io/">
+      Himanshu Panwar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
 
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="https://myselfHimanshu.github.io/">Home</a> </li>
-        <li><a href="https://github.com/myselfhimanshu/"> Github </a></li><li><a href="https://www.linkedin.com/in/047himanshu/"> LinkedIn </a></li><li><a href="https://twitter.com/047himanshu"> Twitter </a></li>
-      </ul>
-    </nav>
 
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
-</aside>
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Setting Up Paperspace for Deep Learning</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-01-01T14:26:21&#43;05:30'>
+                January 1, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3 minutes read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://myselfhimanshu.github.io/tags/deeplearning/">DeepLearning</a></div>
 
-    <main class="content container">
-    <div class="post">
-  <h1>Setting Up Paperspace for Deep Learning</h1>
-  <time datetime=2019-02-02T22:22:22&#43;0530 class="post-date">Sat, Feb 2, 2019</time>
-  
+        </div>
+      </header>
+
+      <div>
+        
 
 <h2 id="step-by-step-guide-to-setup-paperspace-machine-for-deep-learning">Step by Step Guide to Setup Paperspace Machine for Deep Learning</h2>
 
@@ -86,13 +136,11 @@
 <li>Choose <code>Ubuntu 16.04</code> in Linux Templates.</li>
 
 <li><p>Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving). And create the machine.</p>
-
-<pre><code>NVIDIA P4000
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NVIDIA P4000
 - Architecture: Pascal
 - CUDA Cores: 1792
 - GPU Memory: 8 GB GDDR5
-- TeraFLOPS: 5.3
-</code></pre></li>
+- TeraFLOPS: 5.3</pre></div></li>
 
 <li><p>You will get an email regarding your password and ssh command.</p></li>
 
@@ -105,14 +153,14 @@
 <ul>
 <li>Install <code>ssh-copy-id</code>. Here&rsquo;s how to install it (Mac):</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id</code></pre></div>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id</code></pre></div>
 <ul>
 <li><code>cd</code> into <code>~/.ssh</code> directory</li>
 <li>if you don&rsquo;t have an <code>.ssh</code> directory in your home folder, create it (<code>mkdir ~/.ssh</code>)</li>
 <li>if you don&rsquo;t have an <code>id_rsa.pub</code> file in your <code>~/.ssh</code> folder, create it (<code>ssh-keygen</code>)</li>
 <li>replace IP address in syntax below with your own, and run command</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###</code></pre></div>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###</code></pre></div>
 <ul>
 <li>Use the password from the paperspace email.</li>
 <li>Add Paperspace info to <code>config</code> file</li>
@@ -120,7 +168,7 @@
 <li>if you don&rsquo;t have a <code>config</code> file, create one.  This example creates file using nano editor (<code>nano config</code>)</li>
 <li>add these contents to your config file (replace IP address here with your Paperspace IP address)</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Host paperspace
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Host paperspace
      HostName 72.###.###.###
      IdentityFile ~/.ssh/id_rsa
      # StrictHostKeyChecking no  
@@ -145,13 +193,11 @@
 
 <ul>
 <li><p>Create a directory saying <code>Downloads</code>.</p>
-
-<pre><code>$ cd Downloads
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ cd Downloads
 $ wget -c https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 $ chmod +x Anaconda3-2018.12-Linux-x86_64.sh
 $ ./Anaconda3-2018.12-Linux-x86_64.sh
-$ export PATH=~/anaconda3/bin:$PATH
-</code></pre></li>
+$ export PATH=~/anaconda3/bin:$PATH</pre></div></li>
 
 <li><p>Check conda version : <kbd>conda &ndash;version</kbd></p></li>
 </ul>
@@ -159,25 +205,16 @@ $ export PATH=~/anaconda3/bin:$PATH
 <h2 id="install-pytorch">Install pytorch</h2>
 
 <p>Install pytorch</p>
-
-<pre><code>$ pip install numpy torchvision_nightly
-$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html
-</code></pre>
-
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ pip install numpy torchvision_nightly
+$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html</pre></div>
 <p>Checking if cuda is working:</p>
-
-<pre><code>$ python
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ python
 &gt;&gt;&gt; import torch
-&gt;&gt;&gt; torch.cuda.is_available()
-</code></pre>
-
+&gt;&gt;&gt; torch.cuda.is_available()</pre></div>
 <p>If the above command returns False. Then we need to update/add the nvidia driver.</p>
-
-<pre><code>$ sudo add-apt-repository ppa:graphics-drivers/ppa
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo add-apt-repository ppa:graphics-drivers/ppa
 $ sudo apt-get update
-$ sudo apt-get install nvidia-396 nvidia-modprobe
-</code></pre>
-
+$ sudo apt-get install nvidia-396 nvidia-modprobe</pre></div>
 <p>Then restart the instance and check <kbd>$ nvdia-smi </kbd> and run pytorch command again and check.</p>
 
 <p>This should solve the problem. If you still face some problems, ping in comments.</p>
@@ -191,10 +228,13 @@ $ sudo apt-get install nvidia-396 nvidia-modprobe
 <li>Note that the auto shut down works only for the browser console. Paperspace will not auto shut down your server if you SSH to it.</li>
 </ul>
 
-</div>
+      </div>
 
-<h2>Comments</h2>
-<div id="disqus_thread"></div>
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -214,10 +254,50 @@ $ sudo apt-get install nvidia-396 nvidia-modprobe
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>We don't want to die without any scars.</p>
+    
+     © 2020
+    
+    
+  </section>
+</footer>
+
     </main>
 
     
-      
-    
+
   </body>
+
 </html>
