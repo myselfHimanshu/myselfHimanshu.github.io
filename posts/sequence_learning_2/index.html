@@ -212,14 +212,14 @@ In the previous post we represented the words with a one-hot vector. One of the 
 <p>We can come up with many features(the rows) let say we have 300 features, then this 300 dimension vector of value in columns becomes our representation.</p>
 
 <p>To visualize this representation we use <em>t-SNE</em> algo to reduce the features to 2-dimension
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_1.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_1.png" alt="" /></p>
 
 <p>We can see the related words are grouped together.</p>
 
 <p><strong>Using Word Embeddings</strong></p>
 
 <p>Given a named-entity recognition problem.
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_2.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_2.png" alt="" /></p>
 
 <p>In this example <em>Sally Johnson</em> is a person name. And one way to know that it is person name and not organization is that <em>orange farmer</em> is a person. Suppose now we have our trained model using featurized word embeddings.</p>
 
@@ -265,7 +265,7 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <p><em>How do we learn the embedding matrix?</em></p>
 
 <p>First look at this diagram.
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_4.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_4.png" alt="" /></p>
 
 <p>Here we need to predict the next word so we use neural network to build the language model.</p>
 
@@ -417,13 +417,13 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 
 <p>Given a sentence or review we need to classify the ratings.</p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_5.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_5.png" alt="" /></p>
 
 <p>For this problem we might not have very large corpus but we can use pre-trained embedding vectors and it will work.</p>
 
 <p><em>Simple Sentiment classification model</em></p>
 
-<p><img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_6.png?raw=true" alt="" /></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_6.png" alt="" /></p>
 
 <ul>
 <li>The embedding matrix may have been trained on say 100B words.</li>
@@ -436,7 +436,7 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <p><em>RNN for sentiment classification</em></p>
 
 <p>The many to one architecture:
-<img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_7.png?raw=true" alt="" /></p>
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_7.png" alt="" /></p>
 
 <p>This model will take the <em>lacking in good</em> into account and this model will also generalize better even if words weren&rsquo;t in our dataset.</p>
 
