@@ -18,7 +18,8 @@
       
       <guid>https://myselfhimanshu.github.io/posts/cnn_02/</guid>
       <description>In this tutorial, we will be training the network on MNIST dataset. We&amp;rsquo;ll try to understand neural network architecture.
-The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model.</description>
+The most important thing to understand in deep learning is what is our network learning which requires understanding of the network architecture. The below architecture is not meant to give us very good score. In this post we&amp;rsquo;ll focus on few more concepts and then jump into pytorch-101.
+To understand the basic terminologies of CNN building blocks.</description>
     </item>
     
     <item>
@@ -28,7 +29,7 @@ The most important thing to understand in deep learning is what goes in and what
       
       <guid>https://myselfhimanshu.github.io/posts/cnn_01/</guid>
       <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
- If you&amp;rsquo;re offered a seat on a rocket ship, don&amp;rsquo;t ask what seat!</description>
+I’ll try to explain the concepts in layman terms.</description>
     </item>
     
   </channel>
