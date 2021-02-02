@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DeepLearning on Himanshu Panwar</title>
-    <link>https://myselfhimanshu.github.io/tags/deeplearning/</link>
+    <link>https://myselfHimanshu.github.io/tags/deeplearning/</link>
     <description>Recent content in DeepLearning on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfhimanshu.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfHimanshu.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolutional Neural Network Part 3 : Decision Making</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_03/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_03/</link>
       <pubDate>Sun, 05 Apr 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_03/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_03/</guid>
       <description>In our last post, we left our network&amp;rsquo;s faith in Ant-Man. We will be covering how Ant-Man gonna come to save our network&amp;rsquo;s life. We&amp;rsquo;ll try to understand some issues related to strides. We&amp;rsquo;ll cover how network makes decisions and in the end as usual getting our hands dirty with Pytorch.
 Kindly go through these post before moving forward, as we are building up our intuations from scratch.
  CNN Part 1 : Basic Concepts CNN Part 2 : Neural Architecture  Ready ?</description>
@@ -20,10 +20,10 @@ Kindly go through these post before moving forward, as we are building up our in
     
     <item>
       <title>Convolutional Neural Network Part 2 : Neural Architecture</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_02/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_02/</link>
       <pubDate>Sun, 29 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_02/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_02/</guid>
       <description>In this tutorial, we will be training the network on MNIST dataset. We&amp;rsquo;ll try to understand neural network architecture.
 The most important thing to understand in deep learning is what is our network learning which requires understanding of the network architecture. The below architecture is not meant to give us very good score. In this post we&amp;rsquo;ll focus on few more concepts and then jump into pytorch-101.
 To understand the basic terminologies of CNN building blocks.</description>
@@ -31,30 +31,30 @@ To understand the basic terminologies of CNN building blocks.</description>
     
     <item>
       <title>Convolutional Neural Network Part 1 : Basic Concepts</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_01/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_01/</link>
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_01/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
       <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
 I’ll try to explain the concepts in layman terms.</description>
     </item>
     
     <item>
       <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_3/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_3/</link>
       <pubDate>Sun, 17 Nov 2019 20:54:18 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_3/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_3/</guid>
       <description>Various Sequence to Sequence Architecture Basic Model
 Let&amp;rsquo;s start with a machine translation model of converting french to english: Given a sequence X we need the output y. Here we have a network called as encoder with gru or lstm blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as decoder and can be trained to output the translated sentence one word at a time.</description>
     </item>
     
     <item>
       <title>Sequence Model Part 2 : Word Embeddings</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_2/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_2/</link>
       <pubDate>Sun, 10 Nov 2019 10:22:19 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_2/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_2/</guid>
       <description>Natural Language Processing and Word Embeddings Word Embeddings Word Representations
 Word Embeddings is the way of representing the words. It lets us understand the analogies between words like (&amp;ldquo;king&amp;rdquo; and &amp;ldquo;queen&amp;rdquo;) or (&amp;ldquo;man&amp;rdquo; and &amp;ldquo;woman&amp;rdquo;).
 In the previous post we represented the words with a one-hot vector. One of the weakness of one-hot vector representation is that it treats a word as a thing and doesn&amp;rsquo;t allow to generalize across the words.</description>
@@ -62,20 +62,20 @@ In the previous post we represented the words with a one-hot vector. One of the 
     
     <item>
       <title>Sequence Model Part 1 : RNNS</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_1/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_1/</link>
       <pubDate>Sun, 03 Nov 2019 21:46:34 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_1/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_1/</guid>
       <description>Recurrent Neural Networks Some Examples
    Example X (input) Y(output) Type     Speech Recognition wave sequence text sequence sequence to sequence   Music Generation nothing or integer wave sequence one to sequence   Sentiment Classification text sequence integer(label) sequence to one   Machine Translation text sequence text sequence sequence to sequence   Video Activity Recognition video frames label(activity) sequence to one    All these problems have different types of input and output formats.</description>
     </item>
     
     <item>
       <title>Setting Up Paperspace for Deep Learning</title>
-      <link>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</link>
+      <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
       <pubDate>Tue, 01 Jan 2019 14:26:21 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
       <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>
     </item>
     

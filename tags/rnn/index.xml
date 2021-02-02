@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RNN on Himanshu Panwar</title>
-    <link>https://myselfhimanshu.github.io/tags/rnn/</link>
+    <link>https://myselfHimanshu.github.io/tags/rnn/</link>
     <description>Recent content in RNN on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Nov 2019 20:54:18 +0530</lastBuildDate><atom:link href="https://myselfhimanshu.github.io/tags/rnn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Nov 2019 20:54:18 +0530</lastBuildDate><atom:link href="https://myselfHimanshu.github.io/tags/rnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sequence Model Part 3 : Sequence models &amp; Attention mechanism</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_3/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_3/</link>
       <pubDate>Sun, 17 Nov 2019 20:54:18 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_3/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_3/</guid>
       <description>Various Sequence to Sequence Architecture Basic Model
 Let&amp;rsquo;s start with a machine translation model of converting french to english: Given a sequence X we need the output y. Here we have a network called as encoder with gru or lstm blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as decoder and can be trained to output the translated sentence one word at a time.</description>
     </item>
     
     <item>
       <title>Sequence Model Part 2 : Word Embeddings</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_2/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_2/</link>
       <pubDate>Sun, 10 Nov 2019 10:22:19 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_2/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_2/</guid>
       <description>Natural Language Processing and Word Embeddings Word Embeddings Word Representations
 Word Embeddings is the way of representing the words. It lets us understand the analogies between words like (&amp;ldquo;king&amp;rdquo; and &amp;ldquo;queen&amp;rdquo;) or (&amp;ldquo;man&amp;rdquo; and &amp;ldquo;woman&amp;rdquo;).
 In the previous post we represented the words with a one-hot vector. One of the weakness of one-hot vector representation is that it treats a word as a thing and doesn&amp;rsquo;t allow to generalize across the words.</description>
@@ -30,10 +30,10 @@ In the previous post we represented the words with a one-hot vector. One of the 
     
     <item>
       <title>Sequence Model Part 1 : RNNS</title>
-      <link>https://myselfhimanshu.github.io/posts/sequence_learning_1/</link>
+      <link>https://myselfHimanshu.github.io/posts/sequence_learning_1/</link>
       <pubDate>Sun, 03 Nov 2019 21:46:34 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/sequence_learning_1/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/sequence_learning_1/</guid>
       <description>Recurrent Neural Networks Some Examples
    Example X (input) Y(output) Type     Speech Recognition wave sequence text sequence sequence to sequence   Music Generation nothing or integer wave sequence one to sequence   Sentiment Classification text sequence integer(label) sequence to one   Machine Translation text sequence text sequence sequence to sequence   Video Activity Recognition video frames label(activity) sequence to one    All these problems have different types of input and output formats.</description>
     </item>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CNN on Himanshu Panwar</title>
-    <link>https://myselfhimanshu.github.io/tags/cnn/</link>
+    <link>https://myselfHimanshu.github.io/tags/cnn/</link>
     <description>Recent content in CNN on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfhimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfHimanshu.github.io/tags/cnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolutional Neural Network Part 3 : Decision Making</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_03/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_03/</link>
       <pubDate>Sun, 05 Apr 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_03/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_03/</guid>
       <description>In our last post, we left our network&amp;rsquo;s faith in Ant-Man. We will be covering how Ant-Man gonna come to save our network&amp;rsquo;s life. We&amp;rsquo;ll try to understand some issues related to strides. We&amp;rsquo;ll cover how network makes decisions and in the end as usual getting our hands dirty with Pytorch.
 Kindly go through these post before moving forward, as we are building up our intuations from scratch.
  CNN Part 1 : Basic Concepts CNN Part 2 : Neural Architecture  Ready ?</description>
@@ -20,10 +20,10 @@ Kindly go through these post before moving forward, as we are building up our in
     
     <item>
       <title>Convolutional Neural Network Part 2 : Neural Architecture</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_02/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_02/</link>
       <pubDate>Sun, 29 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_02/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_02/</guid>
       <description>In this tutorial, we will be training the network on MNIST dataset. We&amp;rsquo;ll try to understand neural network architecture.
 The most important thing to understand in deep learning is what is our network learning which requires understanding of the network architecture. The below architecture is not meant to give us very good score. In this post we&amp;rsquo;ll focus on few more concepts and then jump into pytorch-101.
 To understand the basic terminologies of CNN building blocks.</description>
@@ -31,10 +31,10 @@ To understand the basic terminologies of CNN building blocks.</description>
     
     <item>
       <title>Convolutional Neural Network Part 1 : Basic Concepts</title>
-      <link>https://myselfhimanshu.github.io/posts/cnn_01/</link>
+      <link>https://myselfHimanshu.github.io/posts/cnn_01/</link>
       <pubDate>Sun, 22 Mar 2020 22:22:22 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/cnn_01/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/cnn_01/</guid>
       <description>I am starting this series of posts, where in we&amp;rsquo;ll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
 I’ll try to explain the concepts in layman terms.</description>
     </item>

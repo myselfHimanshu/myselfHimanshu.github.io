@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Setup on Himanshu Panwar</title>
-    <link>https://myselfhimanshu.github.io/tags/setup/</link>
+    <link>https://myselfHimanshu.github.io/tags/setup/</link>
     <description>Recent content in Setup on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Jan 2019 14:26:21 +0530</lastBuildDate><atom:link href="https://myselfhimanshu.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Jan 2019 14:26:21 +0530</lastBuildDate><atom:link href="https://myselfHimanshu.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up Paperspace for Deep Learning</title>
-      <link>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</link>
+      <link>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</link>
       <pubDate>Tue, 01 Jan 2019 14:26:21 +0530</pubDate>
       
-      <guid>https://myselfhimanshu.github.io/posts/setting_paperspace_dl/</guid>
+      <guid>https://myselfHimanshu.github.io/posts/setting_paperspace_dl/</guid>
       <description>Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving).</description>
     </item>
     
