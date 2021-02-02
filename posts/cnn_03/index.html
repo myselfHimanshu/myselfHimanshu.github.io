@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="Himanshu Panwar">
-    <meta name="description" content="Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning">
-    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes">
+    <meta name="author" content="HIMANSHU PANWAR CHRONICLES">
+    <meta name="description" content="Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning">
+    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Convolutional Neural Network Part 3 : Decision Making"/>
@@ -21,8 +21,8 @@ Kindly go through these post before moving forward, as we are building up our in
  CNN Part 1 : Basic Concepts CNN Part 2 : Neural Architecture  Ready ?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://myselfhimanshu.github.io/posts/cnn_03/" />
-<meta property="article:published_time" content="2020-04-05T22:22:22&#43;05:30"/>
-<meta property="article:modified_time" content="2020-04-05T22:22:22&#43;05:30"/>
+<meta property="article:published_time" content="2020-04-05T22:22:22+05:30" />
+<meta property="article:modified_time" content="2020-04-05T22:22:22+05:30" />
 
 
     
@@ -59,7 +59,7 @@ Kindly go through these post before moving forward, as we are building up our in
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   <body class=" ">
@@ -80,6 +80,10 @@ Kindly go through these post before moving forward, as we are building up our in
         
           <li class="navigation-item">
             <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
@@ -125,95 +129,48 @@ Kindly go through these post before moving forward, as we are building up our in
       </header>
 
       <div>
-        
-
-<p>In our last post, we left our network&rsquo;s faith in Ant-Man. We will be covering how Ant-Man gonna come to save our network&rsquo;s life. We&rsquo;ll try to understand some issues related to strides. We&rsquo;ll cover how network makes decisions and in the end as usual getting our hands dirty with Pytorch.</p>
-
+        <p>In our last post, we left our network&rsquo;s faith in Ant-Man. We will be covering how Ant-Man gonna come to save our network&rsquo;s life. We&rsquo;ll try to understand some issues related to strides. We&rsquo;ll cover how network makes decisions and in the end as usual getting our hands dirty with Pytorch.</p>
 <p>Kindly go through these post before moving forward, as we are building up our intuations from scratch.</p>
-
 <ul>
 <li><a href="https://myselfhimanshu.github.io/posts/cnn_01/">CNN Part 1 : Basic Concepts</a></li>
 <li><a href="https://myselfhimanshu.github.io/posts/cnn_02/">CNN Part 2 : Neural Architecture</a></li>
 </ul>
-
 <p>Ready ? Let&rsquo;s jump in.</p>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/qtXHW324gTKqQ/giphy.gif"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p><strong>What are my kernels extracting ?</strong></p>
-
 <p>Whatever CNN visualization we see on the internet, are of the features that are extracted from kernels and not the kernels itself.</p>
-
 <p>Because visualization of kernels makes no sense, we wouldn&rsquo;t be able to identify what actually a kernel might be doing. We are interested in what a kernel might be extracting though. Look below at 3x3 kernels visualization</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/kernelvis.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>We cannot find any pattern here. In the initial layers - Kernels extract the low level features i.e Edges , Gradients , Color etc. This does not mean something meaningful is extracted out of first layer itself. 3x3 is a very small area to actually gather any Perceivable information. Even at 5x5 (for large image sizes) we can&rsquo;t make our a lot of stuff.</p>
-
 <p>Something meaningful to interpret comes when we we arrive at a proper receptive field to find something useful/meaning depending on how complex our dataset is. If the dataset is too simple - first one or two layers will itself give a meaningful context . If data is complex, we may need more layers.</p>
-
 <p>In other words, when we convolve a 3x3 kernel on an image in the first layer, the receptive field is 3x3. The receptive field is so small that we wouldn&rsquo;t be able to identify what are these kernels extracting.</p>
-
 <p>To see what kind of features our kernels are learning, we need some higher receptive field. By higher I mean like 11x11 or more ( we have arrived to this number by experimention). Generally at 11x11 receptive field, we will start seeing some features, gradients, edges, or patterns.</p>
-
 <p><strong>Why visualizing these features are important for us ?</strong></p>
-
 <p>Look at below image</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/vis_layer1.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p><em>a</em> and <em>c</em> show the visualization of the first and second layers from AlexNet. We find that :</p>
-
 <ul>
 <li>there are dead neurons without any specific patterns in first layer, indicated by red box, which leads us an insight that there many be high learning rate or not good weight initialization while training the network.</li>
 <li>second layer visualization shows aliasing artifacts. This could be caused by the large strides used in first layer convolution.</li>
 </ul>
-
 <p>These visualization helps us in optimizing CNN architecture. The improvements can be then seen in <em>b</em> and <em>d</em>. Patterns in <em>b</em> are more distintive and patterns in <em>d</em> have no aliasing artifacts.</p>
-
 <p>Please visit these links for more visualization:</p>
-
 <ul>
 <li><a href="https://distill.pub/2017/feature-visualization/">Distil : Feature Visualization</a></li>
 <li><a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture12.pdf">CS231n : Visualizing and Understanding</a></li>
 </ul>
-
 <p><strong>What is Checkboard Issue?</strong></p>
-
 <p>When using high strides, one unplesant behaviour we observe is so-called checkerboard issue.</p>
-
-<p align="center">
-  <img width="50%" height="50%" src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/checkerboard.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>This result from &ldquo;uneven overlap&rdquo; of convolution.</p>
-
 <p>We learned in the last post that when we convolve with the standard way (stride of 1), we cover most of the pixels 9 times.</p>
-
-<p align="center">
-  <img src="https://miro.medium.com/max/790/1*NrsBkY8ujrGlq83f8FR2wQ.gif"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>But, when we convolve with a stride of more than 1, we would be covering some pixels more than once. And this is not good, as we are creating an island of extra information spread around in a repeating pattern. The image below would help:</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/checkboard2.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>As you can see, we are spreading the information unevenly. We will cover this checkerboard issue again in super-Resolution algorithms.</p>
-
 <p>Let&rsquo;s come back to the rescue part of our network. Do you remember what the problem was ? Let&rsquo;s recap.</p>
-
 <h3 id="the-parameters-bombarding-issue">The parameters bombarding issue</h3>
-
 <p>ThIS was our network architecture, I have updated it a little bit:</p>
-
 <table>
 <thead>
 <tr>
@@ -224,7 +181,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <th>RF</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>400x400x3</td>
@@ -233,7 +189,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>864</td>
 <td>3x3</td>
 </tr>
-
 <tr>
 <td>398x398x32</td>
 <td>(3x3x32)x64</td>
@@ -241,7 +196,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>18432</td>
 <td>5x5</td>
 </tr>
-
 <tr>
 <td>396x396x64</td>
 <td>(3x3x64)x128</td>
@@ -249,7 +203,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>73728</td>
 <td>7X7</td>
 </tr>
-
 <tr>
 <td>394x394x128</td>
 <td>(3x3x128)x256</td>
@@ -257,7 +210,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>294912</td>
 <td>9X9</td>
 </tr>
-
 <tr>
 <td>392x392x256</td>
 <td>(3x3x256)x512</td>
@@ -265,7 +217,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>1179648</td>
 <td>11X11</td>
 </tr>
-
 <tr>
 <td>MP</td>
 <td></td>
@@ -273,7 +224,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td></td>
 <td></td>
 </tr>
-
 <tr>
 <td>195x195x512</td>
 <td>(?x?x512)x32</td>
@@ -281,7 +231,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>???</td>
 <td>22x22</td>
 </tr>
-
 <tr>
 <td>?x?x32</td>
 <td>(?x?x32)x64</td>
@@ -289,7 +238,6 @@ Kindly go through these post before moving forward, as we are building up our in
 <td>???</td>
 <td>24x24</td>
 </tr>
-
 <tr>
 <td>&hellip;</td>
 <td>&hellip;</td>
@@ -299,26 +247,17 @@ Kindly go through these post before moving forward, as we are building up our in
 </tr>
 </tbody>
 </table>
-
 <p><strong>How should we reduce the number of kernels?</strong></p>
-
 <p>We cannot just add 32, 3x3 kernels as that would re-analyze all the 512 channels and give us 32 kernels.
 We have 512 features now, instead of evaluating these 512 kernels and coming out with 32 new ones, it makes sense to combine them to form 32 mixtures. That is where 1x1 convolution helps us.</p>
-
 <ul>
 <li>It would be better to merge our 512 kernels into 32 richer kernels which could extract multiple features which come together.</li>
 <li>3x3 is an expensive kernel, and we should be able to figure out something lighter, less computationally expensive method.</li>
 <li>Since we are merging 512 kernels into 32 complex one, it would be great if we do not pick those features which are not required by the network to predict our images (like backgrounds).</li>
 </ul>
-
 <p>Our Ant-Man : 1x1 convolution filter</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/1x1conv.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>Initially, 1 x 1 convolutions were proposed in the Network-in-network <a href="https://arxiv.org/abs/1312.4400">paper</a>. They were then highly used in the Google Inception <a href="https://arxiv.org/abs/1409.4842">paper</a>. A few advantages of 1 x 1 convolutions are:</p>
-
 <ul>
 <li>Dimensionality reduction for efficient computations.</li>
 <li>Efficient low dimensional embedding, or feature pooling.</li>
@@ -326,9 +265,7 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <li>1x1 is merging the pre-existing feature extractors, creating new ones, keeping in mind that those features are found together.</li>
 <li>1x1 is performing a weighted sum of the channels, so it can so happen that it decides not to pick a particular feature that defines the background and not a part of the object. This is helpful as this acts like filtering.</li>
 </ul>
-
 <p>Let&rsquo;s look at our new network:</p>
-
 <table>
 <thead>
 <tr>
@@ -339,7 +276,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <th>RF</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>400x400x3</td>
@@ -348,7 +284,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>864</td>
 <td>3x3</td>
 </tr>
-
 <tr>
 <td>398x398x32</td>
 <td>(3x3x32)x64</td>
@@ -356,7 +291,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>18432</td>
 <td>5x5</td>
 </tr>
-
 <tr>
 <td>396x396x64</td>
 <td>(3x3x64)x128</td>
@@ -364,7 +298,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>73728</td>
 <td>7X7</td>
 </tr>
-
 <tr>
 <td>394x394x128</td>
 <td>(3x3x128)x256</td>
@@ -372,7 +305,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>294912</td>
 <td>9X9</td>
 </tr>
-
 <tr>
 <td>392x392x256</td>
 <td>(3x3x256)x512</td>
@@ -380,7 +312,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>1179648</td>
 <td>11X11</td>
 </tr>
-
 <tr>
 <td>MP</td>
 <td></td>
@@ -388,7 +319,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td></td>
 <td></td>
 </tr>
-
 <tr>
 <td>195x195x512</td>
 <td>(1x1x512)x32</td>
@@ -396,7 +326,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>16384</td>
 <td>22x22</td>
 </tr>
-
 <tr>
 <td>195x195x32</td>
 <td>(3x3x32)x64</td>
@@ -404,7 +333,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>18432</td>
 <td>24x24</td>
 </tr>
-
 <tr>
 <td>193x193x32</td>
 <td>(3x3x64)x128</td>
@@ -412,7 +340,6 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <td>73728</td>
 <td>26x26</td>
 </tr>
-
 <tr>
 <td>&hellip;</td>
 <td>&hellip;</td>
@@ -422,83 +349,43 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 </tr>
 </tbody>
 </table>
-
 <p>Notice, we can form convolution blocks, receiving 32 channels and then perform 4 convolutions, giving finally 512 channels, which can then be fed to transition block (hoping to receive 512 channels) which finally reduces channels to 32. Also in this case, we have decreased the number of parameters as compared to the use of 3x3 kernels.</p>
-
 <h3 id="the-architectures">The Architectures</h3>
-
 <p>Most of the modern architecture follows this architecture:</p>
-
 <p><strong>AlexNet</strong></p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/alexnet.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p><strong>VggNet</strong></p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/vggnet.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p><strong>ResNet</strong></p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/resnet.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>ResNet is the latest among the above. Only the most advanced networks have ditched the FC layer for the GAP layer.</p>
-
 <h3 id="activation-function">Activation Function</h3>
-
 <p>When we convolve a kernel over the image, we get some output matrix. Now, the question arries is what do we do with those numbers. We need our network to make some decisions whether some pixels need to be forwarded into next layer or not.</p>
-
 <p>This is where activation function comes in place.</p>
-
 <p><strong>Why do we need an activation function?</strong></p>
-
 <p>If we do not apply an Activation function then</p>
-
 <ul>
 <li>the output signal would simply be a simple linear function.</li>
 <li>a linear function is just a polynomial of one degree.</li>
 <li>a linear equation is easy to solve but they are limited in their complexity and have less power to learn complex functional mappings from data.</li>
 </ul>
-
 <p>We want our Neural Network to not just learn and compute a linear function but something more complicated than that.</p>
-
 <p>Without activation function our Neural network would not be able to learn and model other complicated kinds of data such as images, videos , audio , speech etc.</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/activationfunction.png"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>The activation function is a mathematical gate in between the input neuron and output going to next layer. It can be simple as step function or it can be a transformation that maps the input neurons into output neurons that are needed for the network to learn.</p>
-
 <p><strong>Why do we need non-linearity?</strong></p>
-
 <p>We need a Neural Network Model to learn and represent almost anything and any arbitrary complex function that maps inputs to outputs.</p>
-
 <blockquote>
 <p>Neural-Networks are considered Universal Function Approximators.</p>
 </blockquote>
-
 <p>It means that they can compute and learn any function at all. Almost any process we can think of can be represented as a functional computation in Neural Networks.</p>
-
 <p>We need to apply an Activation function f(x) so as to make the network more powerful and add the ability to it to learn something complex and complicated form data and represent non-linear complex arbitrary functional mappings between inputs and outputs. Hence using a non-linear Activation we are able to generate non-linear mappings from inputs to outputs.</p>
-
 <p>Also another important feature of a Activation function is that it should be differentiable. We need it to be this way so as to perform backpropogation optimization strategy while propogating backwards in the network to compute gradients of error(loss) with respect to weights and then accordingly optimize weights using Gradient descent or any other optimization technique to reduce error.</p>
-
 <p>Activation functions also have a major effect on the neural network’s ability to converge and the convergence speed, or in some cases, activation functions might prevent neural networks from converging in the first place.</p>
-
 <h4 id="types-of-activation-functions">Types of Activation functions</h4>
-
 <p>Modern Neural Networks uses non-linear activation function, and that&rsquo;s what we will be focusing on.</p>
-
 <p><strong>Sigmoid Activation function</strong></p>
-
 <p>The sigmoid function is defined as,</p>
-
 <table>
 <thead>
 <tr>
@@ -506,35 +393,27 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <th>graph</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$$\sigma(x) = \frac{1}{1+e^{-x}}$$</td>
-<td><p align="center"><img width="50%" height="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/1200px-Logistic-curve.svg.png"/></p></td>
+<td><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></td>
 </tr>
 </tbody>
 </table>
-
 <p>Advantages :</p>
-
 <ul>
 <li>output values are bound between 0 and 1, normalizing the output of each neuron.</li>
 <li>clear predictions : for x above 2 or below -2, tends to bring the prediction value close to 0 or 1.</li>
 <li>function is differentiable. That means, we can find the slope of the sigmoid curve at any two points.</li>
 </ul>
-
 <p>Disadvantages :</p>
-
 <ul>
 <li>Vanishing Gradient : for very high or very low values of X, there is no change in prediction.</li>
 <li>not zero centered, it makes gradient updates go too far in different directions. $0&lt;output&lt;1$ makes optimization harder.</li>
 <li>Computationally expensive.</li>
 </ul>
-
 <p><strong>Tanh/Hyperbolic Tangent function</strong></p>
-
 <p>The function is defined as,</p>
-
 <table>
 <thead>
 <tr>
@@ -542,32 +421,24 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <th>graph</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td>$$ tanh(x) = \frac{2}{1 + e^{-2x}} - 1 $$ <br> OR <br> $$ tanh(x) = 2 * sigmoid(2x) - 1 $$</td>
-<td><p align="center"><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/tanh.png"/></p></td>
+<td>$$ tanh(x) = \frac{2}{1 + e^{-2x}} - 1 $$ <!-- raw HTML omitted --> OR <!-- raw HTML omitted --> $$ tanh(x) = 2 * sigmoid(2x) - 1 $$</td>
+<td><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></td>
 </tr>
 </tbody>
 </table>
-
 <p>Advantages :</p>
-
 <ul>
 <li>output is zero centered</li>
 <li>optimization is easier</li>
 </ul>
-
 <p>Disadvantages :</p>
-
 <ul>
 <li>Same as sigmoid function</li>
 </ul>
-
 <p><strong>ReLU (Rectified Linear Unit) activation function</strong></p>
-
 <p>The function is defined as,</p>
-
 <table>
 <thead>
 <tr>
@@ -575,33 +446,25 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <th>graph</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$$ f(x) = max(0,x) $$</td>
-<td><p align="center"><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/relu.png"/></p></td>
+<td><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></td>
 </tr>
 </tbody>
 </table>
-
 <p>Advantages :</p>
-
 <ul>
 <li>It’s cheap to compute as there is no complicated math. The model can, therefore, take less time to train or run.</li>
 <li>It converges faster. Linearity means that the slope doesn’t saturate, when x gets large. It doesn’t have the vanishing gradient problem suffered by other activation functions like sigmoid or tanh.</li>
 <li>It’s sparsely activated. Since ReLU is zero for all negative inputs, it’s likely for any given unit to not activate at all.</li>
 </ul>
-
 <p>Disadvantages :</p>
-
 <ul>
 <li>The Dying ReLU problem—when inputs approach zero, or are negative, the gradient of the function becomes zero, the network cannot perform backpropagation and cannot learn.</li>
 </ul>
-
 <p><strong>Leaky ReLU activation function</strong></p>
-
 <p>The function is defined as,</p>
-
 <table>
 <thead>
 <tr>
@@ -609,48 +472,30 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
 <th>graph</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td>$f(x) = ax $ for x<0 <br>AND<br> $f(x) = x$ for x&gt;0</td>
-<td><p align="center"><img width="70%" src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/leaky-relu.png"/></p></td>
+<td>$f(x) = ax $ for x&lt;0 <!-- raw HTML omitted -->AND<!-- raw HTML omitted --> $f(x) = x$ for x&gt;0</td>
+<td><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></td>
 </tr>
 </tbody>
 </table>
-
 <p>Advantages :</p>
-
 <ul>
 <li>Prevents dying ReLU problem—this variation of ReLU has a small positive slope in the negative area, so it does enable backpropagation, even for negative input values</li>
 <li>Otherwise like ReLU</li>
 </ul>
-
 <p>Disadvantages :</p>
-
 <ul>
 <li>Results not consistent—leaky ReLU does not provide consistent predictions for negative input values.</li>
 </ul>
-
 <p>And there are other variations to relu.</p>
-
 <h4 id="which-activation-to-use">Which Activation to use?</h4>
-
-<p align="center">
-  <img width="20%" height="20%" src="https://media.giphy.com/media/lKXEBR8m1jWso/giphy.gif"/>
-</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_03/val_activation.png"/>
-</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>ReLU is simple, efficient and fast, and even if anyone of the above is better, we are talking about a marginal benefit, with an increase in computation.</p>
-
 <h4 id="pytorch-101">Pytorch 101</h4>
-
 <p>For getting hands dirty, kindly follow this link : <a href="https://colab.research.google.com/github/dvgodoy/PyTorch101_ODSC_London2019/blob/master/PyTorch101_Colab.ipynb">Pytorch 101</a></p>
-
 <p>Stay tuned for the next post, Happy Learning!!!</p>
-
 <p>If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.</p>
 
       </div>
@@ -711,9 +556,9 @@ We have 512 features now, instead of evaluating these 512 kernels and coming out
       <footer class="footer">
   <section class="container">
     
-      <p>We don't want to die without any scars.</p>
+      <p>Don't Stop Learning.</p>
     
-     © 2020
+     © 2021
     
     
   </section>

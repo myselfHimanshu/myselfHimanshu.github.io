@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Himanshu Panwar</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Posts on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate>
-    
-	<atom:link href="https://myselfhimanshu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfhimanshu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolutional Neural Network Part 3 : Decision Making</title>
       <link>https://myselfhimanshu.github.io/posts/cnn_03/</link>
@@ -90,9 +86,7 @@ In the previous post we represented the words with a one-hot vector. One of the 
       
       <guid>https://myselfhimanshu.github.io/posts/fibonacci-numbers-series/</guid>
       <description>Fibonacci Number Fibonacci sequence: $F_0=0$, $F_1=1$, and $F_i=F_{i-1}+F_{i-2}$. Given an integer n, find the nth Fibonacci number $F_n$
-Input format : The input consists of a single integer n.
-Output format : Output $F_n$.
-Constraints : $0&amp;lt;=n&amp;lt;=45$
+Input format : The input consists of a single integer n.Output format : Output $F_n$.Constraints : $0&amp;lt;=n&amp;lt;=45$
 CODE
 a = [0,1] for i in range(2,46): a.append(a[i-1] + a[i-2]) def calc_fib(n): return a[n] n = int(input()) print(calc_fib(n)) Last Digit of Large Fibonacci Number Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)</description>
     </item>
@@ -105,9 +99,7 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] + a[i-2]) def calc_fib(n): retur
       <guid>https://myselfhimanshu.github.io/posts/my-first-post/</guid>
       <description>Here&amp;rsquo;s a small python code.
 Sum of two digits Compute the sum of two single digit numbers
-Input format : Integers a and b on the same line (separated by a space).
-Output format : The sum of a and b.
-Constraints : $0&amp;lt;=a,b&amp;lt;=9$
+Input format : Integers a and b on the same line (separated by a space).Output format : The sum of a and b.Constraints : $0&amp;lt;=a,b&amp;lt;=9$
 #Uses python3 import sys input = sys.stdin.read() tokens = input.split() a = int(tokens[0]) b = int(tokens[1]) print(a+b) Maximum Pairwise Product Find the maximum product of two distinct numbers in a sequence of non-negative integers.</description>
     </item>
     

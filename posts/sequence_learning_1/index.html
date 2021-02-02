@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="Himanshu Panwar">
-    <meta name="description" content="Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning">
-    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes">
+    <meta name="author" content="HIMANSHU PANWAR CHRONICLES">
+    <meta name="description" content="Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning">
+    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sequence Model Part 1 : RNNS"/>
@@ -19,8 +19,8 @@
    Example X (input) Y(output) Type     Speech Recognition wave sequence text sequence sequence to sequence   Music Generation nothing or integer wave sequence one to sequence   Sentiment Classification text sequence integer(label) sequence to one   Machine Translation text sequence text sequence sequence to sequence   Video Activity Recognition video frames label(activity) sequence to one    All these problems have different types of input and output formats." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://myselfhimanshu.github.io/posts/sequence_learning_1/" />
-<meta property="article:published_time" content="2019-11-03T21:46:34&#43;05:30"/>
-<meta property="article:modified_time" content="2019-11-03T21:46:34&#43;05:30"/>
+<meta property="article:published_time" content="2019-11-03T21:46:34+05:30" />
+<meta property="article:modified_time" content="2019-11-03T21:46:34+05:30" />
 
 
     
@@ -57,7 +57,7 @@
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   <body class=" ">
@@ -78,6 +78,10 @@
         
           <li class="navigation-item">
             <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
@@ -125,461 +129,350 @@
       </header>
 
       <div>
-        
-
-<h2 id="recurrent-neural-networks">Recurrent Neural Networks</h2>
-
+        <h2 id="recurrent-neural-networks">Recurrent Neural Networks</h2>
 <p>Some Examples</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Example</th>
-<th align="center">X (input)</th>
-<th align="center">Y(output)</th>
-<th align="center">Type</th>
+<th style="text-align:center">Example</th>
+<th style="text-align:center">X (input)</th>
+<th style="text-align:center">Y(output)</th>
+<th style="text-align:center">Type</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">Speech Recognition</td>
-<td align="center">wave sequence</td>
-<td align="center">text sequence</td>
-<td align="center">sequence to sequence</td>
+<td style="text-align:center">Speech Recognition</td>
+<td style="text-align:center">wave sequence</td>
+<td style="text-align:center">text sequence</td>
+<td style="text-align:center">sequence to sequence</td>
 </tr>
-
 <tr>
-<td align="center">Music Generation</td>
-<td align="center">nothing or integer</td>
-<td align="center">wave sequence</td>
-<td align="center">one to sequence</td>
+<td style="text-align:center">Music Generation</td>
+<td style="text-align:center">nothing or integer</td>
+<td style="text-align:center">wave sequence</td>
+<td style="text-align:center">one to sequence</td>
 </tr>
-
 <tr>
-<td align="center">Sentiment Classification</td>
-<td align="center">text sequence</td>
-<td align="center">integer(label)</td>
-<td align="center">sequence to one</td>
+<td style="text-align:center">Sentiment Classification</td>
+<td style="text-align:center">text sequence</td>
+<td style="text-align:center">integer(label)</td>
+<td style="text-align:center">sequence to one</td>
 </tr>
-
 <tr>
-<td align="center">Machine Translation</td>
-<td align="center">text sequence</td>
-<td align="center">text sequence</td>
-<td align="center">sequence to sequence</td>
+<td style="text-align:center">Machine Translation</td>
+<td style="text-align:center">text sequence</td>
+<td style="text-align:center">text sequence</td>
+<td style="text-align:center">sequence to sequence</td>
 </tr>
-
 <tr>
-<td align="center">Video Activity Recognition</td>
-<td align="center">video frames</td>
-<td align="center">label(activity)</td>
-<td align="center">sequence to one</td>
+<td style="text-align:center">Video Activity Recognition</td>
+<td style="text-align:center">video frames</td>
+<td style="text-align:center">label(activity)</td>
+<td style="text-align:center">sequence to one</td>
 </tr>
 </tbody>
 </table>
-
 <p>All these problems have different types of input and output formats.</p>
-
 <h3 id="named-entity-recognition">Named Entity Recognition</h3>
-
 <table>
 <thead>
 <tr>
-<th align="center">Example</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
+<th style="text-align:center">Example</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th></th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">X</td>
-<td align="center">Harry</td>
-<td align="center">Potter</td>
-<td align="center">and</td>
-<td align="center">Hermoine</td>
-<td align="center">Granger</td>
-<td align="center">invented</td>
-<td align="center">new</td>
-<td align="center">spell</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">Harry</td>
+<td style="text-align:center">Potter</td>
+<td style="text-align:center">and</td>
+<td style="text-align:center">Hermoine</td>
+<td style="text-align:center">Granger</td>
+<td style="text-align:center">invented</td>
+<td style="text-align:center">new</td>
+<td style="text-align:center">spell</td>
 </tr>
-
 <tr>
-<td align="center">Y</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
 </tr>
 </tbody>
 </table>
-
 <p>This is a problem where every <code>$X^{(i)&lt;t&gt;}$</code> element has <code>$Y^{(i)&lt;t&gt;}$</code> as ouput element.</p>
-
 <h3 id="representing-words">Representing Words</h3>
-
 <p>We need a vocabulary which will contain all the unique words from the corpus and an index will be assigned to each element.
 The above given example was only one vector. Suppose we have a whole novel, we&rsquo;ll create the vocabulary dictionary.</p>
-
 <p>Vocabulary Dictionary : vocabulary of top 10000 words from novel most occuring words sorted.</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Words</th>
-<th align="center">a</th>
-<th align="center">..</th>
-<th align="center">aron</th>
-<th align="center">&hellip;</th>
-<th align="center">&hellip;</th>
-<th align="center">harry</th>
-<th align="center">..</th>
-<th align="center">..</th>
-<th align="center">potter</th>
-<th align="center">..</th>
-<th align="center">zulu</th>
+<th style="text-align:center">Words</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">aron</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">harry</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">potter</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">zulu</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">Index</td>
-<td align="center">1</td>
-<td align="center">&hellip;</td>
-<td align="center">2</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">3069</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">7867</td>
-<td align="center">&hellip;</td>
-<td align="center">10000</td>
+<td style="text-align:center">Index</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">3069</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">7867</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">10000</td>
 </tr>
 </tbody>
 </table>
-
 <p>We can represent each word as <em>one-hot</em> representation. Where each word vector will be of size of length of vocabulary and the index where word occurs will be 1 and other values will be 0.</p>
-
 <p>Vector of harry <code>$X^{&lt;1&gt;}$</code> will be</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Index_Words</th>
-<th align="center">a</th>
-<th align="center">..</th>
-<th align="center">aron</th>
-<th align="center">&hellip;</th>
-<th align="center">&hellip;</th>
-<th align="center">harry</th>
-<th align="center">..</th>
-<th align="center">..</th>
-<th align="center">potter</th>
-<th align="center">..</th>
-<th align="center">zulu</th>
+<th style="text-align:center">Index_Words</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">aron</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">harry</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">potter</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">zulu</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">&lsquo;Harry&rsquo; Vecctor</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">1</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
+<td style="text-align:center">&lsquo;Harry&rsquo; Vecctor</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
 </tr>
 </tbody>
 </table>
-
 <p>Vector of potter <code>$X^{&lt;2&gt;}$</code> will be</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Index_Words</th>
-<th align="center">a</th>
-<th align="center">..</th>
-<th align="center">aron</th>
-<th align="center">&hellip;</th>
-<th align="center">&hellip;</th>
-<th align="center">harry</th>
-<th align="center">..</th>
-<th align="center">..</th>
-<th align="center">potter</th>
-<th align="center">..</th>
-<th align="center">zulu</th>
+<th style="text-align:center">Index_Words</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">aron</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">&hellip;</th>
+<th style="text-align:center">harry</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">potter</th>
+<th style="text-align:center">..</th>
+<th style="text-align:center">zulu</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">&lsquo;Potter&rsquo; Vecctor</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
-<td align="center">&hellip;</td>
-<td align="center">&hellip;</td>
-<td align="center">1</td>
-<td align="center">&hellip;</td>
-<td align="center">0</td>
+<td style="text-align:center">&lsquo;Potter&rsquo; Vecctor</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&hellip;</td>
+<td style="text-align:center">0</td>
 </tr>
 </tbody>
 </table>
-
 <p>If we have a new word in a sentence but we don&rsquo;t have it in vocabulary, we can add new term in our vocab say &lt;UNK&gt; (UNKNOWN) and assign the value at its index.</p>
-
 <p><em>The aim is to build a model to learn the mapping between X and Y.</em></p>
-
 <h3 id="recurrent-neural-network-model">Recurrent Neural Network Model</h3>
-
 <p><em>Why not a standard Network?</em></p>
-
 <ol>
-<li>Inputs and outputs can have different lenghts in different examples.<br />
+<li>Inputs and outputs can have different lenghts in different examples.<!-- raw HTML omitted -->
 Padding can be used, but it is not a good solution.</li>
-<li>Doesn&rsquo;t share features learned across different positions of text.<br />
+<li>Doesn&rsquo;t share features learned across different positions of text.<!-- raw HTML omitted -->
 Using feature sharing like in CNNs can reduce number of parameters in the model.</li>
 </ol>
-
 <p>An RNN architecture where:</p>
-
 <ul>
-<li><code>$Tx==Ty$</code> same length sequence.</li>
-
-<li><p><code>$a^0$</code> is initialized with zeros, can be random.
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn1.png" alt="" /></p></li>
-
-<li><p>In here for the prediction of <code>$y^{&lt;3&gt;}$</code>, model will use not only <code>$X^{&lt;3&gt;}$</code> but also the information that it is getting from the previous two elements i.e <code>$X^{&lt;2&gt;}$</code> and <code>$X^{&lt;1&gt;}$</code>.</p></li>
-
-<li><p>In RNN, the current prediction <code>$y^{&lt;t&gt;}$</code> will only depend on previous inputs but not the future inputs. (This case will be solved by <em>Bidirectional RNN</em>)</p></li>
+<li>
+<p><code>$Tx==Ty$</code> same length sequence.</p>
+</li>
+<li>
+<p><code>$a^0$</code> is initialized with zeros, can be random.
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn1.png" alt=""></p>
+</li>
+<li>
+<p>In here for the prediction of <code>$y^{&lt;3&gt;}$</code>, model will use not only <code>$X^{&lt;3&gt;}$</code> but also the information that it is getting from the previous two elements i.e <code>$X^{&lt;2&gt;}$</code> and <code>$X^{&lt;1&gt;}$</code>.</p>
+</li>
+<li>
+<p>In RNN, the current prediction <code>$y^{&lt;t&gt;}$</code> will only depend on previous inputs but not the future inputs. (This case will be solved by <em>Bidirectional RNN</em>)</p>
+</li>
 </ul>
-
 <p><strong>Forward Propogation</strong></p>
-
 <p>RNN Unit :
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn1_1.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn1_1.png" alt=""></p>
 <p>Notation :</p>
-
-<p><code>$$a^{&lt;t&gt;} = g(W_{aa}a^{&lt;t-1&gt;} + W_{ax}x^{&lt;t&gt;} + b_a)$$
-$$y^{&lt;t&gt;} = g(W_{ya}a^{&lt;t&gt;} + b_y)$$</code></p>
-
+<p><code>$$a^{&lt;t&gt;} = g(W_{aa}a^{&lt;t-1&gt;} + W_{ax}x^{&lt;t&gt;} + b_a)$$ $$y^{&lt;t&gt;} = g(W_{ya}a^{&lt;t&gt;} + b_y)$$</code></p>
 <p>The activation function of <code>$a$</code> is usually <em>tanh</em> or <em>relu</em> and <code>$y$</code> depends on the task, some activation functions like <em>sigmoid</em> or <em>softmax</em>.</p>
-
 <p><strong>Backward Propogation through time</strong></p>
-
 <p>Deep learning frameworks do backpropogation automatically for us. The architecture looks like this :
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn2.png" alt="" /></p>
-
-<p>Here, <code>$W_a, b_a, W_y, b_y$</code> are shared across each element of the sequence.<br /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn2.png" alt=""></p>
+<p>Here, <code>$W_a, b_a, W_y, b_y$</code> are shared across each element of the sequence.<!-- raw HTML omitted --></p>
 <p>The loss here that we optimize is:</p>
-
-<p><code>$$L(y,\hat{y}) = \sum_{t=1}^T L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;})$$
-$$L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;}) = -y^{&lt;t&gt;}log(\hat{y}^{&lt;t&gt;}) - (1-y^{&lt;t&gt;})log(1-\hat{y}^{&lt;t&gt;})$$</code></p>
-
+<p><code>$$L(y,\hat{y}) = \sum_{t=1}^T L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;})$$ $$L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;}) = -y^{&lt;t&gt;}log(\hat{y}^{&lt;t&gt;}) - (1-y^{&lt;t&gt;})log(1-\hat{y}^{&lt;t&gt;})$$</code></p>
 <p>Each loss is backpropogated in opposite direction of forward propogation steps and the parameters are updated by gradient descent.</p>
-
 <h3 id="different-types-of-rnns">Different types of RNNs</h3>
-
-<p><img src="https://karpathy.github.io/assets/rnn/diags.jpeg" alt="" /></p>
-
+<p><img src="https://karpathy.github.io/assets/rnn/diags.jpeg" alt=""></p>
 <p>The architecture that we have described before is <em>many to many</em>. Other example with its architecture are mentioned above in table.</p>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn3.png" alt="" /></p>
-
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn3.png" alt=""></p>
 <p>In above image there are two architecture descibed.</p>
-
 <ol>
 <li>One to Many : Music Generation. We are feeding the predicted ouput from the first element to the input of second element.</li>
 <li>Many to Many : Machine Translation. Here we can have different <code>$T_X, T_Y$</code> (length of input <code>$X$</code> and <code>$Y$</code> respectively). There are <em>encoder</em> and <em>decoder</em> part to this architecture, where output of encoder is feeded to decoder to generate the ouputs. And encoder and decoder have different weights matrices.</li>
 </ol>
-
 <h3 id="language-model-and-sequence-generation">Language Model and Sequence Generation</h3>
-
 <p><em>What is language model?</em></p>
-
 <ol>
 <li>The apple and <strong>pair</strong> salad.</li>
 <li>The apple and <strong>pear</strong> salad.</li>
 </ol>
-
 <ul>
 <li>The goal is to differentiate the two sentences in speech recognition probelem.</li>
 <li>These two sentences sounds the same. We want the model to give us the second statement.</li>
 </ul>
-
 <p>So the language model predicts on the basis of likelihood or probability of the sentence.</p>
-
 <p><em>How do build this language model?</em></p>
-
 <ul>
 <li>Get the Training set: large corpus.</li>
 <li>Tokenize each sentence, get the vocabulary and convert each element to one-hot vector representation.</li>
-<li>Add <EOS>(eod of statement) as token to every example to know the end of a example. And add <UNK>(unknown) and <EOS> token both to the vocabualry.</li>
+<li>Add <!-- raw HTML omitted -->(eod of statement) as token to every example to know the end of a example. And add <!-- raw HTML omitted -->(unknown) and <!-- raw HTML omitted --> token both to the vocabualry.</li>
 </ul>
-
-<p>For an example, <em>Cats average 15 hours of sleep a day <EOS></em></p>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn4.png" alt="" /></p>
-
+<p>For an example, <em>Cats average 15 hours of sleep a day <!-- raw HTML omitted --></em></p>
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn4.png" alt=""></p>
 <ul>
 <li>So given <em>Cats average 15</em> what is the probability the word is <em>hours</em>.</li>
 <li>To get a probability of a given sentence</li>
 </ul>
-
 <p><code>$$P(y^1, y^2, y^3) = P(y^1) * P(y^2|y^1) * P(y^3|y^2,y^1)$$</code></p>
-
 <h3 id="sample-novel-sequences">Sample Novel Sequences</h3>
-
 <ul>
 <li>What we do in here is first we train suppose all the sentences of Harry Potter books.</li>
 <li>Then we randomly select a word let say one of the top word and feed that into next timestamp and then sample a new word from the prediction we got.</li>
 <li>Use the probabilities output by the RNN to randomly sample a chosen word for that time-step as <code>$\hat{y}^{&lt;t&gt;}$</code>. Then pass this selected word to the next time-step.
 See this image here</li>
 </ul>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn5.png" alt="" /></p>
-
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn5.png" alt=""></p>
 <ul>
 <li>We feed in <code>$a^{&lt;0&gt;} = zeros$</code> and <code>$x^{&lt;1&gt;} = zeros$</code> vector.</li>
 <li>We will choose a prediction randomly from distribution obtained by <code>$y^{&lt;1&gt;}$</code>. Let assume that the word is <em>the</em>.</li>
 <li>We pass the last predicted output and activation to the next timestamp and again will choose a prediction randomly.</li>
 <li>Repeat the steps until we find <em>&lt;EOS&gt;</em> token.</li>
 </ul>
-
 <p>Now we have our own series.</p>
-
 <h3 id="vanishing-gradients-in-rnn">Vanishing Gradients in RNN</h3>
-
-<p>One of the problem with RNN is <em>vanishing gradient</em>. Suppose for an example,<br />
-&ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo; <br />
-&ldquo;<em>The cats, which actually ate &hellip;&hellip;{100}, were full</em>&rdquo; <br /></p>
-
+<p>One of the problem with RNN is <em>vanishing gradient</em>. Suppose for an example,<!-- raw HTML omitted -->
+&ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo; <!-- raw HTML omitted -->
+&ldquo;<em>The cats, which actually ate &hellip;&hellip;{100}, were full</em>&rdquo; <!-- raw HTML omitted --></p>
 <p>Here we need to remember the dependencies of <em>cat -&gt; was</em> and <em>cats -&gt; were</em> the singular/plural form for long time. This long sentences can be interpreted as DEEP RNN and here the gradients of cat/cats will no effect on was/were. While backpropogating mutilplying the fractions can lead to vanish the gradient while multiplication of large numbers explodes the gradient where weights values becomes <code>NaN</code> which is also called gradient exploding problem.</p>
-
 <p>So RNNs are not good in learning <em>long-term dependencies</em>. Exploding gradient can be solved by <em>gradient clipping</em>.</p>
-
 <h3 id="gated-recurrent-unit-gru">Gated Recurrent Unit (GRU)</h3>
-
 <p>This is updated version of RNN which solves <em>long-term dependencies</em> and <em>vanishing gradient</em> problem.</p>
-
-<p>We will go step by step of this GRU Unit (<em>Simplified Version</em>).<br /></p>
-
+<p>We will go step by step of this GRU Unit (<em>Simplified Version</em>).<!-- raw HTML omitted --></p>
 <ul>
-<li>Our example : &ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&ldquo;</li>
+<li>Our example : &ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo;</li>
 <li>The unit will have a new variable <code>$C = memory cell$</code>. This memory cell will tell us whether the cat was singular or plural. In other words what to memorize and what to not.</li>
 <li>At timestamp <code>t</code> -&gt; <code>$C^{&lt;t&gt;} = a^{&lt;t&gt;}$</code></li>
 <li>At every timestamp we will compute a candidate for the memory cell.</li>
 </ul>
-
 <p><code>$$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$</code></p>
-
 <ul>
 <li>Then there is an update gate which have value between 0 and 1</li>
 </ul>
-
 <p><code>$$\Gamma_U =  sigmoid(W_U[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$</code></p>
-
 <ul>
 <li>We are thinking to update <code>$C^{&lt;t&gt;}$</code> with <code>$\tilde{C}^{&lt;t&gt;}$</code> and the gate <code>$\Gamma_U$</code> will tell us whether to update or not.</li>
 </ul>
-
 <p><code>$$C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (1-\Gamma_U) * C^{&lt;t-1&gt;}$$</code></p>
-
 <p>The GRU Unit:</p>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn6.png" alt="" /></p>
-
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn6.png" alt=""></p>
 <p>Here the shaded box is our last equation <code>$(\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (1-\Gamma_U) * C^{&lt;t-1&gt;}$</code></p>
-
 <p>Because the <code>$\Gamma_U$</code> is usually a small number like 0.00001, it doesn&rsquo;t suffer from vanishing gradient as in this case <code>$C^{&lt;t&gt;} = C^{&lt;t-1&gt;}$</code></p>
-
 <p><em>GRU Unit (Full Version)</em></p>
-
 <p>Notation :</p>
-
-<p><code>$$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[\Gamma_r * C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$
-$$\Gamma_U =  sigmoid(W_U[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$
-$$\Gamma_r =  sigmoid(W_r[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_r)$$
-$$C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (1-\Gamma_U) * C^{&lt;t-1&gt;}$$</code></p>
-
+<p><code>$$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[\Gamma_r * C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$ $$\Gamma_U =  sigmoid(W_U[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$ $$\Gamma_r =  sigmoid(W_r[C^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_r)$$ $$C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (1-\Gamma_U) * C^{&lt;t-1&gt;}$$</code></p>
 <p>This <code>$\Gamma_r$</code> can be interpreted as relevance, how relevant is <code>$C^{&lt;t-1&gt;}$</code> to compute <code>$\tilde{C}^{&lt;t&gt;}$</code>.</p>
-
 <h3 id="long-short-term-memory-lstm">Long Short Term Memory (LSTM)</h3>
-
 <p>The LSTM is a variation of the same theme as GRU but with an additional <em>forgot</em> gate. This also solves <em>long-term dependencies</em> and <em>vanishing gradient</em> problem and is more powerful than GRUs.</p>
-
 <p>The LSTM Unit:
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn7.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn7.png" alt=""></p>
 <p>Notations:</p>
-
-<p><code>$$C^{&lt;t&gt;} != a^{&lt;t&gt;}$$
-$$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$
-$$\Gamma_U =  sigmoid(W_U[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$
-$$ \Gamma_f =  sigmoid(W_f[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_f) $$
-$$ \Gamma_o =  sigmoid(W_o[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_o) $$
-$$ C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (\Gamma_f * C^{&lt;t-1&gt;})  $$
-$$ a^{&lt;t&gt;} = \Gamma_U * C^{&lt;t&gt;} $$</code></p>
-
-<p>Here we have 3 gates <code>$\Gamma_U$</code> as <em>update gate</em> ,  <code>$\Gamma_f$</code> as <em>forget gate</em> and <code>$\Gamma_o$</code> as <em>output gate</em> <br />
+<p><code>$$C^{&lt;t&gt;} != a^{&lt;t&gt;}$$ $$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$ $$\Gamma_U =  sigmoid(W_U[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$ $$ \Gamma_f =  sigmoid(W_f[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_f) $$ $$ \Gamma_o =  sigmoid(W_o[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_o) $$ $$ C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (\Gamma_f * C^{&lt;t-1&gt;})  $$ $$ a^{&lt;t&gt;} = \Gamma_U * C^{&lt;t&gt;} $$</code></p>
+<p>Here we have 3 gates <code>$\Gamma_U$</code> as <em>update gate</em> ,  <code>$\Gamma_f$</code> as <em>forget gate</em> and <code>$\Gamma_o$</code> as <em>output gate</em> <!-- raw HTML omitted -->
 One of the advantages of GRU is that it&rsquo;s simpler and can be used to build much bigger network but the LSTM is more powerful and general.</p>
-
 <h3 id="bidirectional-rnns">Bidirectional RNNs</h3>
-
-<p>Suppose for an example,<br />
-<em>He said,&ldquo;Teddy bears are on sale&rdquo;</em> <br />
-<em>He said,&ldquo;Teddy Roosevelt was a great president&rdquo;</em> <br /></p>
-
+<p>Suppose for an example,<!-- raw HTML omitted -->
+<em>He said,&ldquo;Teddy bears are on sale&rdquo;</em> <!-- raw HTML omitted -->
+<em>He said,&ldquo;Teddy Roosevelt was a great president&rdquo;</em> <!-- raw HTML omitted --></p>
 <p>If we look just first three words, we won&rsquo;t be able to say if <em>teddy</em> is a toy or person. This is why we need the information from the future elements also.</p>
-
 <p>The architecture:
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn8.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn8.png" alt=""></p>
 <ul>
 <li>BiRNN is an acyclic graph.</li>
 <li>The prediction <code>$\hat{y}^{&lt;t&gt;} = g(W_y[\overrightarrow{a}^{&lt;t&gt;}, \overleftarrow{a}^{&lt;t&gt;}] + b_y)$</code></li>
 <li>The disadvantage of BiRNNs is that you need the full sentence before you make any predictions. So it is not suitable for live speech recognition.</li>
 </ul>
-
 <h3 id="deep-rnns">Deep RNNs</h3>
-
 <p>The architecture with 3 stacked layers
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn9.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn9.png" alt=""></p>
 <p>In feed forward DNNs, there could be 100 or 200 layers. In DRNNs stacking 3 layers is already considered deep and expensive to train.</p>
-
 <h2 id="problem-statements">Problem Statements</h2>
-
 <p><em>Coursera Assignment</em></p>
-
 <ul>
-<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Building%2Ba%2BRecurrent%2BNeural%2BNetwork%2B-%2BStep%2Bby%2BStep%2B-%2Bv3.ipynb" target="_blank">Building Neural Network Step by Step.</a></li>
-<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Dinosaurus%2BIsland%2B--%2BCharacter%2Blevel%2Blanguage%2Bmodel%2Bfinal%2B-%2Bv3.ipynb" target="_blank">Dinosaur Island - Character level language Modeling.</a></li>
-<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Improvise%2Ba%2BJazz%2BSolo%2Bwith%2Ban%2BLSTM%2BNetwork%2B-%2Bv3.ipynb" target="_blank">Jazz Improvisation with LSTM.</a></li>
+<li><!-- raw HTML omitted -->Building Neural Network Step by Step.<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Dinosaur Island - Character level language Modeling.<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Jazz Improvisation with LSTM.<!-- raw HTML omitted --></li>
 </ul>
 
       </div>
@@ -640,9 +533,9 @@ One of the advantages of GRU is that it&rsquo;s simpler and can be used to build
       <footer class="footer">
   <section class="container">
     
-      <p>We don't want to die without any scars.</p>
+      <p>Don't Stop Learning.</p>
     
-     © 2020
+     © 2021
     
     
   </section>

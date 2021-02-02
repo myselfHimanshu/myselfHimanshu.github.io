@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="Himanshu Panwar">
-    <meta name="description" content="Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning">
-    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes">
+    <meta name="author" content="HIMANSHU PANWAR CHRONICLES">
+    <meta name="description" content="Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning">
+    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setting Up Paperspace for Deep Learning"/>
@@ -17,8 +17,8 @@
 <meta property="og:description" content="Step by Step Guide to Setup Paperspace Machine for Deep Learning  Create an Account : paperspace.com Sign up with my promo code for Paperspace to get a $10 credit! Add in credit card information (required, even if you have a promo code) Go to https://www.paperspace.com/console/machines and click New Machine. Choose a region near to you. Choose Ubuntu 16.04 in Linux Templates. Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://myselfhimanshu.github.io/posts/setting_paperspace_dl/" />
-<meta property="article:published_time" content="2019-01-01T14:26:21&#43;05:30"/>
-<meta property="article:modified_time" content="2019-01-01T14:26:21&#43;05:30"/>
+<meta property="article:published_time" content="2019-01-01T14:26:21+05:30" />
+<meta property="article:modified_time" content="2019-01-01T14:26:21+05:30" />
 
 
     
@@ -55,7 +55,7 @@
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   <body class=" ">
@@ -76,6 +76,10 @@
         
           <li class="navigation-item">
             <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
@@ -121,10 +125,7 @@
       </header>
 
       <div>
-        
-
-<h2 id="step-by-step-guide-to-setup-paperspace-machine-for-deep-learning">Step by Step Guide to Setup Paperspace Machine for Deep Learning</h2>
-
+        <h2 id="step-by-step-guide-to-setup-paperspace-machine-for-deep-learning">Step by Step Guide to Setup Paperspace Machine for Deep Learning</h2>
 <ul>
 <li>Create an Account : <a href="https://www.paperspace.com/">paperspace.com</a></li>
 <li>Sign up with my <a href="https://www.paperspace.com/&amp;R=DKCCRUZ">promo code</a> for Paperspace to get a $10 credit!</li>
@@ -132,34 +133,31 @@
 <li>Go to <a href="https://www.paperspace.com/console/machines">https://www.paperspace.com/console/machines</a> and click <code>New Machine</code>.</li>
 <li>Choose a region near to you.</li>
 <li>Choose <code>Ubuntu 16.04</code> in Linux Templates.</li>
-
-<li><p>Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving). And create the machine.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NVIDIA P4000
+<li>Create new P4000 machine with at least 50 GB storage and a public IP and turn off Auto Snapshot (just for saving). And create the machine.</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">NVIDIA P4000
 - Architecture: Pascal
 - CUDA Cores: 1792
 - GPU Memory: 8 GB GDDR5
-- TeraFLOPS: 5.3</pre></div></li>
-
-<li><p>You will get an email regarding your password and ssh command.</p></li>
-
-<li><p>Enter the console on your browser, insert your password and if you want to change the current password :
-<kbd>$ passwd</kbd></p></li>
+- TeraFLOPS: 5.3
+</code></pre></div><ul>
+<li>You will get an email regarding your password and ssh command.</li>
+<li>Enter the console on your browser, insert your password and if you want to change the current password :
+<!-- raw HTML omitted -->$ passwd<!-- raw HTML omitted --></li>
 </ul>
-
 <h2 id="ssh-to-paperspace-machine-from-your-local-machine">SSH to paperspace machine from your local machine</h2>
-
 <ul>
 <li>Install <code>ssh-copy-id</code>. Here&rsquo;s how to install it (Mac):</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id</code></pre></div>
-<ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install ssh-copy-id
+</code></pre></div><ul>
 <li><code>cd</code> into <code>~/.ssh</code> directory</li>
 <li>if you don&rsquo;t have an <code>.ssh</code> directory in your home folder, create it (<code>mkdir ~/.ssh</code>)</li>
 <li>if you don&rsquo;t have an <code>id_rsa.pub</code> file in your <code>~/.ssh</code> folder, create it (<code>ssh-keygen</code>)</li>
 <li>replace IP address in syntax below with your own, and run command</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###</code></pre></div>
-<ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i ~/.ssh/id_rsa.pub paperspace@74.###.###.###
+</code></pre></div><ul>
 <li>Use the password from the paperspace email.</li>
 <li>Add Paperspace info to <code>config</code> file</li>
 <li>make sure you are in the right directory (<code>cd ~/.ssh</code>)</li>
@@ -171,56 +169,46 @@
      IdentityFile ~/.ssh/id_rsa
      # StrictHostKeyChecking no  
      User paperspace
-     LocalForward 8888 localhost:8888</code></pre></div>
-<ul>
-<li>here&rsquo;s the nano command for saving file :  <kbd> ctrl o </kbd>  -&gt;   <kbd> Enter </kbd><br /></li>
-<li>here&rsquo;s the nano command for exiting a file :  <kbd> ctrl x </kbd></li>
+     LocalForward 8888 localhost:8888
+</code></pre></div><ul>
+<li>here&rsquo;s the nano command for saving file :  <!-- raw HTML omitted --> ctrl o <!-- raw HTML omitted -->  -&gt;   <!-- raw HTML omitted --> Enter <!-- raw HTML omitted --></li>
+<li>here&rsquo;s the nano command for exiting a file :  <!-- raw HTML omitted --> ctrl x <!-- raw HTML omitted --></li>
 </ul>
-
 <h2 id="ssh-from-local-machine-and-setting-up-anaconda">SSH from local machine and setting up Anaconda</h2>
-
 <ul>
-<li>Fire up the terminal and type in : <kbd>ssh paperspace</kbd></li>
+<li>Fire up the terminal and type in : <!-- raw HTML omitted -->ssh paperspace<!-- raw HTML omitted --></li>
 <li>If you want to change your password, here are the commands:
-<kbd>passwd</kbd></li>
+<!-- raw HTML omitted -->passwd<!-- raw HTML omitted --></li>
 </ul>
-
 <p>This will ask for the current password and then enter your password.</p>
-
 <p>Next step after logging in the paperspace machine.</p>
-
 <ul>
-<li><p>Create a directory saying <code>Downloads</code>.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ cd Downloads
+<li>Create a directory saying <code>Downloads</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cd Downloads
 $ wget -c https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 $ chmod +x Anaconda3-2018.12-Linux-x86_64.sh
 $ ./Anaconda3-2018.12-Linux-x86_64.sh
-$ export PATH=~/anaconda3/bin:$PATH</pre></div></li>
-
-<li><p>Check conda version : <kbd>conda &ndash;version</kbd></p></li>
+$ export PATH=~/anaconda3/bin:$PATH
+</code></pre></div><ul>
+<li>Check conda version : <!-- raw HTML omitted -->conda &ndash;version<!-- raw HTML omitted --></li>
 </ul>
-
 <h2 id="install-pytorch">Install pytorch</h2>
-
 <p>Install pytorch</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ pip install numpy torchvision_nightly
-$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html</pre></div>
-<p>Checking if cuda is working:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ python
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ pip install numpy torchvision_nightly
+$ pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html
+</code></pre></div><p>Checking if cuda is working:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ python
 &gt;&gt;&gt; import torch
-&gt;&gt;&gt; torch.cuda.is_available()</pre></div>
-<p>If the above command returns False. Then we need to update/add the nvidia driver.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo add-apt-repository ppa:graphics-drivers/ppa
+&gt;&gt;&gt; torch.cuda.is_available()
+</code></pre></div><p>If the above command returns False. Then we need to update/add the nvidia driver.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo add-apt-repository ppa:graphics-drivers/ppa
 $ sudo apt-get update
-$ sudo apt-get install nvidia-396 nvidia-modprobe</pre></div>
-<p>Then restart the instance and check <kbd>$ nvdia-smi </kbd> and run pytorch command again and check.</p>
-
+$ sudo apt-get install nvidia-396 nvidia-modprobe
+</code></pre></div><p>Then restart the instance and check <!-- raw HTML omitted -->$ nvdia-smi <!-- raw HTML omitted --> and run pytorch command again and check.</p>
 <p>This should solve the problem. If you still face some problems, ping in comments.</p>
-
 <p>And the setup is complete. In the next post, we will build a model in pytorch.</p>
-
 <p><strong>Remember to shut the notebook down and STOP Instance!</strong></p>
-
 <ul>
 <li>Paperspace has an option where you can choose to automatically shut down your machine at: 1 hr, 8 hrs, 1 day, 1 week. I chose the 8 hrs option.</li>
 <li>Note that the auto shut down works only for the browser console. Paperspace will not auto shut down your server if you SSH to it.</li>
@@ -284,9 +272,9 @@ $ sudo apt-get install nvidia-396 nvidia-modprobe</pre></div>
       <footer class="footer">
   <section class="container">
     
-      <p>We don't want to die without any scars.</p>
+      <p>Don't Stop Learning.</p>
     
-     © 2020
+     © 2021
     
     
   </section>

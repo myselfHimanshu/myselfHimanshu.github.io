@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="Himanshu Panwar">
-    <meta name="description" content="Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning">
-    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes">
+    <meta name="author" content="HIMANSHU PANWAR CHRONICLES">
+    <meta name="description" content="Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning">
+    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sequence Model Part 2 : Word Embeddings"/>
@@ -21,8 +21,8 @@ Word Embeddings is the way of representing the words. It lets us understand the 
 In the previous post we represented the words with a one-hot vector. One of the weakness of one-hot vector representation is that it treats a word as a thing and doesn&rsquo;t allow to generalize across the words." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://myselfhimanshu.github.io/posts/sequence_learning_2/" />
-<meta property="article:published_time" content="2019-11-10T10:22:19&#43;05:30"/>
-<meta property="article:modified_time" content="2019-11-10T10:22:19&#43;05:30"/>
+<meta property="article:published_time" content="2019-11-10T10:22:19+05:30" />
+<meta property="article:modified_time" content="2019-11-10T10:22:19+05:30" />
 
 
     
@@ -59,7 +59,7 @@ In the previous post we represented the words with a one-hot vector. One of the 
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   <body class=" ">
@@ -80,6 +80,10 @@ In the previous post we represented the words with a one-hot vector. One of the 
         
           <li class="navigation-item">
             <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
@@ -127,148 +131,108 @@ In the previous post we represented the words with a one-hot vector. One of the 
       </header>
 
       <div>
-        
-
-<h2 id="natural-language-processing-and-word-embeddings">Natural Language Processing and Word Embeddings</h2>
-
+        <h2 id="natural-language-processing-and-word-embeddings">Natural Language Processing and Word Embeddings</h2>
 <h3 id="word-embeddings">Word Embeddings</h3>
-
 <p><strong>Word Representations</strong></p>
-
 <p>Word Embeddings is the way of representing the words. It lets us understand the analogies between words like (&ldquo;king&rdquo; and &ldquo;queen&rdquo;) or (&ldquo;man&rdquo; and &ldquo;woman&rdquo;).</p>
-
 <p>In the previous post we represented the words with a <em>one-hot vector</em>. One of the weakness of one-hot vector representation is that it treats a word as a thing and doesn&rsquo;t allow to generalize across the words.</p>
-
 <p>The dot-product between two one-hot vectors is always zero. We can&rsquo;t get any similarity between the words using this representation for our other problems.</p>
-
 <p>Solution is to learn  some featurized representation.</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">F/W</th>
-<th align="center">Man</th>
-<th align="center">Woman</th>
-<th align="center">King</th>
-<th align="center">Queen</th>
-<th align="center">Apple</th>
-<th align="center">Orange</th>
+<th style="text-align:center">F/W</th>
+<th style="text-align:center">Man</th>
+<th style="text-align:center">Woman</th>
+<th style="text-align:center">King</th>
+<th style="text-align:center">Queen</th>
+<th style="text-align:center">Apple</th>
+<th style="text-align:center">Orange</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">Gender</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">-0.95</td>
-<td align="center">0.97</td>
-<td align="center">0.00</td>
-<td align="center">0.01</td>
+<td style="text-align:center">Gender</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-0.95</td>
+<td style="text-align:center">0.97</td>
+<td style="text-align:center">0.00</td>
+<td style="text-align:center">0.01</td>
 </tr>
-
 <tr>
-<td align="center">Royal</td>
-<td align="center">0.01</td>
-<td align="center">0.02</td>
-<td align="center">0.93</td>
-<td align="center">0.95</td>
-<td align="center">-0.01</td>
-<td align="center">0.00</td>
+<td style="text-align:center">Royal</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">0.02</td>
+<td style="text-align:center">0.93</td>
+<td style="text-align:center">0.95</td>
+<td style="text-align:center">-0.01</td>
+<td style="text-align:center">0.00</td>
 </tr>
-
 <tr>
-<td align="center">Age</td>
-<td align="center">0.03</td>
-<td align="center">0.02</td>
-<td align="center">0.7</td>
-<td align="center">0.6</td>
-<td align="center">0.03</td>
-<td align="center">-0.02</td>
+<td style="text-align:center">Age</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">0.02</td>
+<td style="text-align:center">0.7</td>
+<td style="text-align:center">0.6</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">-0.02</td>
 </tr>
-
 <tr>
-<td align="center">Food</td>
-<td align="center">0.02</td>
-<td align="center">0.01</td>
-<td align="center">0.02</td>
-<td align="center">0.01</td>
-<td align="center">0.95</td>
-<td align="center">0.97</td>
+<td style="text-align:center">Food</td>
+<td style="text-align:center">0.02</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">0.02</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">0.95</td>
+<td style="text-align:center">0.97</td>
 </tr>
-
 <tr>
-<td align="center">..</td>
-<td align="center">..</td>
-<td align="center">..</td>
-<td align="center">..</td>
-<td align="center">..</td>
-<td align="center">..</td>
-<td align="center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
+<td style="text-align:center">..</td>
 </tr>
 </tbody>
 </table>
-
 <p>We can come up with many features(the rows) let say we have 300 features, then this 300 dimension vector of value in columns becomes our representation.</p>
-
 <p>To visualize this representation we use <em>t-SNE</em> algo to reduce the features to 2-dimension
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_1.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_1.png" alt=""></p>
 <p>We can see the related words are grouped together.</p>
-
 <p><strong>Using Word Embeddings</strong></p>
-
 <p>Given a named-entity recognition problem.
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_2.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_2.png" alt=""></p>
 <p>In this example <em>Sally Johnson</em> is a person name. And one way to know that it is person name and not organization is that <em>orange farmer</em> is a person. Suppose now we have our trained model using featurized word embeddings.</p>
-
 <p>Now we get a new test example say <em>&ldquo;Robert Lin is an apple farmer&rdquo;</em>, the model will generalize that <em>apple</em> and <em>orange</em> are quite similar so <em>Robert Line</em> should be person&rsquo;s name. We can find some pre-trained word embeddings vectors online which we can be used in our own problem.</p>
-
 <p>Transfer Learning and Word Embeddings:</p>
-
 <ul>
 <li>Learn word embeddings from a large text corpus (1-100B words) or download pre-trained embedding online.</li>
 <li>Transfer embedding to new task with the smaller training set (say, 100k words).</li>
 <li>Optional: continue to finetune the word embeddings with new data.
-
 <ul>
 <li>You bother doing this if your smaller training set (from step 2) is big enough.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>The advantages of using word embeddings is that it reduces the size of the input. 10k one hot compared to 300 features vector.</p>
-
 <p><strong>Properties of Word Embeddings</strong></p>
-
 <p>It helps with analogy reasoning. Let&rsquo;s see the above table. We need to conclude :</p>
-
 <p><code>$$( Man : Woman ) :: ( King : ? )$$</code></p>
-
 <p>Get the vectors of  <code>$e_{man}, e_{woman}, e_{king}, e_{queen}$</code></p>
-
-<p><code>$$e_{man} - e_{woman} \approx [-2, 0, 0, 0]$$
-$$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
-
+<p><code>$$e_{man} - e_{woman} \approx [-2, 0, 0, 0]$$ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <p>So the difference is about the gender in both. So to get this analogy we need to find a word which holds the equation true.</p>
-
 <p><code>$$find(w) = \underset{w\in W}{\operatorname{argmax}} (similarity(e_w,e_{king} - e_{man} + e_{woman}))$$</code></p>
-
 <p>Cosine Similarity :</p>
-
 <p><code>$$CosineSimilarity(u, v) = \frac {u . v} {||u||_2 ||v||_2} = cos(\theta)$$</code></p>
-
 <p>We can also use Euclidean distance as a similarity function.</p>
-
 <h3 id="learning-word-embeddings-word2vec-and-glove">Learning Word Embeddings: Word2vec and GloVe</h3>
-
 <p><em>How do we learn the embedding matrix?</em></p>
-
 <p>First look at this diagram.
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_4.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_4.png" alt=""></p>
 <p>Here we need to predict the next word so we use neural network to build the language model.</p>
-
 <ul>
 <li><code>$O_i$</code> is one-hot vector</li>
 <li><code>$E$</code> is featurized matrix of parameters</li>
@@ -276,58 +240,43 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <li>These vectors are then feeded to a NN layer and then feeds to softmax which classifies the likelihood of words in vocab.</li>
 <li>The aim is to optimize the matrix <code>$E$</code> and the NN parameters. We need to maximize the likelihood to predict the next word given the context.</li>
 </ul>
-
-<p>The context that we define to train the model can be different. For an example in this case we can give last 4 words and ask to predict the next word or we can give 2 words from right and 2 words from left and ask to predict the middle word or we can give nearby <sup>1</sup>&frasl;<sub>2</sub> words and the ask to predict the next word etc.</p>
-
+<p>The context that we define to train the model can be different. For an example in this case we can give last 4 words and ask to predict the next word or we can give 2 words from right and 2 words from left and ask to predict the middle word or we can give nearby 1/2 words and the ask to predict the next word etc.</p>
 <p><strong>Word2vec</strong></p>
-
 <p><em>Skip-grams</em></p>
-
 <p>Let say we have a sentence : <em>&ldquo;I want a glass of orange juice to go along with my cereal&rdquo;</em>. We choose a <strong>context</strong> and <strong>target</strong> word</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Context</th>
-<th align="center">Target</th>
+<th style="text-align:center">Context</th>
+<th style="text-align:center">Target</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">orange</td>
-<td align="center">juice</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">juice</td>
 </tr>
-
 <tr>
-<td align="center">orange</td>
-<td align="center">glass</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">glass</td>
 </tr>
-
 <tr>
-<td align="center">orange</td>
-<td align="center">my</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">my</td>
 </tr>
 </tbody>
 </table>
-
 <p>This is supervised problem and learning words in a given window size given context is hard as there can be many words that can come in that window. We want to learn this to get word embedding model.</p>
-
 <p><em>Model</em></p>
-
 <ul>
-<li>Vocab-size = <code>V</code> =10k<br /></li>
+<li>Vocab-size = <code>V</code> =10k</li>
 <li>Context word <code>c</code> and target word <code>t</code> and want to learn mapping of <code>c</code> to <code>t</code> .</li>
 <li>We get <code>$e_c$</code> by <code>$np.dot(E, O_c)$</code></li>
 <li>We use softmax layer to get <code>P(t|c)</code> to get <code>$\hat{y}$</code></li>
 </ul>
-
 <p>Softmax :</p>
-
 <p><code>$$P(t|c) = \frac {e^{\theta_t^{T}e_c}}{\sum_{v=1}^V e^{\theta_v^{T}e_c}}$$</code></p>
-
 <p><code>$\theta_t$</code> is parameter associated with output <code>t</code> i.e. what is a chance of <code>t</code> being a label.</p>
-
 <ul>
 <li>Will use the cross-entropy loss function.</li>
 <li>This is skip-gram model.</li>
@@ -335,126 +284,88 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <li>Solution to this is to use <em>Hierarchical softmax classifier</em>.</li>
 <li>Here, the softmax objective is slow to compute.</li>
 </ul>
-
 <p>Word2vec paper includes two ideas of learning word embeddings. One is skip-gram model and another is CBoW (continious bag-of-words).</p>
-
 <p><strong>Negative Sampling</strong></p>
-
 <p>This is much more efficient learning algorithm that the above model. It does something similar to the skip-gram model.</p>
-
 <p>Lets go with the same sentence : <em>&ldquo;I want a glass of orange juice to go along with my cereal&rdquo;</em>. We choose a <strong>context</strong> <code>c</code> and <strong>target_word</strong> <code>t</code> word with one more attribute saying if <code>c</code> and <code>t</code> are context pair <code>y</code> or not.</p>
-
 <table>
 <thead>
 <tr>
-<th align="center">Context</th>
-<th align="center">Target_Word</th>
-<th align="center">Target</th>
+<th style="text-align:center">Context</th>
+<th style="text-align:center">Target_Word</th>
+<th style="text-align:center">Target</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">orange</td>
-<td align="center">juice</td>
-<td align="center">1</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">juice</td>
+<td style="text-align:center">1</td>
 </tr>
-
 <tr>
-<td align="center">orange</td>
-<td align="center">glass</td>
-<td align="center">0</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">glass</td>
+<td style="text-align:center">0</td>
 </tr>
-
 <tr>
-<td align="center">orange</td>
-<td align="center">my</td>
-<td align="center">0</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">my</td>
+<td style="text-align:center">0</td>
 </tr>
-
 <tr>
-<td align="center">orange</td>
-<td align="center">book</td>
-<td align="center">0</td>
+<td style="text-align:center">orange</td>
+<td style="text-align:center">book</td>
+<td style="text-align:center">0</td>
 </tr>
 </tbody>
 </table>
-
 <ul>
 <li>We get positive example by using the same skip-grams technique, with a fixed window that goes around.</li>
 <li>To generate a negative example, we pick a word randomly from the vocabulary.</li>
 <li>This is supervised problem. Given a pair of words <code>c</code> and <code>t</code> predict if it is a pair <code>y</code>.</li>
 <li>apply the simple logistic regression model</li>
 </ul>
-
 <p><code>$$P(y=1|c,t) = sigmoid(\theta_c^{T}e_c)$$</code></p>
-
 <p>This will give us vocab_size binary classification which is cheaper than vocab_size softmax classification. Suppose we take only 5 samples for each context word, then I only have to train 5 for each context word which is efficient to train.</p>
-
 <p><strong>GloVe Word Vectors</strong></p>
-
 <p>Similar to the previous example, in here we calculate this for every pair, how related <code>c</code> and <code>t</code> are.</p>
-
 <p><code>$X_{ct}$</code> = number of times <code>t</code> appears in context of <code>c</code></p>
-
 <p>The model to minimize is defined:</p>
-
 <p><code>$$\sum_{c=1}^{V} \sum_{t=1}^{V} f(X_{c,t})(\theta_c^{T}e_t + b_c - b_t - \log X_{ct})^2$$</code></p>
-
 <ul>
 <li>f(x) - the weighting term, used for many reasons which include:
-
 <ul>
 <li>The log(0) problem, which might occur if there are no pairs for the given target and context values.</li>
 <li>Giving not too much weight for stop words like &ldquo;is&rdquo;, &ldquo;the&rdquo;, and &ldquo;this&rdquo; which occur many times.</li>
 <li>Giving not too little weight for infrequent words.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h3 id="applications-using-word-embeddings">Applications using Word Embeddings</h3>
-
 <p><strong>Sentiment Classification</strong></p>
-
 <p>Given a sentence or review we need to classify the ratings.</p>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_5.png" alt="" /></p>
-
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_5.png" alt=""></p>
 <p>For this problem we might not have very large corpus but we can use pre-trained embedding vectors and it will work.</p>
-
 <p><em>Simple Sentiment classification model</em></p>
-
-<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_6.png" alt="" /></p>
-
+<p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_6.png" alt=""></p>
 <ul>
 <li>The embedding matrix may have been trained on say 100B words.</li>
 <li>Dimension of word embedding is 300.</li>
 <li>We can use sum or average of all the words and then pass it to a softmax classifier.</li>
 </ul>
-
 <p>This simple model will work for short sentences but doesn&rsquo;t take order of words in account which is very important. For example &ldquo;Completely lacking in good taste, good service, and good ambience&rdquo; has the word <code>good</code> 3 times but its a negative review.</p>
-
 <p><em>RNN for sentiment classification</em></p>
-
 <p>The many to one architecture:
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_7.png" alt="" /></p>
-
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_7.png" alt=""></p>
 <p>This model will take the <em>lacking in good</em> into account and this model will also generalize better even if words weren&rsquo;t in our dataset.</p>
-
 <p><em>Problem of bias in word embeddings</em></p>
-
 <p>The problem here is suppose our model has learned some analogies and now we asked our model :</p>
-
 <p><code>$$( Man : Computer Programmer ) :: ( Woman : ? )$$</code></p>
-
 <p>ther were some results like</p>
-
 <p><code>$$( Man : Computer Programmer ) :: ( Woman : Homemaker )$$</code>
 <code>$$( Father : Doctor ) :: ( Mother : Nurse )$$</code></p>
-
 <p>Which is just wrong. Word embeddings can reflect gender, ethnicity, age, sexual orientation, and other biases of text used to train the model. Learning algorithms by general is making an important decision and it mustn&rsquo;t be biased.</p>
-
 <p>Addressing <code>gender</code> Bias:</p>
-
 <ul>
 <li>Identify the bias direction. <code>$e_{he} - e_{she}$</code>, <code>$e_{male} - e_{female}$</code> &hellip;</li>
 <li>Choose some k differences and average them.</li>
@@ -462,14 +373,11 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
 <li>Neutralize: For every word that is not definitional (girl, boy, he, she..), project to get rid of bias.</li>
 <li>Equalize Pairs: We want each pair to have difference only in gender.</li>
 </ul>
-
 <h2 id="problem-statements">Problem Statements</h2>
-
 <p><em>Coursera Assignment</em></p>
-
 <ul>
-<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Operations%2Bon%2Bword%2Bvectors%2B-%2Bv2.ipynb" target="_blank">Operation on Word Vectors and Debiasing.</a></li>
-<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Emojify%2B-%2Bv2.ipynb" target="_blank">Emojify.</a></li>
+<li><!-- raw HTML omitted -->Operation on Word Vectors and Debiasing.<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Emojify.<!-- raw HTML omitted --></li>
 </ul>
 
       </div>
@@ -530,9 +438,9 @@ $$e_{king} - e_{queen} \approx [-2, 0, 0, 0]$$</code></p>
       <footer class="footer">
   <section class="container">
     
-      <p>We don't want to die without any scars.</p>
+      <p>Don't Stop Learning.</p>
     
-     © 2020
+     © 2021
     
     
   </section>

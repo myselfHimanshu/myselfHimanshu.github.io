@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://myselfhimanshu.github.io/tags/cnn/</loc>
     <lastmod>2020-04-05T22:22:22+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -16,25 +15,21 @@
   <url>
     <loc>https://myselfhimanshu.github.io/tags/deeplearning/</loc>
     <lastmod>2020-04-05T22:22:22+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://myselfhimanshu.github.io/</loc>
     <lastmod>2020-04-05T22:22:22+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://myselfhimanshu.github.io/posts/</loc>
     <lastmod>2020-04-05T22:22:22+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://myselfhimanshu.github.io/tags/</loc>
     <lastmod>2020-04-05T22:22:22+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -50,13 +45,11 @@
   <url>
     <loc>https://myselfhimanshu.github.io/tags/nlp/</loc>
     <lastmod>2019-11-17T20:54:18+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://myselfhimanshu.github.io/tags/rnn/</loc>
     <lastmod>2019-11-17T20:54:18+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -82,13 +75,11 @@
   <url>
     <loc>https://myselfhimanshu.github.io/tags/setup/</loc>
     <lastmod>2019-01-01T14:26:21+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://myselfhimanshu.github.io/tags/algorithms/</loc>
     <lastmod>2018-11-06T12:31:51+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -113,7 +104,6 @@
   
   <url>
     <loc>https://myselfhimanshu.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

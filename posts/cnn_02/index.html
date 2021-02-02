@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="Himanshu Panwar">
-    <meta name="description" content="Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning">
-    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes">
+    <meta name="author" content="HIMANSHU PANWAR CHRONICLES">
+    <meta name="description" content="Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning">
+    <meta name="keywords" content="blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Convolutional Neural Network Part 2 : Neural Architecture"/>
@@ -21,8 +21,8 @@ The most important thing to understand in deep learning is what is our network l
 To understand the basic terminologies of CNN building blocks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://myselfhimanshu.github.io/posts/cnn_02/" />
-<meta property="article:published_time" content="2020-03-29T22:22:22&#43;05:30"/>
-<meta property="article:modified_time" content="2020-03-29T22:22:22&#43;05:30"/>
+<meta property="article:published_time" content="2020-03-29T22:22:22+05:30" />
+<meta property="article:modified_time" content="2020-03-29T22:22:22+05:30" />
 
 
     
@@ -59,7 +59,7 @@ To understand the basic terminologies of CNN building blocks." />
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://myselfhimanshu.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   <body class=" ">
@@ -80,6 +80,10 @@ To understand the basic terminologies of CNN building blocks." />
         
           <li class="navigation-item">
             <a class="navigation-link" href="https://myselfhimanshu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://myselfhimanshu.github.io/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
@@ -125,82 +129,45 @@ To understand the basic terminologies of CNN building blocks." />
       </header>
 
       <div>
-        
-
-<p>In this tutorial, we will be training the network on MNIST dataset.  We&rsquo;ll try to understand neural network architecture.</p>
-
+        <p>In this tutorial, we will be training the network on MNIST dataset.  We&rsquo;ll try to understand neural network architecture.</p>
 <p>The most important thing to understand in deep learning is what is our network learning which requires understanding of the network architecture. The below architecture is not meant to give us very good score. In this post we&rsquo;ll focus on few more concepts and then jump into pytorch-101.</p>
-
 <p>To understand the basic terminologies of CNN building blocks. Kindly go through this post.</p>
-
 <p><a href="https://myselfhimanshu.github.io/posts/cnn_01/">CNN Part 1 : Basic Concepts</a></p>
-
 <p>Ready ? Let&rsquo;s jump in.</p>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/11OWKkvYUmZQOs/giphy.gif"/>
-</p>
-
-<h2 id="neural-architecture-part-ii">Neural Architecture : Part II</h2>
-
+<!-- raw HTML omitted -->
+<h2 id="neural-architecture--part-ii">Neural Architecture : Part II</h2>
 <p>In the below section we are introducting two main concept.</p>
-
 <p><strong>Max Pooling</strong> and <strong>Receptive Field</strong></p>
-
 <p>Before jumping further, let me tell you <strong>what padding is?</strong></p>
-
 <p>You can think padding as extra rows and columns of pixels that are applied around a feature map.</p>
-
-<p align="center">
-  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/padding.jpg">
-</p>
-
+<!-- raw HTML omitted -->
 <p>In the above image, we have a feature map of 5x5, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 7x7 now on which we apply convolution.</p>
-
 <p>It is not necessary to apply padding with value 0, as shown in the image. We will see what padding should we apply such that we can gain more information from around the corners of the feature map.</p>
-
 <p><strong>Why do we need Padding?</strong></p>
-
 <ul>
 <li>It&rsquo;s easier to design networks if we preserve the height and width and don&rsquo;t have to worry too much about tensor dimensions when going from one layer to another.</li>
 <li>It allows us to design deeper networks. Without padding, reduction in volume size would reduce too quickly.</li>
 <li>Padding improves performance by keeping information at the borders.</li>
 </ul>
-
 <p>Now, in the last post we have calculated how many layers we have to use if we use 3x3 kernel on a 401x401 image size with stride=1 and padding=0?</p>
-
 <p>The answer was 200.</p>
-
 <p><strong>Do we really need 200 layers in our network?</strong></p>
-
 <p>The answer is No.</p>
-
 <p>We need our model to learn fast and learn accurate, for which we should built an architect wherein our last layer&rsquo;s receptive field should be the whole object. What I mean is, we want our network&rsquo;s receptive field to slowly increase as we add layers. Before taking any decision, the whole image needs to be processed.</p>
-
 <blockquote>
 <p>Refer to Building blocks of Convolutional Neural Network section of <a href="https://myselfhimanshu.github.io/posts/cnn_01/">previous post</a>.</p>
 </blockquote>
-
-<p>To reduce number of layers, one technique to downsample a feature map is <code>MaxPooling</code>.<br><br><br></p>
-
-<p><img src="https://cdn-images-1.medium.com/freeze/max/1000/1*ghJyfuw-9a5esjJqGuBggA.jpeg?q=20" alt="" /></p>
-
+<p>To reduce number of layers, one technique to downsample a feature map is <code>MaxPooling</code>.<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="https://cdn-images-1.medium.com/freeze/max/1000/1*ghJyfuw-9a5esjJqGuBggA.jpeg?q=20" alt=""></p>
 <p>It is clear what is happening from the above image.</p>
-
 <p>If we look at first row, applying a max-pool layer of size 2x2 on 4x4 feature map with stride equal to the size of the layer gives 2x2 feature map.</p>
-
 <p><strong>MaxPooling</strong> is used for dimension reduction. It is a simple layer where no learning happens.</p>
-
 <p>It helps in reducing the number of learned parameters, which helps in reducing the computation and memory load.</p>
-
 <blockquote>
 <p>We need to take care of where to apply max pooling layer in the network.</p>
 </blockquote>
-
 <p><strong>Why is above line important?</strong></p>
-
 <p>Let&rsquo;s work on an image of 4. Here we apply one max pool layer of size 2x2 over first image, which results second image and applying another max pool layer we get image 3.</p>
-
 <table>
 <thead>
 <tr>
@@ -209,95 +176,55 @@ To understand the basic terminologies of CNN building blocks." />
 <th>apply maxpool again</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_org.png" alt="" /></td>
-<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_2.png" alt="" /></td>
-<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool3.png" alt="" /></td>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_org.png" alt=""></td>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_2.png" alt=""></td>
+<td><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool3.png" alt=""></td>
 </tr>
 </tbody>
 </table>
-
 <p>The above process is applying maxpooling again and again on the same image. This doesn&rsquo;t happen in the network. There will convolution in middle. The concept I am explaining you is about where to use maxpool layer and what will happen if we start applying maxpooling without knowing what the network has learned in previous layer.</p>
-
 <p>Now ask what is your network learning if I do this?</p>
-
 <p>It might be learning bananas for minions.</p>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif"/>
-</p>
-
+<!-- raw HTML omitted -->
 <p>So we need to really careful, where should I apply the maxpool layer.</p>
-
 <blockquote>
 <p>Never use max pooling close to your output/prediction layer, the network might end up loosing important features.</p>
 </blockquote>
-
 <p><strong>Are there any other effects on feature maps if we apply max pooling layer?</strong></p>
-
 <p>I am glad you asked this. The answer is Yes.</p>
-
 <p>Max pooling adds a bit of shift variance. What is shift invariance?</p>
-
 <p>Suppose you have an image of a dog. And it is wagging it&rsquo;s tail. Now just imagine with me this,</p>
-
 <p>there is a feature map of size 5x5, where in middle column number 3 values are 1 and everything else 0. That middle column is the dog&rsquo;s tail.</p>
-
 <p>Now, it waggle the tail and the feature of tail is shifted to column 4. If we apply max pooling on both of these feature maps, we will get same result. This is shift invariance. The data has changed but it doesn&rsquo;t matter.</p>
-
 <p>If the tail shifts in an image, do I tell that the dog is without tail? No!! right? In both of these cases we still need to identify that it was the tail.</p>
-
 <p>Max pooling takes care of very small data invariance. Not talking about large invariance, those things are learned by other kernels.</p>
-
 <p>This is just a concept, don&rsquo;t worry I&rsquo;ll explain in future posts if it arrives. Don&rsquo;t think about whether it is a good thing or bad thing for now.</p>
-
 <p>There are other invariances like, rotational invariance, scale invariance. Right now, we are not going in depth of these terminologies.</p>
-
 <p>Coming back to the question,</p>
-
 <p><strong>How many layers do I need now when I add maxpooling layer?</strong></p>
-
 <p>Given:</p>
-
 <p>We have image size of 400x400, kernel size of 3x3, stride = 1, padding = 0 and max pool layer (MP) of size 2x2 with stride 2.</p>
-
 <p>Here, we will write down our output object size,</p>
-
-<p>400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <br>
-195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <br>
-92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <br>
-41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <br>
-15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <br></p>
-
+<p>400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <!-- raw HTML omitted -->
+195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <!-- raw HTML omitted -->
+92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <!-- raw HTML omitted -->
+41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <!-- raw HTML omitted -->
+15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <!-- raw HTML omitted --></p>
 <p>By using maxpooling layer we have reduced the layer count from 200 to 27. That&rsquo;s great right ?</p>
-
-<p align="center">
-<img height="200" width="300" src="https://media.giphy.com/media/xT9IgzUuC5Ss6ZnTEs/giphy.gif">
-</p>
-
+<!-- raw HTML omitted -->
 <p>Wait there is more!!!</p>
-
 <p>Now, lets understand the concept of channels once again. In last post we have used single channel in input image for the calculations. Let&rsquo;s get practical and introduce our RGB channels of the image.</p>
-
 <p><strong>How many kernels are we using in the network now?</strong></p>
-
 <p>We have an image of size 400x400x3. Let&rsquo;s us assume we add 32 kernels in the first layer, 64 in second, 128 in thrid and so on.</p>
-
 <p>Look at this animation, think what is happening and then we will look at the proper representation of our network.</p>
-
-<p align="center">
-<img src="https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif">
-</p>
-
+<!-- raw HTML omitted -->
 <blockquote>
 <p>Every kernel gives its own channel.
 Our kernels must have an equal number of channels as in the input channel.</p>
 </blockquote>
-
 <p>So, our network will look like,</p>
-
 <table>
 <thead>
 <tr>
@@ -306,44 +233,37 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 <th>Output Size</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>400x400x3</td>
 <td>(3x3x3)x32</td>
 <td>398x398x32</td>
 </tr>
-
 <tr>
 <td>398x398x32</td>
 <td>(3x3x32)x64</td>
 <td>396x396x64</td>
 </tr>
-
 <tr>
 <td>396x396x64</td>
 <td>(3x3x64)x128</td>
 <td>394x394x128</td>
 </tr>
-
 <tr>
 <td>394x394x128</td>
 <td>(3x3x128)x256</td>
 <td>392x392x256</td>
 </tr>
-
 <tr>
 <td>392x392x256</td>
 <td>(3x3x256)x512</td>
 <td>390x390x512</td>
 </tr>
-
 <tr>
 <td>MP</td>
 <td></td>
 <td></td>
 </tr>
-
 <tr>
 <td>&hellip;</td>
 <td>&hellip;</td>
@@ -351,23 +271,14 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 </tr>
 </tbody>
 </table>
-
 <p>Let&rsquo;s understand how convolution process is taking place using the above architecture.</p>
-
 <p>If we have an object with 3 channels, and convolving it using 1 kernel, then the size of that kernel is (3x3x3), where last index value 3 are channels of the kernel.</p>
-
 <p>Look at image below, to understand how multi channels are handled.</p>
-
-<p><img src="https://miro.medium.com/max/1440/1*ciDgQEjViWLnCbmX-EeSrA.gif" alt="" /></p>
-
+<p><img src="https://miro.medium.com/max/1440/1*ciDgQEjViWLnCbmX-EeSrA.gif" alt=""></p>
 <p>Do you see each kernel has its own channel. And the convolution of 1 (3x3) kernel on (5x5x3) image will give me (3x3x1) output object.</p>
-
 <p>Now we have another problem.</p>
-
 <p><strong>How many parameters are we initializing ?</strong></p>
-
 <p>Let&rsquo;s go through the network again, this is the proper representation of the network architecture,</p>
-
 <table>
 <thead>
 <tr>
@@ -377,7 +288,6 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 <th>Parameters</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>400x400x3</td>
@@ -385,49 +295,42 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 <td>398x398x32</td>
 <td>864</td>
 </tr>
-
 <tr>
 <td>398x398x32</td>
 <td>(3x3x32)x64</td>
 <td>396x396x64</td>
 <td>18432</td>
 </tr>
-
 <tr>
 <td>396x396x64</td>
 <td>(3x3x64)x128</td>
 <td>394x394x128</td>
 <td>73728</td>
 </tr>
-
 <tr>
 <td>394x394x128</td>
 <td>(3x3x128)x256</td>
 <td>392x392x256</td>
 <td>294912</td>
 </tr>
-
 <tr>
 <td>392x392x256</td>
 <td>(3x3x256)x512</td>
 <td>390x390x512</td>
 <td>1179648</td>
 </tr>
-
 <tr>
 <td>MP</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-
 <tr>
 <td>195x195x512</td>
 <td>(3x3x512)x512</td>
 <td>193x193x512</td>
 <td>2359296</td>
 </tr>
-
 <tr>
 <td>&hellip;</td>
 <td>&hellip;</td>
@@ -436,47 +339,24 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>How does increase in channel numbers affect the network and machine?</strong></p>
-
 <p>From the above table, we have kernels as 32,64,128,256,512. So, how do I know whether my 512 channels are enough for my network to learn? Answer is we don&rsquo;t know, we need to experiment with these numbers.</p>
-
 <p>Now, look at kernel size of 5th layer. We have (3x3x256)x512 as our kernel size. In 6th layer we have like 23M parameters.</p>
-
 <blockquote>
 <p>The kernel size = number of learnable parameters</p>
 </blockquote>
-
 <p>We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what&rsquo;s happening. The more we add these parameters and ask our network to learn, the more it will slow down. These increasing number of parameters can really slow down the networks learning process.</p>
-
 <p>I am not telling, a network won&rsquo;t be able to learn. Here the processing time is dependent on your machine. </p>
-
 <p>If you are very very rich person who can buy expensive GPUs, you can add any number of parameters in the network.</p>
-
-<p align="center">
-<img src="https://media.giphy.com/media/JpG2A9P3dPHXaTYrwu/giphy.gif">
-</p>
-
+<!-- raw HTML omitted -->
 <p>Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series because of its compute power.</p>
-
 <p><strong>What&rsquo;s the solution?</strong></p>
-
-<p align="center">
-<img src="https://media.giphy.com/media/3z3bxq78R9fVK/giphy.gif">
-</p>
-
+<!-- raw HTML omitted -->
 <p>Stay tuned for the post!!!</p>
-
 <p>For this post, we will continue with code now!!! Some hands on experience is necessary, too much theory !!! bruh&hellip; boring&hellip;</p>
-
-<p align="center">
-<img src="https://media.giphy.com/media/bzE1WAm8BifiE/giphy.gif">
-</p>
-
+<!-- raw HTML omitted -->
 <h1 id="into-the-code">Into the Code</h1>
-
 <p>We&rsquo;ll be using Pytorch to build out neural network. I prefer using Pytorch as it gives more flexibility and more power to user to have control over the network. </p>
-
 <p>Torch : An open source machine learning framework that accelerates the path from research prototyping to production deployment.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f">#import libraries</span>
 
@@ -489,14 +369,12 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 
 <span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
 <span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
-plt.rcParams[<span style="color:#0ff;font-weight:bold">&#39;figure.figsize&#39;</span>] = (<span style="color:#ff0;font-weight:bold">10</span>,<span style="color:#ff0;font-weight:bold">5</span>)</code></pre></div>
-<ul>
+plt.rcParams[<span style="color:#0ff;font-weight:bold">&#39;figure.figsize&#39;</span>] = (<span style="color:#ff0;font-weight:bold">10</span>,<span style="color:#ff0;font-weight:bold">5</span>)
+</code></pre></div><ul>
 <li><em>datasets</em> will be used to download MNIST dataset which has been cleaned for us and provided by pytorch.</li>
 <li><em>transforms</em> are used to convert arrays to tensors which are used in pytorch framework. These can also be used to do some augumentation on the data. We will go through augumentation techniques in another post.</li>
 </ul>
-
 <p><strong>GPU for training</strong></p>
-
 <p>In order to use GPU, we need to identify and specify GPU as the device. Later, in training loop, we will load the data onto the device.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> tensorflow <span style="color:#fff;font-weight:bold">as</span> tf
 
@@ -505,9 +383,8 @@ device_name = tf.test.gpu_device_name()
 <span style="color:#fff;font-weight:bold">try</span>:
   <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;Found GPU at : {device_name}&#34;</span>)
 <span style="color:#fff;font-weight:bold">except</span>:
-  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;GPU device not found.&#34;</span>)</code></pre></div>
-<p>The above code will check for gpu.</p>
-
+  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;GPU device not found.&#34;</span>)
+</code></pre></div><p>The above code will check for gpu.</p>
 <p>CUDA is a parallel computing platform and application programming interface model created by Nvidia. It allows software developers and software engineers to use a CUDA-enabled graphics processing unit for general purpose processing.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> torch
 
@@ -519,32 +396,25 @@ device_name = tf.test.gpu_device_name()
 <span style="color:#fff;font-weight:bold">else</span>:
   <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;No GPU available, using CPU instead&#34;</span>)
   device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cpu&#34;</span>)
-  use_cuda = False</code></pre></div>
-<p>Here just check how many gpu&rsquo;s do you have and what kind of gpu you are using as it affects the learning process of the network.</p>
-
+  use_cuda = False
+</code></pre></div><p>Here just check how many gpu&rsquo;s do you have and what kind of gpu you are using as it affects the learning process of the network.</p>
 <p><strong>Loading MNIST dataset</strong></p>
-
 <p>Before creating any CNN network, we will first visualze and do some analysis on our MNIST dataset.</p>
-
 <p>MNIST dataset contains 60,000 training and 10,000 test images. Each image is of size (28x28x1).</p>
-
 <ul>
 <li>We&rsquo;ll use a batch_size = 128 for training.</li>
 <li>The values 0.1307 and 0.3081 used for the Normalize() transformation below are the global mean and standard deviation for MNIST dataset.</li>
 </ul>
-
 <p><strong>Why are we normalizing?</strong></p>
-
 <p>Geoffrey Hinton&rsquo;s <a href="https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">learning</a> about gradient descent:</p>
-
 <blockquote>
-<p>Going downhill    reduces the error,  but the direction   of  steepest    descent does    not point at    the minimum unless  the ellipse is  a   circle.</p>
+<p>Going	downhill	reduces	the	error,	but	the direction	of	steepest	descent	does	not	point at	the	minimum	unless	the	ellipse	is	a	circle.</p>
 </blockquote>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch.manual_seed(<span style="color:#ff0;font-weight:bold">1</span>)
 batch_size = <span style="color:#ff0;font-weight:bold">128</span>
 
-kwargs = {<span style="color:#0ff;font-weight:bold">&#39;num_workers&#39;</span>: <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#0ff;font-weight:bold">&#39;pin_memory&#39;</span>: True} <span style="color:#fff;font-weight:bold">if</span> use_cuda <span style="color:#fff;font-weight:bold">else</span> {}</code></pre></div>
-<p>The below code will download the MNIST dataset, apply transforms and load the tensors into dataloader.</p>
+kwargs = {<span style="color:#0ff;font-weight:bold">&#39;num_workers&#39;</span>: <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#0ff;font-weight:bold">&#39;pin_memory&#39;</span>: True} <span style="color:#fff;font-weight:bold">if</span> use_cuda <span style="color:#fff;font-weight:bold">else</span> {}
+</code></pre></div><p>The below code will download the MNIST dataset, apply transforms and load the tensors into dataloader.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mnist_trainset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#34;./data&#34;</span>, train=True, download=True,
                                 transform=transforms.Compose([
                                           transforms.ToTensor(),
@@ -555,39 +425,30 @@ mnist_testset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#
                                transform=transforms.Compose([
                                           transforms.ToTensor(),
                                           transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.1307</span>,), (<span style="color:#ff0;font-weight:bold">0.3081</span>,))
-                    ]))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader = torch.utils.data.DataLoader(mnist_trainset,
+                    ]))
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader = torch.utils.data.DataLoader(mnist_trainset,
                                           batch_size=batch_size, shuffle=True, **kwargs)
 
 test_loader = torch.utils.data.DataLoader(mnist_testset,
-                                          batch_size=batch_size, shuffle=True, **kwargs)</code></pre></div>
-<p>A tensor is a container which can house data in N dimensions. It is an algebraic object that describes a linear mapping from one set of algebraic objects to another.</p>
-
+                                          batch_size=batch_size, shuffle=True, **kwargs)
+</code></pre></div><p>A tensor is a container which can house data in N dimensions. It is an algebraic object that describes a linear mapping from one set of algebraic objects to another.</p>
 <p><strong>Visualizing the dataset</strong></p>
-
 <p>Let&rsquo;s see what our data looks like.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">examples = <span style="color:#fff;font-weight:bold">enumerate</span>(train_loader)
-batch_idx, (example_data, example_targets) = <span style="color:#fff;font-weight:bold">next</span>(examples)</code></pre></div>
-<p>train data batch shape : [128, 1, 28, 28]</p>
-
+batch_idx, (example_data, example_targets) = <span style="color:#fff;font-weight:bold">next</span>(examples)
+</code></pre></div><p>train data batch shape : [128, 1, 28, 28]</p>
 <p>we have 128 images of size (128x128) in gray scale (no rgb channel).</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure()
 <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">6</span>):
   plt.subplot(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>,i+<span style="color:#ff0;font-weight:bold">1</span>)
   plt.tight_layout()
   plt.imshow(example_data[i][<span style="color:#ff0;font-weight:bold">0</span>], cmap=<span style="color:#0ff;font-weight:bold">&#39;gray&#39;</span>, interpolation=<span style="color:#0ff;font-weight:bold">&#39;none&#39;</span>)
-  plt.title(f<span style="color:#0ff;font-weight:bold">&#34;Ground Truth : {example_targets[i]}&#34;</span>)</code></pre></div>
-<p align="center">
-<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/mnist_images.png">
-</p>
-
+  plt.title(f<span style="color:#0ff;font-weight:bold">&#34;Ground Truth : {example_targets[i]}&#34;</span>)
+</code></pre></div><!-- raw HTML omitted -->
 <p><strong>Building up the model</strong></p>
-
 <p>In the below code, we will write what input size we are getting, what will be the output and what is the receptive field.</p>
-
 <p>Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, it increases by 2.</p>
-
 <p>But when there is max pooling layer in between, the receptive field doubles. The sentence is not completely true. We will see the effect on receptive field and derive a formula later, as it depends on stride, padding and other factors. So, just go through the post as it is for now. We will learn the concepts slowly.</p>
-
 <p>I want you to understand what is happening in the network.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">class</span> Net(nn.Module):
     <span style="color:#fff;font-weight:bold">def</span> __init__(self):
@@ -608,16 +469,15 @@ batch_idx, (example_data, example_targets) = <span style="color:#fff;font-weight
         x = F.relu(self.conv6(F.relu(self.conv5(x))))
         x = F.relu(self.conv7(x))
         x = x.view(-<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">10</span>) <span style="color:#007f7f"># [128,10]</span>
-        <span style="color:#fff;font-weight:bold">return</span> F.log_softmax(x)</code></pre></div>
-<p>The purpose of adding padding=1 is to add 2 additional pixels in x and y rows for convolution.</p>
-
+        <span style="color:#fff;font-weight:bold">return</span> F.log_softmax(x)
+</code></pre></div><p>The purpose of adding padding=1 is to add 2 additional pixels in x and y rows for convolution.</p>
 <p>Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? I have also included the link of code at the end of post.</p>
-
 <p><strong>The architecture</strong></p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> torchsummary <span style="color:#fff;font-weight:bold">import</span> summary
 
 model = Net().to(device)
-summary(model, input_size=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">----------------------------------------------------------------
+summary(model, input_size=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>))
+</code></pre></div><pre><code>----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
             Conv2d-1           [-1, 32, 28, 28]             320
@@ -638,9 +498,9 @@ Input size (MB): 0.00
 Forward/backward pass size (MB): 1.51
 Params size (MB): 24.34
 Estimated Total Size (MB): 25.85
-----------------------------------------------------------------</pre></div>
+----------------------------------------------------------------
+</code></pre>
 <p>torchsummary is a package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts.</p>
-
 <p><strong>Training the model</strong></p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> tqdm <span style="color:#fff;font-weight:bold">import</span> tqdm <span style="color:#007f7f">#progress bar</span>
 
@@ -658,7 +518,7 @@ Estimated Total Size (MB): 25.85
 
 
 <span style="color:#fff;font-weight:bold">def</span> test(model, device, test_loader):
-    model.<span style="color:#fff;font-weight:bold">eval</span>()
+    model.eval()
     test_loss = <span style="color:#ff0;font-weight:bold">0</span>
     correct = <span style="color:#ff0;font-weight:bold">0</span>
     <span style="color:#fff;font-weight:bold">with</span> torch.no_grad():
@@ -667,30 +527,26 @@ Estimated Total Size (MB): 25.85
             output = model(data)
             test_loss += F.nll_loss(output, target, reduction=<span style="color:#0ff;font-weight:bold">&#39;sum&#39;</span>).item()  <span style="color:#007f7f"># sum up batch loss</span>
             pred = output.argmax(dim=<span style="color:#ff0;font-weight:bold">1</span>, keepdim=True)  <span style="color:#007f7f"># get the index of the max log-probability</span>
-            correct += pred.eq(target.view_as(pred)).<span style="color:#fff;font-weight:bold">sum</span>().item()
+            correct += pred.eq(target.view_as(pred)).sum().item()
 
     test_loss /= <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)
 
     <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>.format(
         test_loss, correct, <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset),
-        <span style="color:#ff0;font-weight:bold">100.</span> * correct / <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)))</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># SGD : stochastic gradient descent, lr:lerning_rate:0.01</span>
+        <span style="color:#ff0;font-weight:bold">100.</span> * correct / <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)))
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># SGD : stochastic gradient descent, lr:lerning_rate:0.01</span>
 optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight:bold">0.01</span>, momentum=<span style="color:#ff0;font-weight:bold">0.9</span>)
 
 <span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>): <span style="color:#007f7f"># training network on 1 epoch</span>
     train(model, device, train_loader, optimizer, epoch)
-    test(model, device, test_loader)</code></pre></div>
-<p>We have used, torch.no_grad() to make sure test data does not &ldquo;leak&rdquo; into the model.</p>
-
+    test(model, device, test_loader)
+</code></pre></div><p>We have used, torch.no_grad() to make sure test data does not &ldquo;leak&rdquo; into the model.</p>
 <p>You might be getting very low accuracy on test dataset. This shouldn&rsquo;t happen.</p>
-
 <blockquote>
 <p>FIND THE ERROR IN ABOVE CODE AND COMMENT BELOW</p>
 </blockquote>
-
 <p>I have included colab notebook <a href="https://gist.github.com/myselfHimanshu/b9f9f024c14eaa87a271172746b79eac">link</a>. Run and play around.</p>
-
 <p>Stay tuned, Happy Learning!!!</p>
-
 <p>If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.</p>
 
       </div>
@@ -751,9 +607,9 @@ optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight
       <footer class="footer">
   <section class="container">
     
-      <p>We don't want to die without any scars.</p>
+      <p>Don't Stop Learning.</p>
     
-     © 2020
+     © 2021
     
     
   </section>
