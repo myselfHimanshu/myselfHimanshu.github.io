@@ -12,13 +12,17 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fibonacci Numbers Series"/>
 <meta name="twitter:description" content="Fibonacci Number Fibonacci sequence: $F_0=0$, $F_1=1$, and $F_i=F_{i-1}&#43;F_{i-2}$. Given an integer n, find the nth Fibonacci number $F_n$
-Input format : The input consists of a single integer n.Output format : Output $F_n$.Constraints : $0&lt;=n&lt;=45$
+Input format : The input consists of a single integer n.
+Output format : Output $F_n$.
+Constraints : $0&lt;=n&lt;=45$
 CODE
 a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): return a[n] n = int(input()) print(calc_fib(n)) Last Digit of Large Fibonacci Number Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)"/>
 
     <meta property="og:title" content="Fibonacci Numbers Series" />
 <meta property="og:description" content="Fibonacci Number Fibonacci sequence: $F_0=0$, $F_1=1$, and $F_i=F_{i-1}&#43;F_{i-2}$. Given an integer n, find the nth Fibonacci number $F_n$
-Input format : The input consists of a single integer n.Output format : Output $F_n$.Constraints : $0&lt;=n&lt;=45$
+Input format : The input consists of a single integer n.
+Output format : Output $F_n$.
+Constraints : $0&lt;=n&lt;=45$
 CODE
 a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): return a[n] n = int(input()) print(calc_fib(n)) Last Digit of Large Fibonacci Number Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)" />
 <meta property="og:type" content="article" />
@@ -45,7 +49,7 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): r
     
       
       
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -53,7 +57,7 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): r
     
 
     
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/custom.css" />
+      <link rel="stylesheet" href="/css/custom.css" />
     
 
     
@@ -77,19 +81,19 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): r
       
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/about/">About</a>
+            <a class="navigation-link" href="/about/">About</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/posts/">Blog</a>
+            <a class="navigation-link" href="/posts/">Blog</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/journal/">Journal</a>
+            <a class="navigation-link" href="/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/contact/">Contact me</a>
+            <a class="navigation-link" href="/contact/">Contact me</a>
           </li>
         
       
@@ -123,48 +127,48 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] &#43; a[i-2]) def calc_fib(n): r
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://myselfHimanshu.github.io/tags/algorithms/">ALGORITHMS</a></div>
+    <a href="/tags/algorithms/">ALGORITHMS</a></div>
 
         </div>
       </header>
 
       <div>
         <h3 id="fibonacci-number">Fibonacci Number</h3>
-<p>Fibonacci sequence: <code>$F_0=0$</code>, <code>$F_1=1$</code>, and <code>$F_i=F_{i-1}+F_{i-2}$</code>. <!-- raw HTML omitted -->
+<p>Fibonacci sequence: <code>$F_0=0$</code>, <code>$F_1=1$</code>, and <code>$F_i=F_{i-1}+F_{i-2}$</code>. <br />
 Given an integer n, find the nth Fibonacci number $F_n$</p>
-<p><strong>Input format</strong> : The input consists of a single integer n.<!-- raw HTML omitted -->
-<strong>Output format</strong> : Output $F_n$.<!-- raw HTML omitted -->
+<p><strong>Input format</strong> : The input consists of a single integer n.<br />
+<strong>Output format</strong> : Output $F_n$.<br />
 <strong>Constraints</strong> : <code>$0&lt;=n&lt;=45$</code></p>
 <p><strong>CODE</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">a = [<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">1</span>]
-<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">46</span>):
- 	a.append(a[i-<span style="color:#ff0;font-weight:bold">1</span>] + a[i-<span style="color:#ff0;font-weight:bold">2</span>])
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">46</span>):
+ 	a<span style="color:#f92672">.</span>append(a[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> a[i<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>])
 
-<span style="color:#fff;font-weight:bold">def</span> calc_fib(n):
-    <span style="color:#fff;font-weight:bold">return</span> a[n]
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_fib</span>(n):
+    <span style="color:#66d9ef">return</span> a[n]
 
-n = <span style="color:#fff;font-weight:bold">int</span>(<span style="color:#fff;font-weight:bold">input</span>())
-<span style="color:#fff;font-weight:bold">print</span>(calc_fib(n))
+n <span style="color:#f92672">=</span> int(input())
+print(calc_fib(n))
 </code></pre></div><h3 id="last-digit-of-large-fibonacci-number">Last Digit of Large Fibonacci Number</h3>
 <p>Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)</p>
 <p>The previous solution will turn out to be slow, because as i grows the ith iteration of the loop computes the sum of longer and longer numbers.</p>
-<p><strong>Input format</strong> : The input consists of a single integer n.<!-- raw HTML omitted -->
-<strong>Output format</strong> : Output the last digit of $F_n$.<!-- raw HTML omitted -->
+<p><strong>Input format</strong> : The input consists of a single integer n.<br />
+<strong>Output format</strong> : Output the last digit of $F_n$.<br />
 <strong>Constraints</strong> : <code>$0&lt;=n&lt;=10^7$</code></p>
 <p><strong>CODE</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">a = [<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">1</span>]
-<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">10</span>**<span style="color:#ff0;font-weight:bold">7</span>+<span style="color:#ff0;font-weight:bold">1</span>):
- 	a.append((a[i-<span style="color:#ff0;font-weight:bold">1</span>] + a[i-<span style="color:#ff0;font-weight:bold">2</span>])%<span style="color:#ff0;font-weight:bold">10</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">7</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+ 	a<span style="color:#f92672">.</span>append((a[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> a[i<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>])<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>)
 
-<span style="color:#fff;font-weight:bold">def</span> calc_fib(n):
-    <span style="color:#fff;font-weight:bold">return</span> a[n]
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_fib</span>(n):
+    <span style="color:#66d9ef">return</span> a[n]
 
-n = <span style="color:#fff;font-weight:bold">int</span>(<span style="color:#fff;font-weight:bold">input</span>())
-<span style="color:#fff;font-weight:bold">print</span>(calc_fib(n))
+n <span style="color:#f92672">=</span> int(input())
+print(calc_fib(n))
 </code></pre></div><h3 id="compute-huge-fibonacci-number-modulo-m">Compute Huge Fibonacci Number modulo m</h3>
 <p>Given two integers n and m, output $F_n$ mod m (that is, the remainder of $F_n$ when divided by m).</p>
-<p><strong>Input format</strong> : The input consists of two integers n and m given on the same line (separated by a space).<!-- raw HTML omitted -->
-<strong>Output format</strong> : Output $F_n$ mod m.<!-- raw HTML omitted -->
+<p><strong>Input format</strong> : The input consists of two integers n and m given on the same line (separated by a space).<br />
+<strong>Output format</strong> : Output $F_n$ mod m.<br />
 <strong>Constraints</strong> : <code>$1&lt;=n&lt;=10^{18}$</code>,<code>$2&lt;=m&lt;=10^{5}$</code></p>
 <p>For such values of n, an algorithm looping for i iterations will not fit into one second for sure. Let&rsquo;s compute for small m.</p>
 <table>
@@ -252,112 +256,112 @@ n = <span style="color:#fff;font-weight:bold">int</span>(<span style="color:#fff
 <p>Both the sequences are periodic. For m=2, the period is 001 and for m=3, the period is 01120221.</p>
 <p>This is true in general: for any integer m≥2, the sequence $F_n$ mod m is periodic. The period always starts with <code>01</code> and is known as <code>Pisano period</code>.</p>
 <p><strong>CODE</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#fff;font-weight:bold">import</span> sys
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> sys
 
-<span style="color:#fff;font-weight:bold">def</span> get_fibonacci_huge(n, m):
-    <span style="color:#fff;font-weight:bold">if</span> n &lt;= <span style="color:#ff0;font-weight:bold">1</span>:
-        <span style="color:#fff;font-weight:bold">return</span> n
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_fibonacci_huge</span>(n, m):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
 
-    previous = <span style="color:#ff0;font-weight:bold">0</span>
-    current  = <span style="color:#ff0;font-weight:bold">1</span>
-    fib_result = [<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">1</span>]
+    previous <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    current  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    fib_result <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]
 
-    <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n-<span style="color:#ff0;font-weight:bold">1</span>):
-        previous, current = current%m, (previous + current)%m
-        fib_result.append(current)
-        <span style="color:#fff;font-weight:bold">if</span> previous==<span style="color:#ff0;font-weight:bold">0</span> and current==<span style="color:#ff0;font-weight:bold">1</span>:
-            <span style="color:#fff;font-weight:bold">return</span> fib_result[n%(i+<span style="color:#ff0;font-weight:bold">1</span>)]
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+        previous, current <span style="color:#f92672">=</span> current<span style="color:#f92672">%</span>m, (previous <span style="color:#f92672">+</span> current)<span style="color:#f92672">%</span>m
+        fib_result<span style="color:#f92672">.</span>append(current)
+        <span style="color:#66d9ef">if</span> previous<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> current<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>:
+            <span style="color:#66d9ef">return</span> fib_result[n<span style="color:#f92672">%</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
 
-    <span style="color:#fff;font-weight:bold">return</span> current
+    <span style="color:#66d9ef">return</span> current
 
-<span style="color:#fff;font-weight:bold">if</span> __name__ == <span style="color:#0ff;font-weight:bold">&#39;__main__&#39;</span>:
-    input_ = sys.stdin.readline()
-    n, m = <span style="color:#fff;font-weight:bold">map</span>(<span style="color:#fff;font-weight:bold">int</span>, input_.split())
-    <span style="color:#fff;font-weight:bold">print</span>(get_fibonacci_huge(n, m))
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    input_ <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdin<span style="color:#f92672">.</span>readline()
+    n, m <span style="color:#f92672">=</span> map(int, input_<span style="color:#f92672">.</span>split())
+    print(get_fibonacci_huge(n, m))
 </code></pre></div><h3 id="last-digit-of-sum-of-fibonacci-number">Last Digit of Sum of Fibonacci Number</h3>
 <p>Given an integer n, find the last digit of the sum <code>$F_0+F_1+.....+F_n$</code>.</p>
-<p><strong>Input format</strong> : The input consists of single integer n.<!-- raw HTML omitted -->
-<strong>Output format</strong> : Output the last digit of <code>$F_0+F_1+.....+F_n$</code>.<!-- raw HTML omitted -->
+<p><strong>Input format</strong> : The input consists of single integer n.<br />
+<strong>Output format</strong> : Output the last digit of <code>$F_0+F_1+.....+F_n$</code>.<br />
 <strong>Constraints</strong> : <code>$1&lt;=n&lt;=10^{14}$</code></p>
 <p><strong>CODE</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#fff;font-weight:bold">import</span> sys
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> sys
 
-<span style="color:#fff;font-weight:bold">def</span> get_fibonacci_huge(n, m):
-    <span style="color:#fff;font-weight:bold">if</span> n &lt;= <span style="color:#ff0;font-weight:bold">1</span>:
-        <span style="color:#fff;font-weight:bold">return</span> n
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_fibonacci_huge</span>(n, m):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
 
-    previous = <span style="color:#ff0;font-weight:bold">0</span>
-    current  = <span style="color:#ff0;font-weight:bold">1</span>
-    fib_result = [<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">1</span>]
+    previous <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    current  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    fib_result <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]
 
-    <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n-<span style="color:#ff0;font-weight:bold">1</span>):
-        previous, current = current%m, (previous + current)%m
-        <span style="color:#fff;font-weight:bold">if</span> previous==<span style="color:#ff0;font-weight:bold">0</span> and current==<span style="color:#ff0;font-weight:bold">1</span>:
-            fib_result.pop()
-            <span style="color:#fff;font-weight:bold">return</span> fib_result
-        fib_result.append(current)    
-    <span style="color:#fff;font-weight:bold">return</span> fib_result
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+        previous, current <span style="color:#f92672">=</span> current<span style="color:#f92672">%</span>m, (previous <span style="color:#f92672">+</span> current)<span style="color:#f92672">%</span>m
+        <span style="color:#66d9ef">if</span> previous<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> current<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>:
+            fib_result<span style="color:#f92672">.</span>pop()
+            <span style="color:#66d9ef">return</span> fib_result
+        fib_result<span style="color:#f92672">.</span>append(current)    
+    <span style="color:#66d9ef">return</span> fib_result
 
-<span style="color:#fff;font-weight:bold">def</span> fibonacci_sum(n):
-    <span style="color:#fff;font-weight:bold">if</span> n &lt;= <span style="color:#ff0;font-weight:bold">1</span>:
-        <span style="color:#fff;font-weight:bold">return</span> n
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci_sum</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
 
-    sum_ = <span style="color:#ff0;font-weight:bold">0</span>
-    array = get_fibonacci_huge(n, <span style="color:#ff0;font-weight:bold">10</span>)
-    q,r = n//<span style="color:#fff;font-weight:bold">len</span>(array), n%<span style="color:#fff;font-weight:bold">len</span>(array)
-    sum_ = (sum_+((<span style="color:#fff;font-weight:bold">sum</span>(array)%<span style="color:#ff0;font-weight:bold">10</span>)*q))%<span style="color:#ff0;font-weight:bold">10</span>
-    sum_ = sum_ + <span style="color:#fff;font-weight:bold">sum</span>(array[:r+<span style="color:#ff0;font-weight:bold">1</span>])%<span style="color:#ff0;font-weight:bold">10</span>
-    <span style="color:#fff;font-weight:bold">return</span> sum_ % <span style="color:#ff0;font-weight:bold">10</span>
+    sum_ <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    array <span style="color:#f92672">=</span> get_fibonacci_huge(n, <span style="color:#ae81ff">10</span>)
+    q,r <span style="color:#f92672">=</span> n<span style="color:#f92672">//</span>len(array), n<span style="color:#f92672">%</span>len(array)
+    sum_ <span style="color:#f92672">=</span> (sum_<span style="color:#f92672">+</span>((sum(array)<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>)<span style="color:#f92672">*</span>q))<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>
+    sum_ <span style="color:#f92672">=</span> sum_ <span style="color:#f92672">+</span> sum(array[:r<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>
+    <span style="color:#66d9ef">return</span> sum_ <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>
 
-<span style="color:#fff;font-weight:bold">if</span> __name__ == <span style="color:#0ff;font-weight:bold">&#39;__main__&#39;</span>:
-    input_ = sys.stdin.readline()
-    n = <span style="color:#fff;font-weight:bold">int</span>(input_)
-    <span style="color:#fff;font-weight:bold">print</span>(fibonacci_sum(n))
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    input_ <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdin<span style="color:#f92672">.</span>readline()
+    n <span style="color:#f92672">=</span> int(input_)
+    print(fibonacci_sum(n))
 </code></pre></div><h3 id="last-digit-of-sum-of-fibonacci-number-again">Last Digit of Sum of Fibonacci Number Again</h3>
 <p>Given two non-negative integers m and n, where $m&lt;=n$ find the last digit of the sum <code>$F_m+F_{m+1}+.....+F_n$</code>.</p>
-<p><strong>Input format</strong> : The input consists of two non-negative integers m and n separated by a space.<!-- raw HTML omitted -->
-<strong>Output format</strong> : Output the last digit of <code>$F_m+F_{m+1}+.....+F_n$</code>.<!-- raw HTML omitted -->
+<p><strong>Input format</strong> : The input consists of two non-negative integers m and n separated by a space.<br />
+<strong>Output format</strong> : Output the last digit of <code>$F_m+F_{m+1}+.....+F_n$</code>.<br />
 <strong>Constraints</strong> : <code>$0&lt;=m&lt;=n&lt;=10^{18}$</code></p>
 <p><strong>CODE</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#fff;font-weight:bold">import</span> sys
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> sys
 
-<span style="color:#fff;font-weight:bold">def</span> get_fibonacci_huge(n , m):
-    <span style="color:#fff;font-weight:bold">if</span> n &lt;= <span style="color:#ff0;font-weight:bold">1</span>:
-        <span style="color:#fff;font-weight:bold">return</span> n
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_fibonacci_huge</span>(n , m):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
 
-    previous = <span style="color:#ff0;font-weight:bold">0</span>
-    current  = <span style="color:#ff0;font-weight:bold">1</span>
-    fib_result = [<span style="color:#ff0;font-weight:bold">0</span>,<span style="color:#ff0;font-weight:bold">1</span>]
+    previous <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    current  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    fib_result <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]
 
-    <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n-<span style="color:#ff0;font-weight:bold">1</span>):
-        previous, current = current%m, (previous + current)%m
-        <span style="color:#fff;font-weight:bold">if</span> previous==<span style="color:#ff0;font-weight:bold">0</span> and current==<span style="color:#ff0;font-weight:bold">1</span>:
-            fib_result.pop()
-            <span style="color:#fff;font-weight:bold">return</span> fib_result
-        fib_result.append(current)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+        previous, current <span style="color:#f92672">=</span> current<span style="color:#f92672">%</span>m, (previous <span style="color:#f92672">+</span> current)<span style="color:#f92672">%</span>m
+        <span style="color:#66d9ef">if</span> previous<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> current<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>:
+            fib_result<span style="color:#f92672">.</span>pop()
+            <span style="color:#66d9ef">return</span> fib_result
+        fib_result<span style="color:#f92672">.</span>append(current)
 
-    <span style="color:#fff;font-weight:bold">return</span> fib_result
+    <span style="color:#66d9ef">return</span> fib_result
 
-<span style="color:#fff;font-weight:bold">def</span> fibonacci_partial_sum(k, n):
-    <span style="color:#fff;font-weight:bold">if</span> n &lt;= <span style="color:#ff0;font-weight:bold">1</span>:
-        <span style="color:#fff;font-weight:bold">return</span> n
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci_partial_sum</span>(k, n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
 
-    sum_  = <span style="color:#ff0;font-weight:bold">0</span>
+    sum_  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 
-    array = get_fibonacci_huge(n, <span style="color:#ff0;font-weight:bold">10</span>)
-    q,r = n//<span style="color:#fff;font-weight:bold">len</span>(array), n%<span style="color:#fff;font-weight:bold">len</span>(array)
-    q1,r1 = k//<span style="color:#fff;font-weight:bold">len</span>(array), k%<span style="color:#fff;font-weight:bold">len</span>(array)
+    array <span style="color:#f92672">=</span> get_fibonacci_huge(n, <span style="color:#ae81ff">10</span>)
+    q,r <span style="color:#f92672">=</span> n<span style="color:#f92672">//</span>len(array), n<span style="color:#f92672">%</span>len(array)
+    q1,r1 <span style="color:#f92672">=</span> k<span style="color:#f92672">//</span>len(array), k<span style="color:#f92672">%</span>len(array)
 
-    sum_ = (sum_+(<span style="color:#fff;font-weight:bold">sum</span>(array[r1:])%<span style="color:#ff0;font-weight:bold">10</span>))%<span style="color:#ff0;font-weight:bold">10</span>
-    sum_ = (sum_+((<span style="color:#fff;font-weight:bold">sum</span>(array)%<span style="color:#ff0;font-weight:bold">10</span>)*(q-q1-<span style="color:#ff0;font-weight:bold">1</span>)))%<span style="color:#ff0;font-weight:bold">10</span>
-    sum_ = (sum_+(<span style="color:#fff;font-weight:bold">sum</span>(array[:r+<span style="color:#ff0;font-weight:bold">1</span>])%<span style="color:#ff0;font-weight:bold">10</span>))%<span style="color:#ff0;font-weight:bold">10</span>
+    sum_ <span style="color:#f92672">=</span> (sum_<span style="color:#f92672">+</span>(sum(array[r1:])<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>))<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>
+    sum_ <span style="color:#f92672">=</span> (sum_<span style="color:#f92672">+</span>((sum(array)<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>)<span style="color:#f92672">*</span>(q<span style="color:#f92672">-</span>q1<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)))<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>
+    sum_ <span style="color:#f92672">=</span> (sum_<span style="color:#f92672">+</span>(sum(array[:r<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>))<span style="color:#f92672">%</span><span style="color:#ae81ff">10</span>
 
-    <span style="color:#fff;font-weight:bold">return</span> sum_ % <span style="color:#ff0;font-weight:bold">10</span>
+    <span style="color:#66d9ef">return</span> sum_ <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>
 
-<span style="color:#fff;font-weight:bold">if</span> __name__ == <span style="color:#0ff;font-weight:bold">&#39;__main__&#39;</span>:
-    input_ = sys.stdin.readline()
-    from_, to = <span style="color:#fff;font-weight:bold">map</span>(<span style="color:#fff;font-weight:bold">int</span>, input_.split())
-    <span style="color:#fff;font-weight:bold">print</span>(fibonacci_partial_sum(from_, to))
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    input_ <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdin<span style="color:#f92672">.</span>readline()
+    from_, to <span style="color:#f92672">=</span> map(int, input_<span style="color:#f92672">.</span>split())
+    print(fibonacci_partial_sum(from_, to))
 </code></pre></div>
       </div>
 
@@ -365,26 +369,7 @@ n = <span style="color:#fff;font-weight:bold">int</span>(<span style="color:#fff
         
 
 
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
       </footer>
     </article>
 
@@ -428,19 +413,6 @@ n = <span style="color:#fff;font-weight:bold">int</span>(<span style="color:#fff
     </main>
 
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-162762722-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 
   </body>
 

@@ -5,7 +5,6 @@
     <link>https://myselfHimanshu.github.io/</link>
     <description>Recent content on Himanshu Panwar</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
     <lastBuildDate>Sun, 05 Apr 2020 22:22:22 +0530</lastBuildDate><atom:link href="https://myselfHimanshu.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolutional Neural Network Part 3 : Decision Making</title>
@@ -86,7 +85,9 @@ In the previous post we represented the words with a one-hot vector. One of the 
       
       <guid>https://myselfHimanshu.github.io/posts/fibonacci-numbers-series/</guid>
       <description>Fibonacci Number Fibonacci sequence: $F_0=0$, $F_1=1$, and $F_i=F_{i-1}+F_{i-2}$. Given an integer n, find the nth Fibonacci number $F_n$
-Input format : The input consists of a single integer n.Output format : Output $F_n$.Constraints : $0&amp;lt;=n&amp;lt;=45$
+Input format : The input consists of a single integer n.
+Output format : Output $F_n$.
+Constraints : $0&amp;lt;=n&amp;lt;=45$
 CODE
 a = [0,1] for i in range(2,46): a.append(a[i-1] + a[i-2]) def calc_fib(n): return a[n] n = int(input()) print(calc_fib(n)) Last Digit of Large Fibonacci Number Given an integer n, find the last digit of the nth Fibonacci number $F_n$(that is, $F_n$ mod 10)</description>
     </item>
@@ -98,7 +99,8 @@ a = [0,1] for i in range(2,46): a.append(a[i-1] + a[i-2]) def calc_fib(n): retur
       
       <guid>https://myselfHimanshu.github.io/contact/</guid>
       <description>Thanks for reading! If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.
-Have questions or suggestions? Feel free to email or ask me on Twitter.</description>
+Have questions or suggestions? Feel free to email or ask me on Twitter.
+Tweets by 047himanshu   </description>
     </item>
     
     <item>
@@ -108,7 +110,8 @@ Have questions or suggestions? Feel free to email or ask me on Twitter.</descrip
       
       <guid>https://myselfHimanshu.github.io/about/</guid>
       <description>Hi there 👋 Who am I? Hi, I’m Himanshu! I am currently a Data Scientist at Food Tech Startup. Previously spent 2 years as NLP Engineer in Mental Health Space Startup.
-What I do? Currently working on problems such as demand and inventory forecasting, optimizing marketing spends using Machine Learning.Other areas of interest Computer Vision and NLP.  🔭 Built SOTA Computer Vision models from scratch using Pytorch as my personal research work for exploration of Convolutional Neural Networks.</description>
+What I do? Currently working on problems such as demand and inventory forecasting, optimizing marketing spends using Machine Learning.
+Other areas of interest Computer Vision and NLP.  🔭 Built SOTA Computer Vision models from scratch using Pytorch as my personal research work for exploration of Convolutional Neural Networks.</description>
     </item>
     
     <item>
@@ -119,7 +122,9 @@ What I do? Currently working on problems such as demand and inventory forecastin
       <guid>https://myselfHimanshu.github.io/posts/my-first-post/</guid>
       <description>Here&amp;rsquo;s a small python code.
 Sum of two digits Compute the sum of two single digit numbers
-Input format : Integers a and b on the same line (separated by a space).Output format : The sum of a and b.Constraints : $0&amp;lt;=a,b&amp;lt;=9$
+Input format : Integers a and b on the same line (separated by a space).
+Output format : The sum of a and b.
+Constraints : $0&amp;lt;=a,b&amp;lt;=9$
 #Uses python3 import sys input = sys.stdin.read() tokens = input.split() a = int(tokens[0]) b = int(tokens[1]) print(a+b) Maximum Pairwise Product Find the maximum product of two distinct numbers in a sequence of non-negative integers.</description>
     </item>
     

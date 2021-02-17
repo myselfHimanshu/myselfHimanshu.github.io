@@ -41,7 +41,7 @@ I’ll try to explain the concepts in layman terms." />
     
       
       
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -49,7 +49,7 @@ I’ll try to explain the concepts in layman terms." />
     
 
     
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/custom.css" />
+      <link rel="stylesheet" href="/css/custom.css" />
     
 
     
@@ -73,19 +73,19 @@ I’ll try to explain the concepts in layman terms." />
       
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/about/">About</a>
+            <a class="navigation-link" href="/about/">About</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/posts/">Blog</a>
+            <a class="navigation-link" href="/posts/">Blog</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/journal/">Journal</a>
+            <a class="navigation-link" href="/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/contact/">Contact me</a>
+            <a class="navigation-link" href="/contact/">Contact me</a>
           </li>
         
       
@@ -119,9 +119,9 @@ I’ll try to explain the concepts in layman terms." />
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://myselfHimanshu.github.io/tags/cnn/">CNN</a>
+    <a href="/tags/cnn/">CNN</a>
       <span class="separator">•</span>
-    <a href="https://myselfHimanshu.github.io/tags/deeplearning/">DeepLearning</a></div>
+    <a href="/tags/deeplearning/">DeepLearning</a></div>
 
         </div>
       </header>
@@ -133,7 +133,9 @@ I’ll try to explain the concepts in layman terms." />
 <p>If you&rsquo;re offered a seat on a rocket ship, don&rsquo;t ask what seat! Just get on.</p>
 </blockquote>
 <p>Ready ? Let&rsquo;s jump in.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://media.giphy.com/media/kgFZ6dOUGnYBO/giphy.gif">
+</p>
 <p>Convolutional Neural Networks are very similar to ordinary Neural Networks.</p>
 <ol>
 <li>A neuron receives some inputs</li>
@@ -148,40 +150,48 @@ I’ll try to explain the concepts in layman terms." />
 <p>Let&rsquo;s say you have 1024 neurons in next hidden layer, then we might have to train</p>
 <p>$$ 150528 * 1024 \approx 154M $$</p>
 <p>150+ million parameters for the first layer only.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://media.giphy.com/media/keZhECYHtGty4Jh1Vo/giphy.gif">
+</p>
 <p>The next reason is that positions can change. You want your network to detect a dog in an image irrespective of where it is. What I mean is, a dog can be in a corner of image or small dog or whether it is a close-up shot.
 These kind of images, would not activate the same neurons in the network, so network would react differently.</p>
-<p>The important thing about images are that <!-- raw HTML omitted --> pixels are most useful features in the context of their neighbors <!-- raw HTML omitted -->.</p>
+<p>The important thing about images are that <b> pixels are most useful features in the context of their neighbors </b>.</p>
 <p>ConvNet architectures make the explicit assumption that the inputs are images. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
-<p><!-- raw HTML omitted --> Your brain might be fooling you !!! <!-- raw HTML omitted --></p>
+<p><b> Your brain might be fooling you !!! </b></p>
 <p>Here, check out this image.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/08/eb7ff9947f527a2e84d7f06e79138b82.png">
+</p>
 <p>The above image is a black and white image, with color grids on it. Zoom out and in to see the magic.</p>
 <blockquote>
 <p>Color is not a dependable feature in CNN.</p>
 </blockquote>
 <h2 id="terminologies">Terminologies</h2>
 <p>Every image can be represented as a matrix of pixel values.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img width="250" height="250" src="https://www.apsl.net/media/apslweb/images/gif-8.original.gif">
+</p>
 <h3 id="what-are-channels-">What are Channels ?</h3>
 <p>Channel is a convolutional term used to refer to certain feature of an image. In practicality, an image from standard digital camera will have 3 channels (RGB (red, green, blue)). An image printed on a newspaper has 4 channels (CMYK). You can imagine three 2d matrices over each other, each having pixels values in range of [0,255].</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://static.packt-cdn.com/products/9781789613964/graphics/e91171a3-f7ea-411e-a3e1-6d3892b8e1e5.png">
+</p>
 <p>A grayscale image, has just one channel. The value of each pixel in the matrix ranges from 0 to 255 – zero indicating black and 255 indicating white.</p>
 <table>
 <thead>
 <tr>
 <th><img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Channel_digital_image_RGB_color.jpg" alt=""></th>
 <th><img src="https://upload.wikimedia.org/wikipedia/en/4/45/Channel_digital_image_red.jpg" alt=""></th>
-<th><!-- raw HTML omitted --></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/en/a/a8/Channel_digital_image_green.jpg" /></th>
 <th><img src="https://upload.wikimedia.org/wikipedia/en/b/b0/Channel_digital_image_blue.jpg" alt=""></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>RGB image</td>
-<td>Red channel <!-- raw HTML omitted -->(converted into grayscale)</td>
-<td>Green channel<!-- raw HTML omitted -->(converted into grayscale)</td>
-<td>Blue channel<!-- raw HTML omitted -->(converted into grayscale)</td>
+<td>Red channel <br />(converted into grayscale)</td>
+<td>Green channel<br />(converted into grayscale)</td>
+<td>Blue channel<br />(converted into grayscale)</td>
 </tr>
 </tbody>
 </table>
@@ -189,32 +199,34 @@ These kind of images, would not activate the same neurons in the network, so net
 <p>You shouldn&rsquo;t worry about RGB or CMYK specific channels. They are just like metrices which define an image. The main concept here is <code>channel</code>. An image can be divided into any number of channels, for an example, slide projector. You can imagine each slide as a channel and overlapping of these slides will form an image that gets projected over a screen.</p>
 <p>Working on a specific color feature may be useful when you are asking a question to the network like, find me all yellow color flowers.</p>
 <blockquote>
-<p>What is a channel? <!-- raw HTML omitted -->
+<p>What is a channel? <br>
 A channel is set of relatable features.</p>
 </blockquote>
 <blockquote>
-<p><!-- raw HTML omitted -->Channel<!-- raw HTML omitted --> Synonym :<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->feature map<!-- raw HTML omitted -->, <!-- raw HTML omitted -->convolved feature<!-- raw HTML omitted -->, <!-- raw HTML omitted -->activation map<!-- raw HTML omitted --></p>
+<p><b>Channel</b> Synonym :<br>
+<i>feature map</i>, <i>convolved feature</i>, <i>activation map</i></p>
 </blockquote>
 <p>Let&rsquo;s take this image as an example to explain what a channel can be.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png">
+</p>
 <p>Now imagine that we have 26 channels for the given image. Let&rsquo;s say our channels are A-Z, as there are 26 alphabets so 26 channels.</p>
 <ul>
 <li>Channel A : where in all the a from image are filtered out (wherever and however they are, just a )</li>
 <li>Channel B : where in all the b from image are filtered out.</li>
 <li>and so on, till Channel Z.</li>
 </ul>
-<p>Let&rsquo;s talk about Channel A. Now a particular <!-- raw HTML omitted -->a<!-- raw HTML omitted --> in that channel is called <code>feature</code> , it can be big, small, tilted, anything but same feature.</p>
-<p>Now, when I asked you to filter out just <!-- raw HTML omitted -->a<!-- raw HTML omitted --> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as <code>kernel</code> . If you need to extract say <!-- raw HTML omitted -->c<!-- raw HTML omitted -->, you need this <!-- raw HTML omitted -->c<!-- raw HTML omitted --> filter.</p>
+<p>Let&rsquo;s talk about Channel A. Now a particular <i>a</i> in that channel is called <code>feature</code> , it can be big, small, tilted, anything but same feature.</p>
+<p>Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as <code>kernel</code> . If you need to extract say <i>c</i>, you need this <i>c</i> filter.</p>
 <blockquote>
-<p><!-- raw HTML omitted -->Kernel<!-- raw HTML omitted --> Synonym : <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->feature extractor<!-- raw HTML omitted -->,
-<!-- raw HTML omitted -->n x n matrix<!-- raw HTML omitted -->,
-<!-- raw HTML omitted -->filter<!-- raw HTML omitted -->,
-<!-- raw HTML omitted -->weights<!-- raw HTML omitted --></p>
+<p><b>Kernel</b> Synonym : <br>
+<i>feature extractor</i>,
+<i>n x n matrix</i>,
+<i>filter</i>,
+<i>weights</i></p>
 </blockquote>
 <blockquote>
-<p>Each filter gives us a channel. <!-- raw HTML omitted --></p>
+<p>Each filter gives us a channel. <br></p>
 </blockquote>
 <h3 id="building-blocks-of-convolutional-neural-network">Building blocks of Convolutional Neural Network</h3>
 <p>The primary purpose of Convolution is to extract features from the input image. As we have learned, how to speak a word by first learning what is an alphabet, similarly there are building blocks in CNN.</p>
@@ -227,16 +239,24 @@ A channel is set of relatable features.</p>
 <p>gradient and edges combined =&gt; textures and patterns combined =&gt; part of objects combined =&gt; complete objects =&gt; scenes</p>
 </blockquote>
 <p>Look at below image, how does a network learn to identify each block that is mentioned above step by step.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_01_01.png">
+</p>
 <h3 id="what-are-gradients-and-edges-">What are gradients and edges ?</h3>
 <p>We refer <code>gradient</code> as change in brightness over a series of pixels.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img width="500" height="180" src="https://huaxin.cl/wp-content/uploads/2018/09/gradient-black-to-white-wallpaper-4.jpg">
+</p>
 <p>The above image is linear gradient from black to white. This gradient is smooth and we wouldn&rsquo;t say there is edge in this image. Edges are a bit fuzzy in above image. In real objects those <code>edges</code> can be found by looking at sharp transitions. You can find edges in the image below</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img width="500" height="180" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%C3%84%C3%A4retuvastuse_n%C3%A4ide.png/500px-%C3%84%C3%A4retuvastuse_n%C3%A4ide.png">
+</p>
 <h3 id="what-is-convolution-">What is Convolution ?</h3>
 <p>Convolution takes care of spatial relationship between pixels by learning features from input image.
 Let&rsquo;s see, what human eyes sees and what machine sees when looking at an image.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://ai.stanford.edu/~syyeung/cvweb/Pictures1/imagematrix.png">
+</p>
 <ul>
 <li>First image is what you see;</li>
 <li>Second image is how an image is interpreted (matrix of pixels values);</li>
@@ -244,25 +264,35 @@ Let&rsquo;s see, what human eyes sees and what machine sees when looking at an i
 </ul>
 <p><strong>How does convolution preserves spatial relationship ?</strong></p>
 <p>Consider, a 5x5 image whose pixel values are only 0 an 1.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image1.png">
+</p>
 <p>and also conside 3 x3 matrix as shown below</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image2.png">
+</p>
 <p>Then, convolution of 5x5 image and 3x3 image can be computed as shown below :</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://icecreamlabs.com/wp-content/uploads/2018/08/33-con.gif">
+</p>
 <p>Let&rsquo;s understand what is happening ? How the computation is being processed ?</p>
 <p>We slide the yellow matrix over our green image by 1 pixel, and for every position we compute element wise multiplication (between two matrices) and add up the multiplication outputs to get a final integer which forms an element in our pink convolved feature matrix.</p>
 <p>There are some terminologies for each step that is happening above.</p>
 <p>Suppose we have blue box as our image and the dark patch as our yellow matrix and white box as our convolved feature matrix.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif">
+</p>
 <p>The blue object is your image of size (5x5) ( 5 is your width and height) , the dark patch that you see is our <code>kernel</code>, which is initialized with random values.</p>
 <p>There is dot product between 3x3 filter and 3x3 patch of image. This filter slides over the image 1 step at a time.</p>
-<p>This <!-- raw HTML omitted -->step<!-- raw HTML omitted --> is termed as <code>stride</code> (here stride=1) and the results of dot product is creating our output channel.</p>
+<p>This <i>step</i> is termed as <code>stride</code> (here stride=1) and the results of dot product is creating our output channel.</p>
 <blockquote>
-<p>This process of n x n filter rolling over on top of the image and computing dot product step by step is termed as <!-- raw HTML omitted -->convolution<!-- raw HTML omitted -->.</p>
+<p>This process of n x n filter rolling over on top of the image and computing dot product step by step is termed as <b>convolution</b>.</p>
 </blockquote>
 <p>These kernels are initialised with random values in the beginning. These values will change over in model training. By model I mean is, when you train your deep learning model. Different values of the filter matrix will produce different feature maps for same input image.</p>
 <p>Consider another image,</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png">
+</p>
 <p>Let&rsquo;s see effect of different filters over above image,</p>
 <table>
 <thead>
@@ -310,14 +340,14 @@ Let&rsquo;s see, what human eyes sees and what machine sees when looking at an i
 <p>$$
 n_o = \lfloor\frac{n_i+2p-k}{s}\rfloor + 1
 $$</p>
-<p>$n_o$ : number of output features in a dimension<!-- raw HTML omitted -->
-$n_i$ : number of input features in a dimension<!-- raw HTML omitted -->
-$k$   : kernel size<!-- raw HTML omitted -->
-$p$   : padding size<!-- raw HTML omitted -->
+<p>$n_o$ : number of output features in a dimension<br>
+$n_i$ : number of input features in a dimension<br>
+$k$   : kernel size<br>
+$p$   : padding size<br>
 $s$   : stride size</p>
 <p>I will explain what is padding and why we use it later.</p>
 <h3 id="parameters-of-kernels">Parameters of kernels</h3>
-<p>These kernels have values which are termed as <!-- raw HTML omitted -->parameters<!-- raw HTML omitted -->. We can say a 3x3 kernel will have 9 parameters.</p>
+<p>These kernels have values which are termed as <i>parameters</i>. We can say a 3x3 kernel will have 9 parameters.</p>
 <p>Now coming to some mathematical concepts.</p>
 <ul>
 <li>If we use a 5x5 kernel for convolution on 5x5 image, we will get output object of size 1x1.</li>
@@ -331,9 +361,9 @@ $s$   : stride size</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">N <!-- raw HTML omitted -->(N x N image)</th>
-<th style="text-align:center">total number of Parameters <!-- raw HTML omitted -->( 3x3 kernel )</th>
-<th style="text-align:center">total number of Parameters <!-- raw HTML omitted -->( N x N kernel )</th>
+<th style="text-align:center">N <br />(N x N image)</th>
+<th style="text-align:center">total number of Parameters <br />( 3x3 kernel )</th>
+<th style="text-align:center">total number of Parameters <br />( N x N kernel )</th>
 </tr>
 </thead>
 <tbody>
@@ -372,7 +402,9 @@ $s$   : stride size</p>
 <blockquote>
 <p>A receptive field is defined as region in the input that a particular CNNs feature is looking at.</p>
 </blockquote>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://www.researchgate.net/publication/316950618/figure/fig4/AS:495826810007552@1495225731123/The-receptive-field-of-each-convolution-layer-with-a-3-3-kernel-The-green-area-marks.png">
+</p>
 <p>Let&rsquo;s say Layer1 is your image of size 5x5 and green color matrix is your kernel of size 3x3.</p>
 <p>If you convolve the kernel on image, you will get 3x3 object which is your Layer2 and convolving again on this Layer2 you will get object of size 1x1, which is your Layer3.</p>
 <p>Let&rsquo;s take green cell from Layer2.</p>
@@ -394,14 +426,14 @@ $s$   : stride size</p>
 <p>A 5x5 kernel might have seen the whole image and as explained earlier, using 3x3 kernel (twice) is similar to using 5x5 kernel. So, the <code>global receptive field</code> of that yellow cell from Layer3 will be full 5x5 image and the local receptive field of a cell will always be the size of kernel.</p>
 <p>So the last cell should have seen the whole image, otherwise it wouldn&rsquo;t know if cat is in image or not.</p>
 <p>Now, if we have to build a network for 401x401 image,</p>
-<p><!-- raw HTML omitted -->How many layers would we need by just using 3x3 kernel<!-- raw HTML omitted -->?</p>
+<p><i>How many layers would we need by just using 3x3 kernel</i>?</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:center">image size</th>
 <th style="text-align:center">kernel size</th>
 <th style="text-align:center">output size</th>
-<th style="text-align:center">Global <!-- raw HTML omitted -->Receptive field size</th>
+<th style="text-align:center">Global <br />Receptive field size</th>
 </tr>
 </thead>
 <tbody>
@@ -442,24 +474,26 @@ $s$   : stride size</p>
 <h3 id="initializing-kernel-values">Initializing kernel values</h3>
 <p>The values of a neural network must be initializes to random numbers.</p>
 <p>Understand these 2 concepts :</p>
-<p><!-- raw HTML omitted -->Deterministic Algorithms vs Non-Deterministic Algorithms<!-- raw HTML omitted --></p>
+<p><b>Deterministic Algorithms vs Non-Deterministic Algorithms</b></p>
 <p>Given an unordered array of numbers, a bubble sort algorithm will always execute in same way to give same ordered result.</p>
 <p>But some problems cannot be solved by this technique efficiently because of complexity of data. The algorithm may run but may never give you required solution or might run infinitely.</p>
 <p>To solve such problems, we use non-deterministic algorithms.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/950px-Difference_between_deterministic_and_Nondeterministic.svg.png">
+</p>
 <p>A deterministic algorithm that performs f(n) steps always finishes in f(n) steps and always returns the same result. A non deterministic algorithm that has f(n) levels might not return the same result on different runs. A non deterministic algorithm may never finish due to the potentially infinite size of the fixed height tree.</p>
 <p>These non-deterministic algorithm will arive at approximate solution but will be fast. These solution will often be satisfactory for such problems.</p>
 <p>These kind of algorithms make use of randomness. You might have studied about gradient descent algorithm, these are referred to as <a href="https://en.wikipedia.org/wiki/Stochastic_optimization">stochastic algorithms</a>.</p>
 <p>The process of finding solution is incremental, starting from a point in sapce of possible solutions to good enough solution. As we know nothing about space, we start with random chosen point.</p>
 <p>Neural Networks are trained using these kind of algorithms.</p>
 <blockquote>
-<p>Training algorithms for deep learning models are usually iterative in nature and thus require the user to specify some initial point from which to begin the iterations. Moreover, training deep models is a sufficiently difficult task that most algorithms are strongly affected by the choice of initialization.<!-- raw HTML omitted --></p>
+<p>Training algorithms for deep learning models are usually iterative in nature and thus require the user to specify some initial point from which to begin the iterations. Moreover, training deep models is a sufficiently difficult task that most algorithms are strongly affected by the choice of initialization.<br></p>
 </blockquote>
 <blockquote>
-<p>Perhaps the only property known with complete certainty is that the initial parameters need to break symmetry between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic constant model will constantly update both of these units in the same way. <!-- raw HTML omitted --> - page 296,297, <a href="https://www.deeplearningbook.org/contents/optimization.html">deep learning book</a>.</p>
+<p>Perhaps the only property known with complete certainty is that the initial parameters need to break symmetry between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic constant model will constantly update both of these units in the same way. <br> - page 296,297, <a href="https://www.deeplearningbook.org/contents/optimization.html">deep learning book</a>.</p>
 </blockquote>
 <p>A careful initialization of the network can speed up the learning process.</p>
-<!-- raw HTML omitted -->
+<hr>
 
       </div>
 
@@ -467,26 +501,7 @@ $s$   : stride size</p>
         
 
 
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
       </footer>
     </article>
 
@@ -530,19 +545,6 @@ $s$   : stride size</p>
     </main>
 
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-162762722-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 
   </body>
 

@@ -41,7 +41,7 @@
     
       
       
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -49,7 +49,7 @@
     
 
     
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/custom.css" />
+      <link rel="stylesheet" href="/css/custom.css" />
     
 
     
@@ -73,19 +73,19 @@
       
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/about/">About</a>
+            <a class="navigation-link" href="/about/">About</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/posts/">Blog</a>
+            <a class="navigation-link" href="/posts/">Blog</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/journal/">Journal</a>
+            <a class="navigation-link" href="/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/contact/">Contact me</a>
+            <a class="navigation-link" href="/contact/">Contact me</a>
           </li>
         
       
@@ -119,11 +119,11 @@
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://myselfHimanshu.github.io/tags/nlp/">NLP</a>
+    <a href="/tags/nlp/">NLP</a>
       <span class="separator">•</span>
-    <a href="https://myselfHimanshu.github.io/tags/rnn/">RNN</a>
+    <a href="/tags/rnn/">RNN</a>
       <span class="separator">•</span>
-    <a href="https://myselfHimanshu.github.io/tags/deeplearning/">DeepLearning</a></div>
+    <a href="/tags/deeplearning/">DeepLearning</a></div>
 
         </div>
       </header>
@@ -329,9 +329,9 @@ The above given example was only one vector. Suppose we have a whole novel, we&r
 <h3 id="recurrent-neural-network-model">Recurrent Neural Network Model</h3>
 <p><em>Why not a standard Network?</em></p>
 <ol>
-<li>Inputs and outputs can have different lenghts in different examples.<!-- raw HTML omitted -->
+<li>Inputs and outputs can have different lenghts in different examples.<br />
 Padding can be used, but it is not a good solution.</li>
-<li>Doesn&rsquo;t share features learned across different positions of text.<!-- raw HTML omitted -->
+<li>Doesn&rsquo;t share features learned across different positions of text.<br />
 Using feature sharing like in CNNs can reduce number of parameters in the model.</li>
 </ol>
 <p>An RNN architecture where:</p>
@@ -359,7 +359,7 @@ Using feature sharing like in CNNs can reduce number of parameters in the model.
 <p><strong>Backward Propogation through time</strong></p>
 <p>Deep learning frameworks do backpropogation automatically for us. The architecture looks like this :
 <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn2.png" alt=""></p>
-<p>Here, <code>$W_a, b_a, W_y, b_y$</code> are shared across each element of the sequence.<!-- raw HTML omitted --></p>
+<p>Here, <code>$W_a, b_a, W_y, b_y$</code> are shared across each element of the sequence.<br /></p>
 <p>The loss here that we optimize is:</p>
 <p><code>$$L(y,\hat{y}) = \sum_{t=1}^T L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;})$$ $$L^{&lt;t&gt;}(y^{&lt;t&gt;},\hat{y}^{&lt;t&gt;}) = -y^{&lt;t&gt;}log(\hat{y}^{&lt;t&gt;}) - (1-y^{&lt;t&gt;})log(1-\hat{y}^{&lt;t&gt;})$$</code></p>
 <p>Each loss is backpropogated in opposite direction of forward propogation steps and the parameters are updated by gradient descent.</p>
@@ -387,9 +387,9 @@ Using feature sharing like in CNNs can reduce number of parameters in the model.
 <ul>
 <li>Get the Training set: large corpus.</li>
 <li>Tokenize each sentence, get the vocabulary and convert each element to one-hot vector representation.</li>
-<li>Add <!-- raw HTML omitted -->(eod of statement) as token to every example to know the end of a example. And add <!-- raw HTML omitted -->(unknown) and <!-- raw HTML omitted --> token both to the vocabualry.</li>
+<li>Add <EOS>(eod of statement) as token to every example to know the end of a example. And add <UNK>(unknown) and <EOS> token both to the vocabualry.</li>
 </ul>
-<p>For an example, <em>Cats average 15 hours of sleep a day <!-- raw HTML omitted --></em></p>
+<p>For an example, <em>Cats average 15 hours of sleep a day <EOS></em></p>
 <p><img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn4.png" alt=""></p>
 <ul>
 <li>So given <em>Cats average 15</em> what is the probability the word is <em>hours</em>.</li>
@@ -412,14 +412,14 @@ See this image here</li>
 </ul>
 <p>Now we have our own series.</p>
 <h3 id="vanishing-gradients-in-rnn">Vanishing Gradients in RNN</h3>
-<p>One of the problem with RNN is <em>vanishing gradient</em>. Suppose for an example,<!-- raw HTML omitted -->
-&ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo; <!-- raw HTML omitted -->
-&ldquo;<em>The cats, which actually ate &hellip;&hellip;{100}, were full</em>&rdquo; <!-- raw HTML omitted --></p>
+<p>One of the problem with RNN is <em>vanishing gradient</em>. Suppose for an example,<br />
+&ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo; <br />
+&ldquo;<em>The cats, which actually ate &hellip;&hellip;{100}, were full</em>&rdquo; <br /></p>
 <p>Here we need to remember the dependencies of <em>cat -&gt; was</em> and <em>cats -&gt; were</em> the singular/plural form for long time. This long sentences can be interpreted as DEEP RNN and here the gradients of cat/cats will no effect on was/were. While backpropogating mutilplying the fractions can lead to vanish the gradient while multiplication of large numbers explodes the gradient where weights values becomes <code>NaN</code> which is also called gradient exploding problem.</p>
 <p>So RNNs are not good in learning <em>long-term dependencies</em>. Exploding gradient can be solved by <em>gradient clipping</em>.</p>
 <h3 id="gated-recurrent-unit-gru">Gated Recurrent Unit (GRU)</h3>
 <p>This is updated version of RNN which solves <em>long-term dependencies</em> and <em>vanishing gradient</em> problem.</p>
-<p>We will go step by step of this GRU Unit (<em>Simplified Version</em>).<!-- raw HTML omitted --></p>
+<p>We will go step by step of this GRU Unit (<em>Simplified Version</em>).<br /></p>
 <ul>
 <li>Our example : &ldquo;<em>The cat, which actually ate &hellip;&hellip; {100}, was full</em>&rdquo;</li>
 <li>The unit will have a new variable <code>$C = memory cell$</code>. This memory cell will tell us whether the cat was singular or plural. In other words what to memorize and what to not.</li>
@@ -449,12 +449,12 @@ See this image here</li>
 <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn7.png" alt=""></p>
 <p>Notations:</p>
 <p><code>$$C^{&lt;t&gt;} != a^{&lt;t&gt;}$$ $$\tilde{C}^{&lt;t&gt;} =  tanh(W_C[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_C)$$ $$\Gamma_U =  sigmoid(W_U[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_U)$$ $$ \Gamma_f =  sigmoid(W_f[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_f) $$ $$ \Gamma_o =  sigmoid(W_o[a^{&lt;t-1&gt;}, X^{&lt;t&gt;}] + b_o) $$ $$ C^{&lt;t&gt;} = (\Gamma_U * \tilde{C}^{&lt;t&gt;}) + (\Gamma_f * C^{&lt;t-1&gt;})  $$ $$ a^{&lt;t&gt;} = \Gamma_U * C^{&lt;t&gt;} $$</code></p>
-<p>Here we have 3 gates <code>$\Gamma_U$</code> as <em>update gate</em> ,  <code>$\Gamma_f$</code> as <em>forget gate</em> and <code>$\Gamma_o$</code> as <em>output gate</em> <!-- raw HTML omitted -->
+<p>Here we have 3 gates <code>$\Gamma_U$</code> as <em>update gate</em> ,  <code>$\Gamma_f$</code> as <em>forget gate</em> and <code>$\Gamma_o$</code> as <em>output gate</em> <br />
 One of the advantages of GRU is that it&rsquo;s simpler and can be used to build much bigger network but the LSTM is more powerful and general.</p>
 <h3 id="bidirectional-rnns">Bidirectional RNNs</h3>
-<p>Suppose for an example,<!-- raw HTML omitted -->
-<em>He said,&ldquo;Teddy bears are on sale&rdquo;</em> <!-- raw HTML omitted -->
-<em>He said,&ldquo;Teddy Roosevelt was a great president&rdquo;</em> <!-- raw HTML omitted --></p>
+<p>Suppose for an example,<br />
+<em>He said,&ldquo;Teddy bears are on sale&rdquo;</em> <br />
+<em>He said,&ldquo;Teddy Roosevelt was a great president&rdquo;</em> <br /></p>
 <p>If we look just first three words, we won&rsquo;t be able to say if <em>teddy</em> is a toy or person. This is why we need the information from the future elements also.</p>
 <p>The architecture:
 <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/rnn8.png" alt=""></p>
@@ -470,9 +470,9 @@ One of the advantages of GRU is that it&rsquo;s simpler and can be used to build
 <h2 id="problem-statements">Problem Statements</h2>
 <p><em>Coursera Assignment</em></p>
 <ul>
-<li><!-- raw HTML omitted -->Building Neural Network Step by Step.<!-- raw HTML omitted --></li>
-<li><!-- raw HTML omitted -->Dinosaur Island - Character level language Modeling.<!-- raw HTML omitted --></li>
-<li><!-- raw HTML omitted -->Jazz Improvisation with LSTM.<!-- raw HTML omitted --></li>
+<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Building%2Ba%2BRecurrent%2BNeural%2BNetwork%2B-%2BStep%2Bby%2BStep%2B-%2Bv3.ipynb" target="_blank">Building Neural Network Step by Step.</a></li>
+<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Dinosaurus%2BIsland%2B--%2BCharacter%2Blevel%2Blanguage%2Bmodel%2Bfinal%2B-%2Bv3.ipynb" target="_blank">Dinosaur Island - Character level language Modeling.</a></li>
+<li><a href="https://github.com/myselfHimanshu/Coursera-DataML/blob/master/deeplearning.ai/Course5/Improvise%2Ba%2BJazz%2BSolo%2Bwith%2Ban%2BLSTM%2BNetwork%2B-%2Bv3.ipynb" target="_blank">Jazz Improvisation with LSTM.</a></li>
 </ul>
 
       </div>
@@ -481,26 +481,7 @@ One of the advantages of GRU is that it&rsquo;s simpler and can be used to build
         
 
 
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
       </footer>
     </article>
 
@@ -544,19 +525,6 @@ One of the advantages of GRU is that it&rsquo;s simpler and can be used to build
     </main>
 
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-162762722-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 
   </body>
 

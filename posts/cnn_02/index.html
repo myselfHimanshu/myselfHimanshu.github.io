@@ -43,7 +43,7 @@ To understand the basic terminologies of CNN building blocks." />
     
       
       
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.46f5a3636c38040bd9d17459d63b6de7567d808ea2f647b0518c37513d90f1b1.css" integrity="sha256-RvWjY2w4BAvZ0XRZ1jtt51Z9gI6i9kewUYw3UT2Q8bE=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -51,7 +51,7 @@ To understand the basic terminologies of CNN building blocks." />
     
 
     
-      <link rel="stylesheet" href="https://myselfHimanshu.github.io/css/custom.css" />
+      <link rel="stylesheet" href="/css/custom.css" />
     
 
     
@@ -75,19 +75,19 @@ To understand the basic terminologies of CNN building blocks." />
       
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/about/">About</a>
+            <a class="navigation-link" href="/about/">About</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/posts/">Blog</a>
+            <a class="navigation-link" href="/posts/">Blog</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/journal/">Journal</a>
+            <a class="navigation-link" href="/journal/">Journal</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="https://myselfHimanshu.github.io/contact/">Contact me</a>
+            <a class="navigation-link" href="/contact/">Contact me</a>
           </li>
         
       
@@ -121,9 +121,9 @@ To understand the basic terminologies of CNN building blocks." />
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://myselfHimanshu.github.io/tags/cnn/">CNN</a>
+    <a href="/tags/cnn/">CNN</a>
       <span class="separator">•</span>
-    <a href="https://myselfHimanshu.github.io/tags/deeplearning/">DeepLearning</a></div>
+    <a href="/tags/deeplearning/">DeepLearning</a></div>
 
         </div>
       </header>
@@ -134,13 +134,17 @@ To understand the basic terminologies of CNN building blocks." />
 <p>To understand the basic terminologies of CNN building blocks. Kindly go through this post.</p>
 <p><a href="https://myselfhimanshu.github.io/posts/cnn_01/">CNN Part 1 : Basic Concepts</a></p>
 <p>Ready ? Let&rsquo;s jump in.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://media.giphy.com/media/11OWKkvYUmZQOs/giphy.gif"/>
+</p>
 <h2 id="neural-architecture--part-ii">Neural Architecture : Part II</h2>
 <p>In the below section we are introducting two main concept.</p>
 <p><strong>Max Pooling</strong> and <strong>Receptive Field</strong></p>
 <p>Before jumping further, let me tell you <strong>what padding is?</strong></p>
 <p>You can think padding as extra rows and columns of pixels that are applied around a feature map.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/padding.jpg">
+</p>
 <p>In the above image, we have a feature map of 5x5, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 7x7 now on which we apply convolution.</p>
 <p>It is not necessary to apply padding with value 0, as shown in the image. We will see what padding should we apply such that we can gain more information from around the corners of the feature map.</p>
 <p><strong>Why do we need Padding?</strong></p>
@@ -157,7 +161,7 @@ To understand the basic terminologies of CNN building blocks." />
 <blockquote>
 <p>Refer to Building blocks of Convolutional Neural Network section of <a href="https://myselfhimanshu.github.io/posts/cnn_01/">previous post</a>.</p>
 </blockquote>
-<p>To reduce number of layers, one technique to downsample a feature map is <code>MaxPooling</code>.<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>To reduce number of layers, one technique to downsample a feature map is <code>MaxPooling</code>.<br><br><br></p>
 <p><img src="https://cdn-images-1.medium.com/freeze/max/1000/1*ghJyfuw-9a5esjJqGuBggA.jpeg?q=20" alt=""></p>
 <p>It is clear what is happening from the above image.</p>
 <p>If we look at first row, applying a max-pool layer of size 2x2 on 4x4 feature map with stride equal to the size of the layer gives 2x2 feature map.</p>
@@ -187,7 +191,9 @@ To understand the basic terminologies of CNN building blocks." />
 <p>The above process is applying maxpooling again and again on the same image. This doesn&rsquo;t happen in the network. There will convolution in middle. The concept I am explaining you is about where to use maxpool layer and what will happen if we start applying maxpooling without knowing what the network has learned in previous layer.</p>
 <p>Now ask what is your network learning if I do this?</p>
 <p>It might be learning bananas for minions.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif"/>
+</p>
 <p>So we need to really careful, where should I apply the maxpool layer.</p>
 <blockquote>
 <p>Never use max pooling close to your output/prediction layer, the network might end up loosing important features.</p>
@@ -207,19 +213,23 @@ To understand the basic terminologies of CNN building blocks." />
 <p>Given:</p>
 <p>We have image size of 400x400, kernel size of 3x3, stride = 1, padding = 0 and max pool layer (MP) of size 2x2 with stride 2.</p>
 <p>Here, we will write down our output object size,</p>
-<p>400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <!-- raw HTML omitted -->
-195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <!-- raw HTML omitted -->
-92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <!-- raw HTML omitted -->
-41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <!-- raw HTML omitted -->
-15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <!-- raw HTML omitted --></p>
+<p>400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <br>
+195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <br>
+92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <br>
+41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <br>
+15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <br></p>
 <p>By using maxpooling layer we have reduced the layer count from 200 to 27. That&rsquo;s great right ?</p>
-<!-- raw HTML omitted -->
+<p align="center">
+<img height="200" width="300" src="https://media.giphy.com/media/xT9IgzUuC5Ss6ZnTEs/giphy.gif">
+</p>
 <p>Wait there is more!!!</p>
 <p>Now, lets understand the concept of channels once again. In last post we have used single channel in input image for the calculations. Let&rsquo;s get practical and introduce our RGB channels of the image.</p>
 <p><strong>How many kernels are we using in the network now?</strong></p>
 <p>We have an image of size 400x400x3. Let&rsquo;s us assume we add 32 kernels in the first layer, 64 in second, 128 in thrid and so on.</p>
 <p>Look at this animation, think what is happening and then we will look at the proper representation of our network.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+<img src="https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif">
+</p>
 <blockquote>
 <p>Every kernel gives its own channel.
 Our kernels must have an equal number of channels as in the input channel.</p>
@@ -348,55 +358,61 @@ Our kernels must have an equal number of channels as in the input channel.</p>
 <p>We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what&rsquo;s happening. The more we add these parameters and ask our network to learn, the more it will slow down. These increasing number of parameters can really slow down the networks learning process.</p>
 <p>I am not telling, a network won&rsquo;t be able to learn. Here the processing time is dependent on your machine. </p>
 <p>If you are very very rich person who can buy expensive GPUs, you can add any number of parameters in the network.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+<img src="https://media.giphy.com/media/JpG2A9P3dPHXaTYrwu/giphy.gif">
+</p>
 <p>Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series because of its compute power.</p>
 <p><strong>What&rsquo;s the solution?</strong></p>
-<!-- raw HTML omitted -->
+<p align="center">
+<img src="https://media.giphy.com/media/3z3bxq78R9fVK/giphy.gif">
+</p>
 <p>Stay tuned for the post!!!</p>
 <p>For this post, we will continue with code now!!! Some hands on experience is necessary, too much theory !!! bruh&hellip; boring&hellip;</p>
-<!-- raw HTML omitted -->
+<p align="center">
+<img src="https://media.giphy.com/media/bzE1WAm8BifiE/giphy.gif">
+</p>
 <h1 id="into-the-code">Into the Code</h1>
 <p>We&rsquo;ll be using Pytorch to build out neural network. I prefer using Pytorch as it gives more flexibility and more power to user to have control over the network. </p>
 <p>Torch : An open source machine learning framework that accelerates the path from research prototyping to production deployment.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f">#import libraries</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#import libraries</span>
 
-<span style="color:#fff;font-weight:bold">from</span> __future__ <span style="color:#fff;font-weight:bold">import</span> print_function
-<span style="color:#fff;font-weight:bold">import</span> torch
-<span style="color:#fff;font-weight:bold">import</span> torch.nn <span style="color:#fff;font-weight:bold">as</span> nn
-<span style="color:#fff;font-weight:bold">import</span> torch.nn.functional <span style="color:#fff;font-weight:bold">as</span> F
-<span style="color:#fff;font-weight:bold">import</span> torch.optim <span style="color:#fff;font-weight:bold">as</span> optim
-<span style="color:#fff;font-weight:bold">from</span> torchvision <span style="color:#fff;font-weight:bold">import</span> datasets, transforms
+<span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<span style="color:#f92672">import</span> torch
+<span style="color:#f92672">import</span> torch.nn <span style="color:#f92672">as</span> nn
+<span style="color:#f92672">import</span> torch.nn.functional <span style="color:#f92672">as</span> F
+<span style="color:#f92672">import</span> torch.optim <span style="color:#f92672">as</span> optim
+<span style="color:#f92672">from</span> torchvision <span style="color:#f92672">import</span> datasets, transforms
 
-<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
-<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
-plt.rcParams[<span style="color:#0ff;font-weight:bold">&#39;figure.figsize&#39;</span>] = (<span style="color:#ff0;font-weight:bold">10</span>,<span style="color:#ff0;font-weight:bold">5</span>)
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">5</span>)
 </code></pre></div><ul>
 <li><em>datasets</em> will be used to download MNIST dataset which has been cleaned for us and provided by pytorch.</li>
 <li><em>transforms</em> are used to convert arrays to tensors which are used in pytorch framework. These can also be used to do some augumentation on the data. We will go through augumentation techniques in another post.</li>
 </ul>
 <p><strong>GPU for training</strong></p>
 <p>In order to use GPU, we need to identify and specify GPU as the device. Later, in training loop, we will load the data onto the device.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> tensorflow <span style="color:#fff;font-weight:bold">as</span> tf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
 
-device_name = tf.test.gpu_device_name()
+device_name <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>test<span style="color:#f92672">.</span>gpu_device_name()
 
-<span style="color:#fff;font-weight:bold">try</span>:
-  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;Found GPU at : {device_name}&#34;</span>)
-<span style="color:#fff;font-weight:bold">except</span>:
-  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;GPU device not found.&#34;</span>)
+<span style="color:#66d9ef">try</span>:
+  <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Found GPU at : {device_name}&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;GPU device not found.&#34;</span>)
 </code></pre></div><p>The above code will check for gpu.</p>
 <p>CUDA is a parallel computing platform and application programming interface model created by Nvidia. It allows software developers and software engineers to use a CUDA-enabled graphics processing unit for general purpose processing.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> torch
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch
 
-<span style="color:#fff;font-weight:bold">if</span> torch.cuda.is_available():
-  device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cuda&#34;</span>)
-  use_cuda = True
-  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;Number of GPU&#39;s available : {torch.cuda.device_count()}&#34;</span>)
-  <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;GPU device name : {torch.cuda.get_device_name(0)}&#34;</span>)
-<span style="color:#fff;font-weight:bold">else</span>:
-  <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;No GPU available, using CPU instead&#34;</span>)
-  device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cpu&#34;</span>)
-  use_cuda = False
+<span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available():
+  device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>)
+  use_cuda <span style="color:#f92672">=</span> True
+  <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Number of GPU&#39;s available : {torch.cuda.device_count()}&#34;</span>)
+  <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;GPU device name : {torch.cuda.get_device_name(0)}&#34;</span>)
+<span style="color:#66d9ef">else</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;No GPU available, using CPU instead&#34;</span>)
+  device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cpu&#34;</span>)
+  use_cuda <span style="color:#f92672">=</span> False
 </code></pre></div><p>Here just check how many gpu&rsquo;s do you have and what kind of gpu you are using as it affects the learning process of the network.</p>
 <p><strong>Loading MNIST dataset</strong></p>
 <p>Before creating any CNN network, we will first visualze and do some analysis on our MNIST dataset.</p>
@@ -410,73 +426,75 @@ device_name = tf.test.gpu_device_name()
 <blockquote>
 <p>Going	downhill	reduces	the	error,	but	the direction	of	steepest	descent	does	not	point at	the	minimum	unless	the	ellipse	is	a	circle.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch.manual_seed(<span style="color:#ff0;font-weight:bold">1</span>)
-batch_size = <span style="color:#ff0;font-weight:bold">128</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">1</span>)
+batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
 
-kwargs = {<span style="color:#0ff;font-weight:bold">&#39;num_workers&#39;</span>: <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#0ff;font-weight:bold">&#39;pin_memory&#39;</span>: True} <span style="color:#fff;font-weight:bold">if</span> use_cuda <span style="color:#fff;font-weight:bold">else</span> {}
+kwargs <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;num_workers&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;pin_memory&#39;</span>: True} <span style="color:#66d9ef">if</span> use_cuda <span style="color:#66d9ef">else</span> {}
 </code></pre></div><p>The below code will download the MNIST dataset, apply transforms and load the tensors into dataloader.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mnist_trainset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#34;./data&#34;</span>, train=True, download=True,
-                                transform=transforms.Compose([
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.1307</span>,), (<span style="color:#ff0;font-weight:bold">0.3081</span>,))
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mnist_trainset <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>MNIST(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./data&#34;</span>, train<span style="color:#f92672">=</span>True, download<span style="color:#f92672">=</span>True,
+                                transform<span style="color:#f92672">=</span>transforms<span style="color:#f92672">.</span>Compose([
+                                          transforms<span style="color:#f92672">.</span>ToTensor(),
+                                          transforms<span style="color:#f92672">.</span>Normalize((<span style="color:#ae81ff">0.1307</span>,), (<span style="color:#ae81ff">0.3081</span>,))
                     ]))
 
-mnist_testset = datasets.MNIST(root=<span style="color:#0ff;font-weight:bold">&#34;./data&#34;</span>, train=False, download=True,
-                               transform=transforms.Compose([
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.1307</span>,), (<span style="color:#ff0;font-weight:bold">0.3081</span>,))
+mnist_testset <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>MNIST(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./data&#34;</span>, train<span style="color:#f92672">=</span>False, download<span style="color:#f92672">=</span>True,
+                               transform<span style="color:#f92672">=</span>transforms<span style="color:#f92672">.</span>Compose([
+                                          transforms<span style="color:#f92672">.</span>ToTensor(),
+                                          transforms<span style="color:#f92672">.</span>Normalize((<span style="color:#ae81ff">0.1307</span>,), (<span style="color:#ae81ff">0.3081</span>,))
                     ]))
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader = torch.utils.data.DataLoader(mnist_trainset,
-                                          batch_size=batch_size, shuffle=True, **kwargs)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(mnist_trainset,
+                                          batch_size<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span>True, <span style="color:#f92672">**</span>kwargs)
 
-test_loader = torch.utils.data.DataLoader(mnist_testset,
-                                          batch_size=batch_size, shuffle=True, **kwargs)
+test_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(mnist_testset,
+                                          batch_size<span style="color:#f92672">=</span>batch_size, shuffle<span style="color:#f92672">=</span>True, <span style="color:#f92672">**</span>kwargs)
 </code></pre></div><p>A tensor is a container which can house data in N dimensions. It is an algebraic object that describes a linear mapping from one set of algebraic objects to another.</p>
 <p><strong>Visualizing the dataset</strong></p>
 <p>Let&rsquo;s see what our data looks like.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">examples = <span style="color:#fff;font-weight:bold">enumerate</span>(train_loader)
-batch_idx, (example_data, example_targets) = <span style="color:#fff;font-weight:bold">next</span>(examples)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">examples <span style="color:#f92672">=</span> enumerate(train_loader)
+batch_idx, (example_data, example_targets) <span style="color:#f92672">=</span> next(examples)
 </code></pre></div><p>train data batch shape : [128, 1, 28, 28]</p>
 <p>we have 128 images of size (128x128) in gray scale (no rgb channel).</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure()
-<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">6</span>):
-  plt.subplot(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">3</span>,i+<span style="color:#ff0;font-weight:bold">1</span>)
-  plt.tight_layout()
-  plt.imshow(example_data[i][<span style="color:#ff0;font-weight:bold">0</span>], cmap=<span style="color:#0ff;font-weight:bold">&#39;gray&#39;</span>, interpolation=<span style="color:#0ff;font-weight:bold">&#39;none&#39;</span>)
-  plt.title(f<span style="color:#0ff;font-weight:bold">&#34;Ground Truth : {example_targets[i]}&#34;</span>)
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure()
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">6</span>):
+  plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+  plt<span style="color:#f92672">.</span>tight_layout()
+  plt<span style="color:#f92672">.</span>imshow(example_data[i][<span style="color:#ae81ff">0</span>], cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>)
+  plt<span style="color:#f92672">.</span>title(f<span style="color:#e6db74">&#34;Ground Truth : {example_targets[i]}&#34;</span>)
+</code></pre></div><p align="center">
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/mnist_images.png">
+</p>
 <p><strong>Building up the model</strong></p>
 <p>In the below code, we will write what input size we are getting, what will be the output and what is the receptive field.</p>
 <p>Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, it increases by 2.</p>
 <p>But when there is max pooling layer in between, the receptive field doubles. The sentence is not completely true. We will see the effect on receptive field and derive a formula later, as it depends on stride, padding and other factors. So, just go through the post as it is for now. We will learn the concepts slowly.</p>
 <p>I want you to understand what is happening in the network.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">class</span> Net(nn.Module):
-    <span style="color:#fff;font-weight:bold">def</span> __init__(self):
-        <span style="color:#fff;font-weight:bold">super</span>(Net, self).__init__()
-        self.conv1 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">32</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,1,30,30], output = [128,32,28,28], rf = 3</span>
-        self.conv2 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">32</span>, <span style="color:#ff0;font-weight:bold">64</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,32,30,30], output = [128,64,28,28], rf = 5</span>
-        self.pool1 = nn.MaxPool2d(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>) <span style="color:#007f7f"># input= [128,64,28,28], output = [128,64,14,14], rf = 10</span>
-        self.conv3 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">64</span>, <span style="color:#ff0;font-weight:bold">128</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,64,16,16], output = [128,128,14,14], rf = 12</span>
-        self.conv4 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">128</span>, <span style="color:#ff0;font-weight:bold">256</span>, <span style="color:#ff0;font-weight:bold">3</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>) <span style="color:#007f7f"># input= [128,128,16,16], output = [128,256,14,14], rf = 14</span>
-        self.pool2 = nn.MaxPool2d(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>) <span style="color:#007f7f"># input= [128,256,14,14], output = [128,256,7,7], rf = 28</span>
-        self.conv5 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">256</span>, <span style="color:#ff0;font-weight:bold">512</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,256,7,7], output = [128,512,5,5], rf = 30</span>
-        self.conv6 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">512</span>, <span style="color:#ff0;font-weight:bold">1024</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,512,5,5], output = [128,1024,3,3], rf = 32</span>
-        self.conv7 = nn.Conv2d(<span style="color:#ff0;font-weight:bold">1024</span>, <span style="color:#ff0;font-weight:bold">10</span>, <span style="color:#ff0;font-weight:bold">3</span>) <span style="color:#007f7f"># input= [128,1024,3,3], output = [128,10,1,1], rf = 34</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Net</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super(Net, self)<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>conv1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># input= [128,1,30,30], output = [128,32,28,28], rf = 3</span>
+        self<span style="color:#f92672">.</span>conv2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">3</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># input= [128,32,30,30], output = [128,64,28,28], rf = 5</span>
+        self<span style="color:#f92672">.</span>pool1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>MaxPool2d(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># input= [128,64,28,28], output = [128,64,14,14], rf = 10</span>
+        self<span style="color:#f92672">.</span>conv3 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">3</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># input= [128,64,16,16], output = [128,128,14,14], rf = 12</span>
+        self<span style="color:#f92672">.</span>conv4 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># input= [128,128,16,16], output = [128,256,14,14], rf = 14</span>
+        self<span style="color:#f92672">.</span>pool2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>MaxPool2d(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># input= [128,256,14,14], output = [128,256,7,7], rf = 28</span>
+        self<span style="color:#f92672">.</span>conv5 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">3</span>) <span style="color:#75715e"># input= [128,256,7,7], output = [128,512,5,5], rf = 30</span>
+        self<span style="color:#f92672">.</span>conv6 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">3</span>) <span style="color:#75715e"># input= [128,512,5,5], output = [128,1024,3,3], rf = 32</span>
+        self<span style="color:#f92672">.</span>conv7 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">3</span>) <span style="color:#75715e"># input= [128,1024,3,3], output = [128,10,1,1], rf = 34</span>
 
-    <span style="color:#fff;font-weight:bold">def</span> forward(self, x):
-        x = self.pool1(F.relu(self.conv2(F.relu(self.conv1(x)))))
-        x = self.pool2(F.relu(self.conv4(F.relu(self.conv3(x)))))
-        x = F.relu(self.conv6(F.relu(self.conv5(x))))
-        x = F.relu(self.conv7(x))
-        x = x.view(-<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">10</span>) <span style="color:#007f7f"># [128,10]</span>
-        <span style="color:#fff;font-weight:bold">return</span> F.log_softmax(x)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool1(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv2(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv1(x)))))
+        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool2(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv4(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv3(x)))))
+        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv6(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv5(x))))
+        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv7(x))
+        x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>) <span style="color:#75715e"># [128,10]</span>
+        <span style="color:#66d9ef">return</span> F<span style="color:#f92672">.</span>log_softmax(x)
 </code></pre></div><p>The purpose of adding padding=1 is to add 2 additional pixels in x and y rows for convolution.</p>
 <p>Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? I have also included the link of code at the end of post.</p>
 <p><strong>The architecture</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> torchsummary <span style="color:#fff;font-weight:bold">import</span> summary
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> torchsummary <span style="color:#f92672">import</span> summary
 
-model = Net().to(device)
-summary(model, input_size=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>))
+model <span style="color:#f92672">=</span> Net()<span style="color:#f92672">.</span>to(device)
+summary(model, input_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>))
 </code></pre></div><pre><code>----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
@@ -502,42 +520,42 @@ Estimated Total Size (MB): 25.85
 </code></pre>
 <p>torchsummary is a package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts.</p>
 <p><strong>Training the model</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> tqdm <span style="color:#fff;font-weight:bold">import</span> tqdm <span style="color:#007f7f">#progress bar</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm <span style="color:#75715e">#progress bar</span>
 
-<span style="color:#fff;font-weight:bold">def</span> train(model, device, train_loader, optimizer, epoch):
-    model.train()
-    pbar = tqdm(train_loader)
-    <span style="color:#fff;font-weight:bold">for</span> batch_idx, (data, target) in <span style="color:#fff;font-weight:bold">enumerate</span>(pbar):
-        data, target = data.to(device), target.to(device) <span style="color:#007f7f">#training of the device</span>
-        optimizer.zero_grad()
-        output = model(data) <span style="color:#007f7f"># prediction</span>
-        loss = F.nll_loss(output, target) <span style="color:#007f7f"># calculate loss</span>
-        loss.backward() <span style="color:#007f7f"># backpropagtion step</span>
-        optimizer.step() <span style="color:#007f7f"># updating the parameters</span>
-        pbar.set_description(desc= f<span style="color:#0ff;font-weight:bold">&#39;loss={loss.item()} batch_id={batch_idx}&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train</span>(model, device, train_loader, optimizer, epoch):
+    model<span style="color:#f92672">.</span>train()
+    pbar <span style="color:#f92672">=</span> tqdm(train_loader)
+    <span style="color:#66d9ef">for</span> batch_idx, (data, target) <span style="color:#f92672">in</span> enumerate(pbar):
+        data, target <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>to(device), target<span style="color:#f92672">.</span>to(device) <span style="color:#75715e">#training of the device</span>
+        optimizer<span style="color:#f92672">.</span>zero_grad()
+        output <span style="color:#f92672">=</span> model(data) <span style="color:#75715e"># prediction</span>
+        loss <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>nll_loss(output, target) <span style="color:#75715e"># calculate loss</span>
+        loss<span style="color:#f92672">.</span>backward() <span style="color:#75715e"># backpropagtion step</span>
+        optimizer<span style="color:#f92672">.</span>step() <span style="color:#75715e"># updating the parameters</span>
+        pbar<span style="color:#f92672">.</span>set_description(desc<span style="color:#f92672">=</span> f<span style="color:#e6db74">&#39;loss={loss.item()} batch_id={batch_idx}&#39;</span>)
 
 
-<span style="color:#fff;font-weight:bold">def</span> test(model, device, test_loader):
-    model.eval()
-    test_loss = <span style="color:#ff0;font-weight:bold">0</span>
-    correct = <span style="color:#ff0;font-weight:bold">0</span>
-    <span style="color:#fff;font-weight:bold">with</span> torch.no_grad():
-        <span style="color:#fff;font-weight:bold">for</span> data, target in test_loader:
-            data, target = data.to(device), target.to(device)
-            output = model(data)
-            test_loss += F.nll_loss(output, target, reduction=<span style="color:#0ff;font-weight:bold">&#39;sum&#39;</span>).item()  <span style="color:#007f7f"># sum up batch loss</span>
-            pred = output.argmax(dim=<span style="color:#ff0;font-weight:bold">1</span>, keepdim=True)  <span style="color:#007f7f"># get the index of the max log-probability</span>
-            correct += pred.eq(target.view_as(pred)).sum().item()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>(model, device, test_loader):
+    model<span style="color:#f92672">.</span>eval()
+    test_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    correct <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+        <span style="color:#66d9ef">for</span> data, target <span style="color:#f92672">in</span> test_loader:
+            data, target <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>to(device), target<span style="color:#f92672">.</span>to(device)
+            output <span style="color:#f92672">=</span> model(data)
+            test_loss <span style="color:#f92672">+=</span> F<span style="color:#f92672">.</span>nll_loss(output, target, reduction<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sum&#39;</span>)<span style="color:#f92672">.</span>item()  <span style="color:#75715e"># sum up batch loss</span>
+            pred <span style="color:#f92672">=</span> output<span style="color:#f92672">.</span>argmax(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, keepdim<span style="color:#f92672">=</span>True)  <span style="color:#75715e"># get the index of the max log-probability</span>
+            correct <span style="color:#f92672">+=</span> pred<span style="color:#f92672">.</span>eq(target<span style="color:#f92672">.</span>view_as(pred))<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>item()
 
-    test_loss /= <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)
+    test_loss <span style="color:#f92672">/=</span> len(test_loader<span style="color:#f92672">.</span>dataset)
 
-    <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>.format(
-        test_loss, correct, <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset),
-        <span style="color:#ff0;font-weight:bold">100.</span> * correct / <span style="color:#fff;font-weight:bold">len</span>(test_loader.dataset)))
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># SGD : stochastic gradient descent, lr:lerning_rate:0.01</span>
-optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight:bold">0.01</span>, momentum=<span style="color:#ff0;font-weight:bold">0.9</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(
+        test_loss, correct, len(test_loader<span style="color:#f92672">.</span>dataset),
+        <span style="color:#ae81ff">100.</span> <span style="color:#f92672">*</span> correct <span style="color:#f92672">/</span> len(test_loader<span style="color:#f92672">.</span>dataset)))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># SGD : stochastic gradient descent, lr:lerning_rate:0.01</span>
+optimizer <span style="color:#f92672">=</span> optim<span style="color:#f92672">.</span>SGD(model<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, momentum<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>)
 
-<span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">2</span>): <span style="color:#007f7f"># training network on 1 epoch</span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>): <span style="color:#75715e"># training network on 1 epoch</span>
     train(model, device, train_loader, optimizer, epoch)
     test(model, device, test_loader)
 </code></pre></div><p>We have used, torch.no_grad() to make sure test data does not &ldquo;leak&rdquo; into the model.</p>
@@ -555,26 +573,7 @@ optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight
         
 
 
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "myselfhimanshu-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
       </footer>
     </article>
 
@@ -618,19 +617,6 @@ optimizer = optim.SGD(model.parameters(), lr=<span style="color:#ff0;font-weight
     </main>
 
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-162762722-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 
   </body>
 
